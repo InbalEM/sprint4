@@ -8,9 +8,9 @@ const routes = [
     //     label: 'Home 🏠',
     // },
     // {
-    //     path: 'car',
-    //     component: <CarApp />,
-    //     label: 'Cars'
+    //     path: 'bnb',
+    //     component: <BnbApp />,
+    //     label: 'Bnbs'
     // },
     // {
     //     path: 'review',

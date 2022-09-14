@@ -2,7 +2,6 @@ import React from "react";
 import { Routes, Route } from 'react-router'
 import routes from './routes'
 
-
 export class RootCmp extends React.Component {
   render() {
     return (
