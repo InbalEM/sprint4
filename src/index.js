@@ -1,15 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
+import App from "./root-cmp";
 import store from "./redux/store";
 import { Provider } from "react-redux";
+import { HashRouter as Router } from 'react-router-dom';
+
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <Router >
+        <App />
+      </Router >
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")
