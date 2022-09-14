@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 
 import { removeFromCart, checkout } from '../store/car.actions'
-import { UserMsg } from './user-msg.jsx'
+// import { UserMsg } from './user-msg.jsx'
 
 function _AppFooter({ count, cart, removeFromCart, checkout }) {
     const [isCartShown, setIsCartShown] = useState(false)
@@ -45,7 +45,7 @@ function _AppFooter({ count, cart, removeFromCart, checkout }) {
                 <p>Total: ${getCartTotal().toLocaleString()} </p>
                 <button onClick={checkout}>Checkout</button>
             </section>}
-            <UserMsg />
+            {/* <UserMsg /> */}
         </footer>
     )
 }
