@@ -8,32 +8,32 @@ export function bnbReducer(state = initialState, action) {
     var bnbs
     var bnbt
     switch (action.type) {
-        case 'SET_CARS':
+        case 'SET_BNBS':
             newState = { ...state, bnbs: action.bnbs }
             break
-        case 'REMOVE_CAR':
+        case 'REMOVE_BNB':
             const lastRemovedBnb = state.bnbs.find(bnb => bnb._id === action.bnbId)
             bnbs = state.bnbs.filter(bnb => bnb._id !== action.bnbId)
             newState = { ...state, bnbs, lastRemovedBnb}
             break
-        case 'ADD_CAR':
+        case 'ADD_BNB':
             newState = { ...state, bnbs:[...state.bnbs, action.bnb]}
             break
-        case 'UPDATE_CAR':
+        case 'UPDATE_BNB':
             bnbs = state.bnbs.map(bnb => (bnb._id === action.bnb._id)? action.bnb : bnb)
             newState = { ...state, bnbs}
             break
-        case 'ADD_TO_CART':
+        case 'ADD_TO_BNBT':
             newState = { ...state, bnbt:[...state.bnbt, action.bnb]}
             break
-        case 'REMOVE_FROM_CART':
+        case 'REMOVE_FROM_BNBT':
             bnbt = state.bnbt.filter(bnb => bnb._id !== action.bnbId)
             newState = { ...state, bnbt}
             break
-        case 'CLEAR_CART':
+        case 'CLEAR_BNBT':
             newState = { ...state, bnbt: []}
             break
-        case 'UNDO_REMOVE_CAR':
+        case 'UNDO_REMOVE_BNB':
             if (state.lastRemovedBnb) {
                 newState = { ...state, bnbs: [...state.bnbs, state.lastRemovedBnb], lastRemovedBnb: null}
             }

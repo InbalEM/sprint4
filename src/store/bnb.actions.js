@@ -5,19 +5,19 @@ import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 // Action Creators:
 export function getActionRemoveBnb(bnbId) {
     return {
-        type: 'REMOVE_CAR',
+        type: 'REMOVE_BNB',
         bnbId
     }
 }
 export function getActionAddBnb(bnb) {
     return {
-        type: 'ADD_CAR',
+        type: 'ADD_BNB',
         bnb
     }
 }
 export function getActionUpdateBnb(bnb) {
     return {
-        type: 'UPDATE_CAR',
+        type: 'UPDATE_BNB',
         bnb
     }
 }
@@ -28,7 +28,7 @@ export function loadBnbs() {
             const bnbs = await bnbService.query()
             console.log('Bnbs from DB:', bnbs)
             dispatch({
-                type: 'SET_CARS',
+                type: 'SET_BNBS',
                 bnbs
             })
 
@@ -87,7 +87,7 @@ export function updateBnb(bnb) {
 export function addToBnbt(bnb) {
     return (dispatch) => {
         dispatch({
-            type: 'ADD_TO_CART',
+            type: 'ADD_TO_BNBT',
             bnb
         })
     }
@@ -95,7 +95,7 @@ export function addToBnbt(bnb) {
 export function removeFromBnbt(bnbId) {
     return (dispatch) => {
         dispatch({
-            type: 'REMOVE_FROM_CART',
+            type: 'REMOVE_FROM_BNBT',
             bnbId
         })
     }
@@ -107,7 +107,7 @@ export function checkout() {
             const total = state.bnbModule.bnbt.reduce((acc, bnb) => acc + bnb.price, 0)
             const score = await userService.changeScore(-total)
             dispatch({ type: 'SET_SCORE', score })
-            dispatch({ type: 'CLEAR_CART' })
+            dispatch({ type: 'CLEAR_BNBT' })
             showSuccessMsg('Charged you: $' + total.toLocaleString())
         } catch (err) {
             showErrorMsg('Cannot checkout, login first')
@@ -124,7 +124,7 @@ export function onRemoveBnbOptimistic(bnbId) {
     return (dispatch, getState) => {
 
         dispatch({
-            type: 'REMOVE_CAR',
+            type: 'REMOVE_BNB',
             bnbId
         })
         showSuccessMsg('Bnb removed')
@@ -137,7 +137,7 @@ export function onRemoveBnbOptimistic(bnbId) {
                 showErrorMsg('Cannot remove bnb')
                 console.log('Cannot load bnbs', err)
                 dispatch({
-                    type: 'UNDO_REMOVE_CAR',
+                    type: 'UNDO_REMOVE_BNB',
                 })
             })
     }
