@@ -1,11 +1,17 @@
-
-import {BnbApp} from './pages/bnb-app'
+import { BnbApp } from './pages/bnb-app'
+import { StayEdit } from './pages/add-edit-stay'
 // Routes accesible from the main navigation (in AppHeader)
+
 const routes = [
     {
         path: '/',
         component: <BnbApp />,
         label: 'bnbs'
+    },
+    {
+        path: 'edit',
+        component: <StayEdit />,
+        label: 'Edit'
     }
     // {
     //     path: 'review',

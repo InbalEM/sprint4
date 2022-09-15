@@ -1,9 +1,9 @@
 
-import React, { useState } from 'react'
+// import React, { useState } from 'react'
 
 // import { UserMsg } from './user-msg.jsx'
 
-export function AppFooter({ count, cart, removeFromCart, checkout }) {
+export function AppFooter() {
     // const [isCartShown, setIsCartShown] = useState(false)
 
 
