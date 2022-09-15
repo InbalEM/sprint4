@@ -1,5 +1,5 @@
 
-
+import {BnbApp} from './pages/bnb-app'
 // Routes accesible from the main navigation (in AppHeader)
 const routes = [
     // {
@@ -7,11 +7,11 @@ const routes = [
     //     component: <HomePage />,
     //     label: 'Home 🏠',
     // },
-    // {
-    //     path: 'bnb',
-    //     component: <BnbApp />,
-    //     label: 'Bnbs'
-    // },
+    {
+        path: '/',
+        component: <BnbApp />,
+        label: 'bnbs'
+    }
     // {
     //     path: 'review',
     //     component: <ReviewApp />,
