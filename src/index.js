@@ -4,7 +4,7 @@ import {RootCmp} from "./root-cmp";
 import store from "./redux/store";
 import { Provider } from "react-redux";
 import { HashRouter as Router } from 'react-router-dom';
-import './styles/main.scss'
+import './assets/styles/main.scss'
 
 // import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 

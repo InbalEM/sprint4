@@ -2,6 +2,7 @@ import React from "react";
 import { Routes, Route } from 'react-router'
 import routes from './routes'
 
+
 export class RootCmp extends React.Component {
   render() {
     return (
@@ -13,7 +14,7 @@ export class RootCmp extends React.Component {
             {/* <Route path="user/:id" element={<UserDetails />} /> */}
           </Routes>
         </main>
-        {/* <AppFooter /> */}
+        {/* <AppFooter /> */}   
       </div>
     );
   }
