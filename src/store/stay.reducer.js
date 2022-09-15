@@ -1,6 +1,6 @@
 const initialState = {
     stays: [],
-    lastRemovedStay: null
+    filterBy: null
 }
 export function stayReducer(state = initialState, action) {
     var newState = state
@@ -8,35 +8,37 @@ export function stayReducer(state = initialState, action) {
     var stay
     switch (action.type) {
         case 'SET_STAYS':
-            newState = { ...state, stays: action.stays }
-            break
+            return { ...state, stays: action.stays }
+
         case 'REMOVE_STAY':
             const lastRemovedStay = state.stays.find(stay => stay._id === action.stayId)
             stays = state.stays.filter(stay => stay._id !== action.stayId)
-            newState = { ...state, stays, lastRemovedStay}
-            break
+            return { ...state, stays, lastRemovedStay }
+
         case 'ADD_STAY':
-            newState = { ...state, stays:[...state.stays, action.stay]}
-            break
+            return { ...state, stays: [...state.stays, action.stay] }
+
         case 'UPDATE_STAY':
-            stays = state.stays.map(stay => (stay._id === action.stay._id)? action.stay : stay)
-            newState = { ...state, stays}
-            break
-        case 'ADD_TO_STAY':
-            newState = { ...state, stay:[...state.stay, action.stay]}
-            break
-        case 'REMOVE_FROM_STAY':
+            stays = state.stays.map(stay => (stay._id === action.stay._id) ? action.stay : stay)
+            return { ...state, stays }
+
+        case 'ADD_TO_CART':
+            return { ...state, stay: [...state.stay, action.stay] }
+
+        case 'REMOVE_FROM_CART':
             stay = state.stay.filter(stay => stay._id !== action.stayId)
-            newState = { ...state, stay}
-            break
-        // case 'CLEAR_STAY':
-        //     newState = { ...state, stay: []}
-        //     break
-        case 'UNDO_REMOVE_STAY':
+            return { ...state, stay }
+
+        // case 'CLEAR_CART':
+        //     return  { ...state, stay: []}
+        //     
+        case 'StayUNDO_REMOVE_CART':
             if (state.lastRemovedStay) {
-                newState = { ...state, stays: [...state.stays, state.lastRemovedStay], lastRemovedStay: null}
+                return { ...state, stays: [...state.stays, state.lastRemovedStay], lastRemovedStay: null }
             }
-            break
+
+        case 'SET_FILTER_BY':
+            return { ...state, filterBy: { ...action.filterBy } }
         default:
             return state;
     }

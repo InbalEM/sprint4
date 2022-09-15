@@ -11,7 +11,7 @@ export function AppHeader() {
         <header className='app-header'>
             <section className='container flex'>
                 <nav>
-                    <NavLink to='/home'>
+                    <NavLink to='/'>
                         <div className='logo-container flex'>
                             <img src={logo} alt='logo' style={{ maxWidth: '37px' }} />
                             <span>airbnb</span>

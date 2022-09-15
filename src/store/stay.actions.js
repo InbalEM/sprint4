@@ -23,10 +23,10 @@ export function getActionUpdateStay(stay) {
 }
 
 export function loadStays() {
-    return async (dispatch) => {
+    return async (dispatch, getState) => {
         try {
-            const stays = await stayService.query()
-            console.log('Stays from DB:', stays)
+            const { filterBy } = getState().stayModule
+            const stays = await stayService.query(filterBy)
             dispatch({
                 type: 'SET_STAYS',
                 stays
@@ -55,15 +55,14 @@ export function removeStay(stayId) {
 
 export function addStay(stay) {
     return (dispatch) => {
-
         stayService.save(stay)
             .then(savedStay => {
                 console.log('Added Stay', savedStay);
                 dispatch(getActionAddStay(savedStay))
-                showSuccessMsg('Stay added')
+                // showSuccessMsg('Stay added')
             })
             .catch(err => {
-                showErrorMsg('Cannot add stay')
+                // showErrorMsg('Cannot add stay')
                 console.log('Cannot add stay', err)
             })
     }
@@ -84,10 +83,16 @@ export function updateStay(stay) {
     }
 }
 
-export function addToStay(stay) {
+export function setFilterBy(filterBy){
+    return (dispatch) => {
+        dispatch({ type: 'SET_FILTER_BY', filterBy })
+    }
+}
+
+export function addToCart(stay) {
     return (dispatch) => {
         dispatch({
-            type: 'ADD_TO_STAY',
+            type: 'ADD_TO_CART',
             stay
         })
     }
@@ -95,7 +100,7 @@ export function addToStay(stay) {
 export function removeFromStay(stayId) {
     return (dispatch) => {
         dispatch({
-            type: 'REMOVE_FROM_STAY',
+            type: 'REMOVE_FROM_CART',
             stayId
         })
     }
@@ -107,7 +112,7 @@ export function checkout() {
             const total = state.stayModule.stay.reduce((acc, stay) => acc + stay.price, 0)
             const score = await userService.changeScore(-total)
             dispatch({ type: 'SET_SCORE', score })
-            dispatch({ type: 'CLEAR_STAY' })
+            dispatch({ type: 'CLEAR_CART' })
             showSuccessMsg('Charged you: $' + total.toLocaleString())
         } catch (err) {
             showErrorMsg('Cannot checkout, login first')
@@ -137,7 +142,7 @@ export function onRemoveStayOptimistic(stayId) {
                 showErrorMsg('Cannot remove stay')
                 console.log('Cannot load stays', err)
                 dispatch({
-                    type: 'UNDO_REMOVE_STAY',
+                    type: 'StayUNDO_REMOVE_CART',
                 })
             })
     }
