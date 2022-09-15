@@ -1,16 +1,26 @@
-// import { useEffect, useState } from 'react'
-// import { connect } from 'react-redux'
-// import { useDispatch, useSelector } from 'react-redux'
+import { useEffect, useState } from 'react'
+import { connect } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
-
-// import { loadBnbs } from '../store/review.actions'
-// import { bnbService } from '../services/bnb.service'
-// import { } from '../services/event-bus.service'
+import { loadStays } from '../store/stay.actions'
+// import { stayService } from '../services/stay.service'
+// import {eventBusService } from '../services/event-bus.service'
 
 export const BnbApp = () => {
-    // const {stays} = useSelector(state => stay.toyModule)
-    console.log('1111:')
+    const  stays  = useSelector(state => state.stayModule)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(loadStays())
+    }, [])
+
+    console.log('stays app:', stays)
+    
+    if (!stays) return <div>Loading...</div>
     return (
-        <h1>APP</h1>
+        <section className='bnbApp'>
+            {/* <StayFilter /> */}
+            {/* <StayList stays={stays} /> */}
+        </section>
     )
 }
