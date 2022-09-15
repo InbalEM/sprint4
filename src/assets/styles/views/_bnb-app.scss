@@ -1,9 +1,9 @@
-.car-list {
+.bnb-list {
     list-style: none;
     display: flex;
     flex-wrap: wrap;
 }
-.car-preview {
+.bnb-preview {
     background-color: $clr7;
     color: whitesmoke;
     border-radius: .2em;
@@ -11,11 +11,11 @@
     text-align: center;
     padding: 5px;
 }
-.car-preview span {
+.bnb-preview span {
     color: pink;
 }
 
-.cart {
+.bnbt {
     background-color: $clr2;
     color: $clr6;
     padding: 20px;
@@ -23,6 +23,6 @@
     top: 10px;
     right: 10px;
 }
-.cart li button {
+.bnbt li button {
     margin: 5px;
 }
