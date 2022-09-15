@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import {RootCmp} from "./root-cmp";
-import store from "./redux/store";
+import {store} from "./store/store";
 import { Provider } from "react-redux";
 import { HashRouter as Router } from 'react-router-dom';
 import './assets/styles/main.scss'

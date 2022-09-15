@@ -23,7 +23,7 @@ export function getActionUpdateStay(stay) {
 }
 
 export function loadStays() {
-    return async (dispatch) => {
+    return async (dispatch, getState) => {
         try {
             const stays = await stayService.query()
             console.log('Stays from DB:', stays)

@@ -3,6 +3,7 @@ const initialState = {
     lastRemovedStay: null
 }
 export function stayReducer(state = initialState, action) {
+    console.log('stayReducer:')
     var newState = state
     var stays
     var stay
@@ -41,10 +42,10 @@ export function stayReducer(state = initialState, action) {
             return state;
     }
     // For debug:
-    // window.stayState = newState
+    window.stayState = newState
     // console.log('Prev State:', state)
     // console.log('Action:', action)
     // console.log('New State:', newState)
-    // return newState
+    return newState
 
 }
