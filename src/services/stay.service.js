@@ -31,7 +31,7 @@ async function save(stay) {
     var savedStay
     if (stay._id) {
         savedStay = await storageService.put(STORAGE_KEY, stay)
-        
+
     } else {
         // Later, owner is set by the backend
         stay.owner = userService.getLoggedinUser()
@@ -49,7 +49,7 @@ function getEmptyStay() {
 
 
 // TEST DATA
-// storageService.post(STORAGE_KEY,     {
+// storageService.post(STORAGE_KEY, {
 //     "_id": "10006546",
 //     "name": "Ribeira Charming Duplex",
 //     "type": "House",
@@ -58,40 +58,41 @@ function getEmptyStay() {
 //     "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
 //     "capacity": 8,
 //     "amenities": [
-//       "TV",
-//       "Wifi",
-//       "Kitchen",
-//       "Smoking allowed",
-//       "Pets allowed",
-//       "Cooking basics"
+//         "TV",
+//         "Wifi",
+//         "Kitchen",
+//         "Smoking allowed",
+//         "Pets allowed",
+//         "Cooking basics"
 //     ],
 //     "host": {
-//       "_id": "u101",
-//       "fullname": "Davit Pok",
-//       "imgUrl": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small",
+//         "_id": "u101",
+//         "fullname": "Davit Pok",
+//         "imgUrl": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small",
 //     },
 //     "loc": {
-//       "country": "Portugal",
-//       "countryCode": "PT",
-//       "city": "Porto",
-//       "address": "17 Kombo st",
-//       "lat": -8.61308,
-//       "lng": 41.1413
+//         "country": "Portugal",
+//         "countryCode": "PT",
+//         "city": "Porto",
+//         "address": "17 Kombo st",
+//         "lat": -8.61308,
+//         "lng": 41.1413
 //     },
 //     "reviews": [
-//       {
-//         "id": "madeId",
-//         "txt": "Very helpful hosts. Cooked traditional...",
-//         "rate": 4,
-//         "by": {
-//           "_id": "u102",
-//           "fullname": "user2",
-//           "imgUrl": "/img/img2.jpg"
+//         {
+//             "id": "madeId",
+//             "txt": "Very helpful hosts. Cooked traditional...",
+//             "rate": 4,
+//             "by": {
+//                 "_id": "u102",
+//                 "fullname": "user2",
+//                 "imgUrl": "/img/img2.jpg"
+//             }
 //         }
-//       }
+
 //     ],
-//     "likedByUsers" : ['mini-user'] // for user-wishlist : use $in
-//   }).then(x => console.log(x))
+//     "likedByUsers": ['mini-user'] // for user-wishlist : use $in
+// }).then(x => console.log(x))
 
 
 
