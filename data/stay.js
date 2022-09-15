@@ -76,7 +76,8 @@ const db = {
       "imgUrl": "/img/img1.jpg",
       "username" : "user1",
       "password" : "secret",
-      "stays": ["stayId", "stayId", "stayId"]
+      "stays": ["stayId", "stayId", "stayId"] 
+      //optional: rate and reviews about the user
     },
     {
       "_id": "u102",

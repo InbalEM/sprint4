@@ -9,7 +9,6 @@
 
 export const BnbApp = () => {
     // const {stays} = useSelector(state => stay.toyModule)
-    console.log('1111:')
     return (
         <h1>APP</h1>
     )
