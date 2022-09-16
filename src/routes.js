@@ -1,17 +1,18 @@
 
 import {BnbApp} from './pages/bnb-app'
+import { StayDetails } from './pages/stay-details'
 // Routes accesible from the main navigation (in AppHeader)
 const routes = [
     {
         path: '/',
         component: <BnbApp />,
         label: 'bnbs'
-    }
-    // {
-    //     path: 'review',
-    //     component: <ReviewApp />,
-    //     label: 'Reviews'
-    // },
+    },
+    {
+        path: 'details/:id',
+        component: <StayDetails />,
+        label: 'Details'
+    },
     // {
     //     path: 'chat',
     //     component: <ChatApp />,

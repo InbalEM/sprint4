@@ -56,7 +56,7 @@ function getEmptyStay() {
 //     "imgUrls": ["https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large", "otherImg.jpg"],
 //     "price": 80.00,
 //     "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
-//     "capacity": 8,
+//     "capacity": {"guests": 8, "bedroom": 4, "bed": 8, "bath": 3  },
 //     "amenities": [
 //       "TV",
 //       "Wifi",
