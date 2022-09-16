@@ -2,7 +2,6 @@ import React from "react";
 
 
 export function StayPreview({ stay }) {
-    console.log('stay.img:', stay)
     return (
         <React.Fragment>
             <div><img src={stay.imgUrls[0]} alt="" /></div>
