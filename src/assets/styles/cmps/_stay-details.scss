@@ -3,7 +3,6 @@
     grid-template-columns: 2fr 1fr;
     grid-template-rows: 1fr 1fr;
     gap: 7px;
-
 }
 
 .main-img {
@@ -23,13 +22,12 @@
 .main-details{
     display: flex;
     align-items: stretch;
-    justify-content: space-between;
     flex-wrap: wrap;
     width: 100%;
 }
 
 .details-section{
-    max-width: 65%;
+    max-width: 60%;
 }
 
 .extra-img-info{

@@ -86,12 +86,12 @@ export const StayDetails = () => {
                     </div>
                     <hr />
                     <div className="date-picker">
-                        <Calender/>
+                        <Calender stay={stay}/>
                     </div>
                 </div>
 
                 <div className="reserve">
-                    <Reserve />
+                    <Reserve stay={stay}/>
                 </div>
             </div>
         </div>

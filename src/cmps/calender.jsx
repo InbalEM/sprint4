@@ -1,42 +1,44 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useFormRegister } from "../hooks/useFormRegister";
+import { orderService } from "../services/order.service";
+import { savedOrder } from "../store/order.actions";
 
 
-export const Calender = () => {
+export const Calender = ({stay}) => {
   const [register, setStartDate, date] = useFormRegister({
     startDate: '',
     endDate: ''
   });
-  // const [register, setEndDate] = useFormRegister();
 
-  useEffect(() => {
-    // console.log('startDate:', startDate)
-    // console.log('endDate:', endDate)
+  
+  const dispatch = useDispatch()
 
-  }, [])
 
-  const setDate = () => {
-    // setStartDate()
+  // useEffect(() => { 
+  //   orderService.
+  // }, [])
+
+  const setDate = (ev) => {
+    ev.preventDefault()
     const startDate = new Date(date.startDate).toLocaleDateString()
     const endDate = new Date(date.endDate).toLocaleDateString()
-
-    console.log(startDate, endDate)
+    dispatch(savedOrder(stay._id, startDate, endDate))
   }
 
   return (
     <section>
-      <form onSubmit={() => setDate()}>
-      <label htmlFor="start">Start date:</label>
+      <form onSubmit={(ev) => setDate(ev)}>
 
-      <input {...register('startDate', 'date')}
+        <label htmlFor="start">Start date:</label>
+        <input {...register('startDate', 'date')} />
 
-      />
+        <label htmlFor="end">End date:</label>
+        <input {...register('endDate', 'date')} />
 
-      <label htmlFor="end">End date:</label>
-
-      <input {...register('endDate', 'date')} />
-      <button>set</button>
+        <button>set</button>
       </form>
     </section>
   )
