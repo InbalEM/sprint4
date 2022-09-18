@@ -1,0 +1,18 @@
+.header-filter {
+    // border: 1px solid $clr7;
+    border-radius: 50px;
+    border: 1px solid #DDDDDD;
+    // border-radius: 21px;
+    cursor: pointer;
+    // transition: box-shadow 0.2s ease;
+    box-shadow: 0px 3px 4px -3px rgba(0,0,0,0.65);
+    box-shadow: 0px 3px 4px -3px rgba(0,0,0,0.65);
+
+    min-width: 348px;
+    height: 48px;
+    margin: 0 24px;
+    flex: 0 1 auto;
+    
+    text-align: center;
+
+}

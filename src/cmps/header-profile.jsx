@@ -1,6 +1,7 @@
 export function HeaderProfile() {
 
     return (
-        <div className='profile'>profile</div>
+        <div className="header-profile">
+        </div>
     )
 }

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { loadStays, setFilterBy } from '../store/stay.actions'
 import { StayList } from '../cmps/stay-list'
 import { StayFilter } from '../cmps/stay-filter'
+import  filterImg  from '../assets/img/filter-btn-img.png'
 // import { stayService } from '../services/stay.service'
 // import {eventBusService } from '../services/event-bus.service'
 
@@ -21,10 +22,19 @@ export const BnbApp = () => {
         dispatch(loadStays())
     }
 
+    const onClickFilter = (ev)=>{
+        ev.preventDefault()
+        
+    }
+
     // console.log('stays app:', stays)
     if (!stays) return <div>Loading...</div>
     return (
-        <section className='bnbApp'>
+        <section className='bnbApp filter-open'>
+            <button className='stay-filter-btn' onClick={onClickFilter}>
+                <img src={filterImg} />
+                Filters
+            </button>
             <StayFilter onChangeFilter= {onChangeFilter}/>
             <StayList stays={stays} />
         </section>

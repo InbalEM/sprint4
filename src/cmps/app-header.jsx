@@ -8,18 +8,21 @@ import logo from '../assets/img/logo48.png'
 export function AppHeader() {
 
     return (
-        <header className='app-header'>
+        <header className='app-header full flex'>
             <section className='container flex'>
-                <nav>
-                    <NavLink to='/'>
-                        <div className='logo-container flex'>
-                            <img src={logo} alt='logo' style={{ maxWidth: '37px' }} />
-                            <span>airbnb</span>
-                        </div>
-                    </NavLink>
-                </nav>
+                <NavLink to='/'>
+                    <div className='logo-container flex'>
+                        <img src={logo} alt='logo' style={{ maxWidth: '37px' }} />
+                        <span>airbnb</span>
+                    </div>
+                </NavLink>
                 <HeaderFilter />
+                <div className='flex'>
+                <NavLink to='edit'>
+                    <span className='become-host-link'>Become a host</span>
+                </NavLink>
                 <HeaderProfile />
+                </div>
             </section>
         </header>
     )
