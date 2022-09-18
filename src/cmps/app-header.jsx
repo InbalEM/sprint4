@@ -8,7 +8,7 @@ import logo from '../assets/img/logo48.png'
 export function AppHeader() {
 
     return (
-        <header className='app-header'>
+        <header className='app-header full flex'>
             <section className='container flex'>
                 <NavLink to='/'>
                     <div className='logo-container flex'>

@@ -9,7 +9,7 @@ export function StayPreview({ stay }) {
                 <p>{stay.loc.address}, {stay.loc.city}</p>
                 <p>{stay.capacity.guests} bads</p>
                 <p>Oct 12-18</p>
-                <p>$<span>{stay.price}</span> night</p>
+                <p className="black-font"><span>${stay.price}</span> night</p>
             </div>
         </React.Fragment>
     )
