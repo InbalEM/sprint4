@@ -9,6 +9,7 @@ const db = {
       "price": 80.00,
       "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
       "capacity": 8,
+      
       "amenities": [
         "TV",
         "Wifi",
@@ -76,7 +77,8 @@ const db = {
       "imgUrl": "/img/img1.jpg",
       "username" : "user1",
       "password" : "secret",
-      "stays": ["stayId", "stayId", "stayId"]
+      "stays": ["stayId", "stayId", "stayId"] 
+      //optional: rate and reviews about the user
     },
     {
       "_id": "u102",

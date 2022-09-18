@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes, Route } from 'react-router'
+// import { AppHeader } from "./cmps/app-header";
 import routes from './routes'
 import {AppHeader} from './cmps/app-header'
 import {AppFooter} from './cmps/app-footer'
@@ -8,7 +9,7 @@ import {AppFooter} from './cmps/app-footer'
 export class RootCmp extends React.Component {
   render() {
     return (
-      <div>
+      <div  className="main-container" >
         <AppHeader />
         <main>
           <Routes>
