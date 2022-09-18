@@ -5,37 +5,41 @@ import { useDispatch, useSelector } from 'react-redux'
 import { loadStays, setFilterBy } from '../store/stay.actions'
 import { StayList } from '../cmps/stay-list'
 import { StayFilter } from '../cmps/stay-filter'
-import  filterImg  from '../assets/img/filter-btn-img.png'
+import filterImg from '../assets/img/filter-btn-img.png'
 // import { stayService } from '../services/stay.service'
 // import {eventBusService } from '../services/event-bus.service'
 
 export const BnbApp = () => {
-    const { stays } = useSelector(state => state.stayModule)
+    const { stays, isFilterOpen } = useSelector(state => state.stayModule)
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(loadStays())
     }, [])
 
-    const onChangeFilter = (filterBy)=>{
+    const onChangeFilter = (filterBy) => {
         dispatch(setFilterBy(filterBy))
         dispatch(loadStays())
     }
-
-    const onClickFilter = (ev)=>{
+    // const isFilterOpen = false
+    const onClickFilter = (ev) => {
         ev.preventDefault()
-        
-    }
+        dispatch({
+            type: 'SET_ISOPENFILTER',
+            isFilterOpen: !isFilterOpen
+        })
+        if (!isFilterOpen) dispatch(loadStays())
 
-    // console.log('stays app:', stays)
+    }
     if (!stays) return <div>Loading...</div>
     return (
-        <section className='bnbApp filter-open'>
+        <section className={isFilterOpen? 'filter-open bnbApp' : 'bnbApp'}>
+            <div className='main-screen'  onClick={onClickFilter}></div>
             <button className='stay-filter-btn' onClick={onClickFilter}>
-                <img src={filterImg} />
+                <div><img src={filterImg} /></div>
                 Filters
             </button>
-            <StayFilter onChangeFilter= {onChangeFilter}/>
+            <StayFilter onChangeFilter={onChangeFilter}  onClickFilter = {onClickFilter}/>
             <StayList stays={stays} />
         </section>
     )

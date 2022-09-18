@@ -1,11 +1,13 @@
 const initialState = {
     stays: [],
-    filterBy: null
+    filterBy: null,
+    isFilterOpen: false
 }
 export function stayReducer(state = initialState, action) {
     var newState = state
     var stays
     var stay
+    var isFilterOpen
     switch (action.type) {
         case 'SET_STAYS':
             return { ...state, stays: action.stays }
@@ -28,6 +30,10 @@ export function stayReducer(state = initialState, action) {
         case 'REMOVE_FROM_CART':
             stay = state.stay.filter(stay => stay._id !== action.stayId)
             return { ...state, stay }
+
+        case 'SET_ISOPENFILTER':
+            isFilterOpen = action.isFilterOpen
+            return { ...state, isFilterOpen}
 
         // case 'CLEAR_CART':
         //     return  { ...state, stay: []}
