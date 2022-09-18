@@ -9,7 +9,11 @@ import {AppFooter} from './cmps/app-footer'
 export class RootCmp extends React.Component {
   render() {
     return (
+<<<<<<< HEAD
       <div className="main-container">
+=======
+      <div  className="main-container" >
+>>>>>>> 3e69fae230a774594ae6a1f9447348f25490b481
         <AppHeader />
         <main>
           <Routes>

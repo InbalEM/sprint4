@@ -1,0 +1,76 @@
+.reserve {
+    width: 36%;
+    background-color: #fff;
+    margin-inline-start: 4%;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+
+
+    .reserve-info {
+        border: 1px solid black;
+        border-radius: 20px;
+
+        .reserve-dates {
+            width: 100%;
+            border: 0;
+            background-color: inherit;
+            color: black;
+            display: flex;
+            // justify-content:flex-start ;
+            // border: 1px solid black;
+            // border-radius: 50px;
+
+            .check-in {
+                border-right: solid 1px black;
+            }
+
+            .check-in,
+            .check-out {
+                flex: 1 1;
+                padding: 1.6rem 0.8rem 0.6rem;
+
+                .date-reserve {}
+
+                .txt-reserve {}
+            }
+        }
+
+        .guests-details {
+            background-color: inherit;
+            color: black;
+            width: 100%;
+        }
+
+        .guest-info {
+            border-top: 1px solid black;
+            
+            .select-guests {
+                background: rgb(255, 255, 255);
+                border-radius: 4px;
+                box-shadow: rgb(0 0 0 / 15%) 0px 2px 6px, rgb(0 0 0 / 7%) 0px 0px 0px 1px;
+                margin-bottom: 16px;
+                min-width: 280px;
+                padding: 16px;
+                position: absolute;
+                text-align: left;
+                width: 50%;
+                z-index: 999;
+                right: 0px;
+
+                .pick-guest-account {
+                    display: flex;
+                    justify-content: space-between;
+                }
+            }
+
+            
+        }
+
+
+
+    }
+
+
+}
