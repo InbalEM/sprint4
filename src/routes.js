@@ -1,6 +1,7 @@
 import {BnbApp} from './pages/bnb-app'
 import { StayDetails } from './pages/stay-details'
 import { StayEdit } from './pages/add-edit-stay'
+import { ReserveSummary } from './pages/reserve-summary'
 
 const routes = [
     {
@@ -17,6 +18,11 @@ const routes = [
         path: 'edit',
         component: <StayEdit />,
         label: 'Edit'
+    },
+    {
+        path: 'summary',
+        component: <ReserveSummary />,
+        label: 'Summary'
     }
 ]
 

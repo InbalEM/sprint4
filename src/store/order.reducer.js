@@ -1,5 +1,5 @@
 const initialState = {
-    order: [],
+    order: {},
   }
   
   export function orderReducer(state = initialState, action = {}) {
