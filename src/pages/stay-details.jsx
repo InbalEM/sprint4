@@ -49,12 +49,12 @@ export const StayDetails = () => {
             <div className="main-details">
                 <div className="details-section">
                     <div className="mini-details">
-                        <h3>Entire {stay.type} hosted by {stay.host.fullname}</h3>
+                        <h3>Entire {stay.roomType} hosted by {stay.host.fullname}</h3>
                         <ul>
-                            <li>{stay.capacity.guests} guests</li>
-                            <li>{stay.capacity.bedroom} bedroom</li>
-                            <li>{stay.capacity.bed} bed</li>
-                            <li>{stay.capacity.bath} bath</li>
+                            <li>{stay.capacity} guests</li>
+                            <li>{stay.bathrooms} bathrooms</li>
+                            <li>{stay.bedrooms} bedrooms</li>
+                            
                         </ul>
                         <p> profile-img</p>
                     </div>
@@ -65,7 +65,7 @@ export const StayDetails = () => {
                     <hr />
                     <div>
                         {stay.summary}
-                        <div className="extra-img-info">
+                        {/* <div className="extra-img-info">
 
                             <div className="first-img">
                                 <img src={stay.imgUrls[0]} alt="" srcSet="" />
@@ -80,7 +80,7 @@ export const StayDetails = () => {
                                 <img src={stay.imgUrls[2]} alt="" srcSet="" />
                             </div>
                             
-                        </div>
+                        </div> */}
                     </div>
                     <hr />
                     <div className="date-picker">

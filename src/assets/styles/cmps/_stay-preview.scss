@@ -6,6 +6,7 @@
     >div>img {
         border-radius: 5%;
         aspect-ratio: 1 / 1;
+        object-fit: cover;
     }
 
     >h4,
@@ -21,5 +22,9 @@
     }
     .black-font {
         color: $clr7;
+
+        span{
+            font-family: cereal_MD;
+        }
     }
 }

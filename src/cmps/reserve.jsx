@@ -45,7 +45,7 @@ export const Reserve = ({ stay }) => {
     return (
         <div className="reserve-form">
             <div>
-                <span>{stay.price} night</span>
+                <span>${stay.price} night</span>
             </div>
 
             <div className="reserve-info">
