@@ -1,7 +1,9 @@
 .stay-preview {
 
     display: grid;
-    grid-template-rows: 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    margin: 0;
+    cursor: pointer;
 
     >div>img {
         border-radius: 5%;
