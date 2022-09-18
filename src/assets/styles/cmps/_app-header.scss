@@ -3,9 +3,18 @@
     padding-left: 50px;
     padding-right: 50px;
     border-bottom: 0.5px solid $clr4;
-    font-family: cereal;
+    font-family: cereal_BD;
+    font-size: 22px;
+    letter-spacing: -1px;
     color: $clr1;
 
+    .become-host-link{
+        padding-right: 20px;
+        color: $clr8;
+        font-family: cereal_BK;
+        font-size: 15px;
+        text-shadow: 0.1px 0.1px $clr2;
+    }
 
     // .user-profile {
     //     padding-left: 100px;
