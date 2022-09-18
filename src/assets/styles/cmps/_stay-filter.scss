@@ -1,3 +1,43 @@
+.stay-filter-btn{
+  background-color: white;
+  border: 1px solid #DDDDDD;
+  border-radius: 12px;
+  cursor:pointer;
+  margin: 0;
+  padding: 7px;
+  appearance: none;
+  display: inline-block;
+  min-width: 48px;
+  height: 48px;
+  color: black;
+
+  >img{
+    display: block;
+    height:14px;
+    width:14px;
+    fill: currentColor;
+  }
+
+}
+
+.stay-filter{
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid;
+  background-color: white;
+  align-items: center;
+  left: 25%;
+  right: 25%;
+  min-width: 50%;
+  transform: translateY(100vh);
+  transition: .6s;
+}
+
+body.filter-open{
+  transform: translateY(0);
+}
+
 @mixin range-slider($width, $height, $input-top, $input-bg-color, $input-thumb-color, $float:none, $input-height:20px, $input-border-radius:14px) {
   position: relative;
   width: $width;

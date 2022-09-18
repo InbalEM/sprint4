@@ -55,8 +55,6 @@ export const StayEdit = () => {
 
     }
 
-
-
     return (
         <form onSubmit={onSaveStay}>
             <h1>{stay._id ? 'Edit' : 'Add'} stay</h1>

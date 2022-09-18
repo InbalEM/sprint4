@@ -13,7 +13,7 @@ export const StayFilter = (props) => {
     console.log('filterBy:', filterBy)
 
     return (
-        <form action="">
+        <form className='stay-filter' action="">
             <h1>filter</h1>
             <section className='range-slider'>
                 {/* <span className='rangeValues'></span> */}
