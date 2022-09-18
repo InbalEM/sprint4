@@ -10,7 +10,7 @@ import filterImg from '../assets/img/filter-btn-img.png'
 // import {eventBusService } from '../services/event-bus.service'
 
 export const BnbApp = () => {
-    const { stays } = useSelector(state => state.stayModule)
+    const { stays, isFilterOpen } = useSelector(state => state.stayModule)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -21,23 +21,25 @@ export const BnbApp = () => {
         dispatch(setFilterBy(filterBy))
         dispatch(loadStays())
     }
-
+    // const isFilterOpen = false
     const onClickFilter = (ev) => {
         ev.preventDefault()
+        dispatch({
+            type: 'SET_ISOPENFILTER',
+            isFilterOpen: !isFilterOpen
+        })
+        if (!isFilterOpen) dispatch(loadStays())
 
     }
-
-    // console.log('stays app:', stays)
     if (!stays) return <div>Loading...</div>
     return (
-        <section className='bnbApp filter-open'>
-            <div className='filter-section'>
-                <button className='stay-filter-btn' onClick={onClickFilter}>
-                    <img src={filterImg} />
-                    Filters
-                </button>
-            </div>
-            <StayFilter onChangeFilter={onChangeFilter} />
+        <section className={isFilterOpen? 'filter-open bnbApp' : 'bnbApp'}>
+            <div className='main-screen'  onClick={onClickFilter}></div>
+            <button className='stay-filter-btn' onClick={onClickFilter}>
+                <div><img src={filterImg} /></div>
+                Filters
+            </button>
+            <StayFilter onChangeFilter={onChangeFilter}  onClickFilter = {onClickFilter}/>
             <StayList stays={stays} />
         </section>
     )

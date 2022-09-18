@@ -21,7 +21,6 @@ function query(filterBy) {
     return storageService.query(STORAGE_KEY).then(stays => {
       console.log('stays:', stays)
       if (!stays[0]){
-        console.log('query:',stays )
         stays = storageService.postMany(STORAGE_KEY, gStays).then(x => console.log(x))
       }
         if (filterBy) {
