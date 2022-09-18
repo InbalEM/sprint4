@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useFormRegister } from "../hooks/useFormRegister";
 import { orderService } from "../services/order.service";
-import { savedOrder } from "../store/order.actions";
+import { saveDates, savedOrder } from "../store/order.actions";
 
 
 export const Calender = ({stay}) => {
@@ -18,15 +18,16 @@ export const Calender = ({stay}) => {
 
   
 
-  // useEffect(() => { 
-  //   orderService.
-  // }, [])
+  useEffect(() => { 
+    
+  }, [])
 
   const setDate = (ev) => {
     ev.preventDefault()
     const startDate = new Date(date.startDate).toLocaleDateString()
     const endDate = new Date(date.endDate).toLocaleDateString()
-    dispatch(savedOrder(stay._id, startDate, endDate))
+    dispatch(saveDates(stay._id, startDate, endDate))
+
   }
 
   return (
