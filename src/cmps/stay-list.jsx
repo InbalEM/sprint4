@@ -5,15 +5,14 @@ export function StayList({ stays }) {
     console.log('stays:', stays)
     return (
         <section className="stay-list ">
-<<<<<<< HEAD
-            {stays.map(stay => <div key={stay._id} className='stay-preview'> <StayPreview stay={stay} /> </div>)}
-=======
-            {stays.map(stay => <div key={stay._id} className='stay-preview'>
+            {/* {stays.map(stay => <div key={stay._id} className='stay-preview'> <StayPreview stay={stay} /> </div>)} */}
+            {stays.map(stay => 
                 <Link to={`/details/${stay._id}`}>
+                    <div key={stay._id} className='stay-preview'>
                 <StayPreview stay={stay}/>
+                </div>
                 </Link>
-            </div>)}
->>>>>>> 3abb5360f6b3de5269e8ce956acea577e0a1e656
+          )}
         </section>
     )
 }

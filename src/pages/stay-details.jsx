@@ -40,10 +40,10 @@ export const StayDetails = () => {
                     <img src={stay.imgUrls[0]} alt="" srcSet="" />
                 </div>
                 <div className="top-right">
-                    <img src={stay.imgUrls[0]} alt="" srcSet="" />
+                    <img src={stay.imgUrls[1]} alt="" srcSet="" />
                 </div>
                 <div className="bottom-right">
-                    <img src={stay.imgUrls[0]} alt="" srcSet="" />
+                    <img src={stay.imgUrls[2]} alt="" srcSet="" />
                 </div>
             </div>
             <div className="main-details">
@@ -71,17 +71,15 @@ export const StayDetails = () => {
                                 <img src={stay.imgUrls[0]} alt="" srcSet="" />
                             </div>
                             <div className="second-img">
-                                <img src={stay.imgUrls[0]} alt="" srcSet="" />
+                                <img src={stay.imgUrls[1]} alt="" srcSet="" />
                             </div>
                             <div className="third-img">
-                                <img src={stay.imgUrls[0]} alt="" srcSet="" />
+                                <img src={stay.imgUrls[2]} alt="" srcSet="" />
                             </div>
                             <div className="fourth-img">
-                                <img src={stay.imgUrls[0]} alt="" srcSet="" />
+                                <img src={stay.imgUrls[2]} alt="" srcSet="" />
                             </div>
-                            <div className="fifth-img">
-                                <img src={stay.imgUrls[0]} alt="" srcSet="" />
-                            </div>
+                            
                         </div>
                     </div>
                     <hr />
