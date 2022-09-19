@@ -13,7 +13,7 @@ export function AppHeader() {
                 <NavLink to='/'>
                     <div className='logo-container flex'>
                         <img src={logo} alt='logo' style={{ maxWidth: '37px' }} />
-                        <span>airbnb</span>
+                        <span>idebnb</span>
                     </div>
                 </NavLink>
                 <HeaderFilter />

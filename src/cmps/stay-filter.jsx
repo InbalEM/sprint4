@@ -13,7 +13,7 @@ export const StayFilter = (props) => {
     const { onClickFilter } = props
 
     return (
-        <form className='stay-filter' onSubmit={onClickFilter}>
+        <form className='stay-filter ' onSubmit={onClickFilter}>
             <h1>Price range</h1>
             <section className='range-slider'>
                 <input min="0" max="1800"  {...register('minPrice', 'range')} />

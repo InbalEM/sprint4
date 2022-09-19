@@ -1,15 +1,17 @@
 import React from "react";
-import { Routes, Route } from 'react-router'
+import { Routes, Route, useParams } from 'react-router'
 // import { AppHeader } from "./cmps/app-header";
 import routes from './routes'
 import { AppHeader } from './cmps/app-header'
 import { AppFooter } from './cmps/app-footer'
+import { useEffect } from "react";
 
 
-export class RootCmp extends React.Component {
-  render() {
+export const RootCmp = () =>  {
+   
+    
     return (
-      <div className="main-container">
+      <div className={(window.location.href.includes('details')) ? "main-container-details" : "main-container"}>
         <AppHeader />
         <main>
           <Routes>
@@ -20,6 +22,6 @@ export class RootCmp extends React.Component {
         <AppFooter />
       </div>
     )
-  }
+  
 
 }

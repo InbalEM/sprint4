@@ -6,13 +6,15 @@ import { useSelector } from "react-redux"
 import { Link, useNavigate } from "react-router-dom"
 import { orderService } from "../services/order.service"
 import { savedOrder, saveOrder } from "../store/order.actions"
+import { ReactComponent as Star } from '../assets/icons/star.svg';
+import { CalcReserve } from "./calc-reserve"
 
-
-export const Reserve = ({ stay }) => {
+export const Reserve = ({ stay, avgRate }) => {
 
     let { order } = useSelector(state => state.orderModule)
     const [isOpen, setIsOpen] = useState(false)
     const dispatch = useDispatch()
+
 
     const [guestsCount, setGuestsCount] = useState({
         adults: 0,
@@ -20,7 +22,6 @@ export const Reserve = ({ stay }) => {
         infants: 0,
         pets: 0,
     })
-
 
     const toggleMenu = () => {
         setIsOpen(!isOpen)
@@ -37,15 +38,33 @@ export const Reserve = ({ stay }) => {
 
     const submitReserve = () => {
         const guests = guestsCount
-        order = {...order, guests}
+        order = { ...order, guests }
         console.log('order:', order)
         dispatch(saveOrder(order))
     }
 
+    const mouseMove = (e) => {
+        const rect = e.target.getBoundingClientRect();
+        const mouseX = e.pageX - e.currentTarget.offsetLeft;
+        const mouseY = e.pageY - e.currentTarget.offsetTop;
+        e.currentTarget.style.cssText = `
+    --mouse-x: ${mouseX}; 
+    --mouse-y: ${mouseY};
+  `;
+    }
+
+
+
     return (
         <div className="reserve-form">
-            <div>
-                <span>${stay.price} night</span>
+            <div className="reserve-header">
+                <div>
+                    <div><span className="price">${stay.price}</span><span> night</span></div>
+                </div>
+                <div className="reserve-rate">
+                    <div><span><Star /></span><span> {avgRate()}</span></div>&middot;
+                    <button>{stay.reviews.length} reviews</button>
+                </div>
             </div>
 
             <div className="reserve-info">
@@ -142,11 +161,24 @@ export const Reserve = ({ stay }) => {
             <div className="reserve-btn-section">
                 <Link to="/summary" props={{}}>
 
-                    <button className="reserve-btn" onClick={()=> submitReserve()}>
-                        <span>Reserve</span>
-                    </button>
+                    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
+                        <button onMouseMove={(e) => mouseMove(e)} onClick={() => submitReserve()} id="gradientBtn">
+                            <span className="absolute inset-0 gradient opacity-0 transition-opacity duration-300"></span>
+                            <span className="relative z-1 pointer-events-none">Let's Go</span>
+                        </button>
+                    </div>
+
                 </Link>
             </div>
+
+            {order.endDate &&
+                <section>
+                    <div className="msg-txt">
+                        <div>You won't be charged yet</div>
+                    </div>
+                    <CalcReserve stay={stay} />
+                </section>
+            }
 
         </div>
     )
