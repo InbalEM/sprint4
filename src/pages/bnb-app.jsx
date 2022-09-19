@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { loadStays, setFilterBy } from '../store/stay.actions'
 import { StayList } from '../cmps/stay-list'
 import { StayFilter } from '../cmps/stay-filter'
-import filterImg from '../assets/img/filter-btn-img.png'
 // import { stayService } from '../services/stay.service'
 // import {eventBusService } from '../services/event-bus.service'
 
@@ -21,7 +20,7 @@ export const BnbApp = () => {
         dispatch(setFilterBy(filterBy))
         dispatch(loadStays())
     }
-    // const isFilterOpen = false
+
     const onClickFilter = (ev) => {
         ev.preventDefault()
         dispatch({
@@ -29,17 +28,13 @@ export const BnbApp = () => {
             isFilterOpen: !isFilterOpen
         })
         if (!isFilterOpen) dispatch(loadStays())
-
     }
+    
     if (!stays) return <div>Loading...</div>
     return (
-        <section className={isFilterOpen? 'filter-open bnbApp' : 'bnbApp'}>
-            <div className='main-screen'  onClick={onClickFilter}></div>
-            <button className='stay-filter-btn' onClick={onClickFilter}>
-                <div><img src={filterImg} /></div>
-                Filters
-            </button>
-            <StayFilter onChangeFilter={onChangeFilter}  onClickFilter = {onClickFilter}/>
+        <section className={isFilterOpen ? 'filter-open bnb-app' : 'bnb-app'}>
+            <div onClick={onClickFilter} className='main-screen' ></div>
+            <StayFilter isFilterOpen={isFilterOpen} onChangeFilter={onChangeFilter} onClickFilter={onClickFilter} />
             <StayList stays={stays} />
         </section>
     )

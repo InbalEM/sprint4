@@ -1,7 +1,7 @@
 export function HeaderFilter() {
 
     return (
-        <div className="header-filter">
-        </div>
+        <section className="header-filter">
+        </section>
     )
 }

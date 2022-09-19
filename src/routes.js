@@ -1,4 +1,4 @@
-import {BnbApp} from './pages/bnb-app'
+import { BnbApp } from './pages/bnb-app'
 import { StayDetails } from './pages/stay-details'
 import { StayEdit } from './pages/add-edit-stay'
 import { ReserveSummary } from './pages/reserve-summary'
