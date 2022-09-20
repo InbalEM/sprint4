@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { useFormRegister } from "../hooks/useFormRegister";
-import { orderService } from "../services/order.service";
-import { saveDates, savedOrder } from "../store/order.actions";
+// import { orderService } from "../services/order.service";
+import { saveDates } from "../store/order.actions";
 
 
 export const Calender = ({stay}) => {

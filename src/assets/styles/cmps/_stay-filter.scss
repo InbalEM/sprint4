@@ -7,16 +7,16 @@
   //   box-shadow: rgb(0 0 0 / 16%) 0 0 6px;
   //   position: sticky;
   // background-color: aqua;
-
-  position: sticky;
+  position: static;
 }
 
 .fixed {
-  background-color: white;
-  position: sticky;
-  // box-shadow: inset 0 -2px 0 #1e1e1e0d;
-  box-shadow: inset 0 -2px 0 #1e1e1e9a;
-  padding: 10px;
+  background-color: blue;
+  position: fixed;
+  min-height: 100px;
+  box-shadow: inset 0 -2px 0 #1e1e1e0d;
+  top: 70px;
+  width: 100%;
 }
 
 .filter-container {
@@ -24,11 +24,11 @@
   grid-auto-flow: column;
   grid-template-columns: 1fr 100px;
   gap: 16px;
-  
-  >* {
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
+
+  // >* {
+  //   padding-top: 10px;
+  //   padding-bottom: 10px;
+  // }
 }
 
 .stay-filter-btn {
