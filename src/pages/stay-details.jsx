@@ -87,9 +87,9 @@ export const StayDetails = () => {
                     <div className="mini-details">
                         <div className="stay-details">
                             <h2>{stay.roomType} hosted by {stay.host.fullname}</h2>
-                            <sapn>{stay.capacity} guests</sapn>&middot;
-                            <sapn>{stay.bathrooms} bathrooms</sapn>&middot;
-                            <sapn>{stay.bedrooms} bedrooms</sapn>
+                            <span>{stay.capacity} guests</span>&middot;
+                            <span>{stay.bathrooms} bathrooms</span>&middot;
+                            <span>{stay.bedrooms} bedrooms</span>
                         </div>
                         <div><User /></div>
                     </div>
@@ -125,7 +125,7 @@ export const StayDetails = () => {
                         <div className="air-cover-description">
                             Every booking includes free protection from Host cancellations, listing inaccuracies, and other issues like trouble checking in.
                         </div>
-                        <button aria-label="Learn more" type="button" class="learn-more-link">Learn more</button>
+                        <button aria-label="Learn more" type="button" className="learn-more-link">Learn more</button>
                     </div>
                     <hr />
                     <div className="more-description">

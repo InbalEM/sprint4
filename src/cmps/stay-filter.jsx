@@ -11,31 +11,26 @@ export const StayFilter = (props) => {
     const filterContainer = useRef(null)
     
     useEffect(() => {
+        if (!filterContainer.current || !filter.current)return
         const filterObserver = new IntersectionObserver(onFilterObserved, {
-            rootMargin: "-115px 0px 0px",
+            rootMargin: "-60px 0px 0px",
         });
 
         filterObserver.observe(filter.current)
 
         function onFilterObserved(entries) {
+            if (!filterContainer.current || !filter.current)return
             entries.forEach((entry) => {
-                // filterClassName =  entry.isIntersecting ? 'stay-filter full main-container' : 'stay-filter full main-container sticky'
-                // filter.current.style = entry.isIntersecting ? 'background-color: green;' : 'background-color: blue;';
-                filterContainer.current.className = entry.isIntersecting ? '' : 'fixed full main-container';
-                // filterContainer.current.style = entry.isIntersecting ? 'position: static' : 'position: fixed';
-                // filterContainer.current.style.position = entry.isIntersecting ? 'static' : 'fixed';
-                // filterContainer.current.style = entry.isIntersecting ? ' box-shadow: none; position:static;' : 'box-shadow: rgb(0 0 0 / 16%) 0 0 6px; position:fixed; background-color: white; min-width:85%;  padding: 10px '
-                console.log('isIntersecting:', entry.isIntersecting)
-                console.log('filter.current:', filter.current)
-            });
+                console.log(entry.isIntersecting)
+                filterContainer.current.className = entry.isIntersecting ? 'full main-container' : 'fixed full main-container';
+            })
         }
-    }, []);
+    }, [])
 
     const { onClickFilter, onChangeFilter, isFilterOpen } = props
 
     return (
         <section className='stay-filter full main-container' ref={filter}>
-            {/* ref={filter} */}
             <div  ref={filterContainer}> 
             <div className={isFilterOpen ? 'filter-open filter-container ' : 'filter-container '}>
                 <div className='labels-container'>

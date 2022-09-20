@@ -7,9 +7,9 @@ import { ReactComponent as User } from '../assets/icons/user.svg';
 export const Review = ({ stay, avgRate }) => {
     
     const getREviews = (minSize = 0, size = 6) => {
-        return stay.reviews.map(review =>
+        return stay.reviews.map((review, idx) =>
 
-            <div className='review'>
+            <div key= {idx} className='review'>
                 <div className='review-header'>
                     <div><User /></div>
                     <div className='reviewer-details'>
