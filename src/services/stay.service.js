@@ -19,7 +19,6 @@ window.cs = stayService
 
 function query(filterBy) {
     return storageService.query(STORAGE_KEY).then(stays => {
-      console.log('stays:', stays)
       if (!stays[0]){
         gStays.forEach(stay => stay.reviews.map(review => review.rate = utilService.getRandomIntInclusive(3,5)))
         stays = storageService.postMany(STORAGE_KEY, gStays).then(x => console.log(x))

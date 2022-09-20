@@ -1,13 +1,10 @@
 .stay-preview {
-    
 
-    // display: grid;
-    // grid-template-rows: 2fr 1fr;
-
-    >div>img {
-        border-radius: 5%;
-        aspect-ratio: 1 / 1;
+    >img {
+        grid-area: img;
         object-fit: cover;
+        aspect-ratio: 1 / 1;
+        border-radius: 1em;
     }
 
     >h4,
@@ -19,13 +16,13 @@
             color: $clr7;
             font-weight: bold;
         }
-
     }
+
     .black-font {
         color: $clr7;
+    }
 
-        span{
-            font-family: cereal_MD;
-        }
+    >div>.price {
+        margin-top: 8px;
     }
 }

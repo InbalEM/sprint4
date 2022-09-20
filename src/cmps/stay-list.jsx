@@ -2,14 +2,11 @@ import { Link } from 'react-router-dom'
 import { StayPreview } from '../cmps/stay-preview'
 
 export function StayList({ stays }) {
-    console.log('stays:', stays)
     return (
-        <section className="stay-list ">
+        <section className="stay-list">
             {stays.map(stay =>
-                <Link to={`/details/${stay._id}`}>
-                    <div key={stay._id} className='stay-preview'>
-                        <StayPreview stay={stay} />
-                    </div>
+                <Link key = {stay._id} to={`/details/${stay._id}`}>
+                    <StayPreview stay={stay} />
                 </Link>
             )}
         </section>
