@@ -1,14 +1,10 @@
-
 import { useState } from 'react';
 import { ReactComponent as Star } from '../assets/icons/star.svg';
 import { ReactComponent as User } from '../assets/icons/user.svg';
 
-
-export const Review = ({ stay, avgRate }) => {
-    
+export const Review = ({ stay, avgRate }) => {   
     const getREviews = (minSize = 0, size = 6) => {
         return stay.reviews.map((review, idx) =>
-
             <div key= {idx} className='review'>
                 <div className='review-header'>
                     <div><User /></div>
@@ -22,15 +18,11 @@ export const Review = ({ stay, avgRate }) => {
                     {review.txt}
                 </div>
             </div>).slice(minSize, size)
-
-
     }
     const [isOpen, setIsOpen] = useState(false)
-
     const toggleIsOpen = () => {
         setIsOpen(!isOpen)
     }
-   
     return (
         <section className="reviews">
             <div className='review-header'>

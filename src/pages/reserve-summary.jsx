@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux"
 
-
 export const ReserveSummary = () => {
     const { adults, children, infants, pets} = useSelector(state => state.orderModule.order.guests)
    

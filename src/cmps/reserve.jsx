@@ -1,11 +1,8 @@
 import { useState } from "react"
-import { useEffect } from "react"
-import { useRef } from "react"
 import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux"
-import { Link, useNavigate } from "react-router-dom"
-import { orderService } from "../services/order.service"
-import { savedOrder, saveOrder } from "../store/order.actions"
+import { Link } from "react-router-dom"
+import { saveOrder } from "../store/order.actions"
 import { ReactComponent as Star } from '../assets/icons/star.svg';
 import { CalcReserve } from "./calc-reserve"
 
@@ -26,7 +23,6 @@ export const Reserve = ({ stay, avgRate }) => {
     const toggleMenu = () => {
         setIsOpen(!isOpen)
     }
-
 
     const onClick = (category, action) => {
         action = action === '+' ? 1 : -1

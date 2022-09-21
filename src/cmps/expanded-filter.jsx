@@ -1,6 +1,5 @@
 import { useFormRegister } from '../hooks/useFormRegister'
 
-
 export const ExpandedFilter = (props) => {
 
     const [register, setFilter, filterBy] = useFormRegister({

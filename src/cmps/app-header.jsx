@@ -1,15 +1,9 @@
-import { NavLink, useLocation } from 'react-router-dom'
-
+import { NavLink } from 'react-router-dom'
 import { HeaderFilter } from './header-filter'
 import { HeaderProfile } from './header-profile'
-
-
 import logo from '../assets/img/logo48.png'
-import { useEffect, useState } from 'react'
 
 export function AppHeader({layoutClass}) {
-
-
 
     return <header className={`${layoutClass ? 'main-container-details app-header flex full' : 'main-container app-header flex full'} `}>
         <section className='container flex'>

@@ -2,7 +2,6 @@ import React from "react";
 
 export function StayPreview({ stay }) {
     return (
-        // <React.Fragment>
             <div key={stay._id} className='stay-preview'>
                 <img src={stay.imgUrls[0]} />
                 <div>
@@ -13,7 +12,5 @@ export function StayPreview({ stay }) {
                     <p className="price"><span>${stay.price}</span> night</p>
                 </div>
             </div>
-
-        // </React.Fragment>
     )
 }
