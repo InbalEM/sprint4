@@ -1,32 +1,16 @@
-import { NavLink, useLocation } from 'react-router-dom'
+import { DetailsHeader } from './details-header'
+import { MainHeader } from './main-header'
 
-import { HeaderFilter } from './header-filter'
-import { HeaderProfile } from './header-profile'
-
-
-import logo from '../assets/img/logo48.png'
-import { useEffect, useState } from 'react'
-
-export function AppHeader({layoutClass}) {
+export function AppHeader({layoutClass, isOpen}) {
 
 
+    console.log(isOpen);
+    return <header className={`${layoutClass ? 'main-container-details details-header flex full' : 'main-container app-header flex full'} `}>
+        
+        {/* {isOpen ?   <DetailsHeader/> : <MainHeader/>} */}
+        <MainHeader/>
 
-    return <header className={`${layoutClass ? 'main-container-details app-header flex full' : 'main-container app-header flex full'} `}>
-        <section className='container flex'>
-            <NavLink to='/'>
-                <div className='logo-container flex'>
-                    <img src={logo} alt='logo' style={{ maxWidth: '37px' }} />
-                    <span>idebnb</span>
-                </div>
-            </NavLink>
-            <HeaderFilter />
-            <div className='flex'>
-                <NavLink to='edit'>
-                    <span className='become-host-link'>Become a host</span>
-                </NavLink>
-                <HeaderProfile />
-            </div>
-        </section>
+        
     </header>
 
 }

@@ -21,10 +21,9 @@ export function RootCmp () {
 
   
     return (
-      // <div className={(window.location.href.includes('details')) ? "main-container-details" : "full main-container"}>
-      <div className= "full main-container">
+      <div className= "full main-layout">
         <AppHeader layoutClass={layoutClass} />
-        <main className={`${layoutClass? 'main-container-details':'full main-container'} `} >
+        <main className={`${layoutClass? 'main-layout-details':'full main-layout'} `} >
           <Routes>
             {routes.map(route => <Route key={route.path} exact={true} element={route.component} path={route.path} />)}
             {/* <Route path="user/:id" element={<UserDetails />} /> */}

@@ -5,21 +5,30 @@ import { useDispatch } from "react-redux";
 import { useFormRegister } from "../hooks/useFormRegister";
 // import { orderService } from "../services/order.service";
 import { saveDates } from "../store/order.actions";
+import { compareAsc, format } from 'date-fns'
 
 
-export const Calender = ({stay}) => {
+export const Calender = ({ stay }) => {
   const [register, setStartDate, date] = useFormRegister({
     startDate: '',
     endDate: ''
   });
 
-  
+
   const dispatch = useDispatch()
 
-  
+  format(new Date(2014, 1, 11), 'yyyy-MM-dd')
+  //=> '2014-02-11'
 
-  useEffect(() => { 
-    
+  const dates = [
+    new Date(1995, 6, 2),
+    new Date(1987, 1, 11),
+    new Date(1989, 6, 10),
+  ]
+  dates.sort(compareAsc)
+
+  useEffect(() => {
+
   }, [])
 
   const setDate = (ev) => {

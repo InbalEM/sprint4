@@ -1,7 +1,8 @@
-.main-container-details {
+.main-layout-details {
     display: grid;
     justify-content: center;
     align-items: center;
+
 
     >*:not(.full) {
         grid-column: 2;
@@ -12,17 +13,11 @@
     }
 
     @include for-mobile-layout {
-        // grid-template-columns: 
-        //     minmax(10px, 1fr)
-        //     minmax(auto, $mobile-breakpoint)
-        //     minmax(10px, 1fr);
+       
     }
 
     @include for-narrow-layout {
-        // grid-template-columns: 
-        //     minmax(10px, 1fr)
-        //     minmax(auto, $narrow-breakpoint)
-        //     minmax(10px, 1fr);
+        
     }
 
     @include for-normal-layout {
@@ -57,7 +52,7 @@
     align-items: center;
 
     .mini-info {
-        width: 20%;
+
         display: flex;
         justify-content: space-between;
         align-items: center;
