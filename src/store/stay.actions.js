@@ -121,6 +121,18 @@ export function checkout() {
     }
 }
 
+export function getStayById(stayId){
+    return async (dispatch, getState) => {
+        try {
+            const { stays } = getState().stayModule
+            const stay = stays.filter(stay => stay._id === stayId)
+            return stay
+        } catch (err) {
+            showErrorMsg('Cannot load stays')
+            console.log('Cannot load stays', err)
+        }
+    }
+}
 
 // Demo for Optimistic Mutation 
 // (IOW - Assuming the server call will work, so updating the UI first)

@@ -1,4 +1,5 @@
-.app-header {
+.app-header,
+.details-header {
     padding: 0px;
     height: 80px;
     
@@ -27,47 +28,8 @@
         letter-spacing: -0.2px;
     }
 
-    // .user-profile {
-    //     padding-left: 100px;
+}
 
-    //     .score {
-    //         background-color: $clr2;
-    //         color: $clr6;
-    //         padding: 8px;
-    //         margin: 10px;
-    //         border-radius: 50%;
-    //     }
-
-    //     img {
-    //         width: 32px;
-    //         height: 32px;
-    //         border-radius: 50%;
-    //         object-fit: cover;
-    //     }
-    // }
-
-    // .user-info .btn-link {
-    //     color: $clr2;
-    // }
-
-    // nav {
-    //     font-size: .8em;
-    //     padding: 5px;
-
-    // }
-
-    // nav a:first-child {
-    //     margin-right: 30px;
-    // }
-
-    // nav a:not(:first-child) {
-    //     border-top: 1px solid $clr1;
-    //     padding: 0 5px;
-    //     margin: 10px;
-    // }
-
-    // nav .active {
-    //     color: $clr1;
-    // }
-
+.details-header{
+    position: static;
 }

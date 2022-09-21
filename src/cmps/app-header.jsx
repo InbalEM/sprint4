@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { NavLink } from 'react-router-dom'
 import { HeaderFilter } from './header-filter'
 import { HeaderProfile } from './header-profile'
@@ -21,6 +22,21 @@ export function AppHeader({layoutClass}) {
                 <HeaderProfile />
             </div>
         </section>
+=======
+import { DetailsHeader } from './details-header'
+import { MainHeader } from './main-header'
+
+export function AppHeader({layoutClass, isOpen}) {
+
+
+    console.log(isOpen);
+    return <header className={`${layoutClass ? 'main-container-details details-header flex full' : 'main-container app-header flex full'} `}>
+        
+        {/* {isOpen ?   <DetailsHeader/> : <MainHeader/>} */}
+        <MainHeader/>
+
+        
+>>>>>>> 73d652a7e117328c7430a5e498e73dfbd4b90229
     </header>
 
 }

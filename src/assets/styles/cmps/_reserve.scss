@@ -6,7 +6,8 @@
 
     .reserve-form {
         position: sticky;
-        top: var(--navigation-bar-offset, 80px);
+        top: 80px;
+        bottom: 60px;
         z-index: 1;
         width: 100%;
         display: inline-block;

@@ -155,7 +155,7 @@ export const Reserve = ({ stay, avgRate }) => {
             </div>
 
             <div className="reserve-btn-section">
-                <Link to="/summary" props={{}}>
+                <Link to="/summary" params={stay}>
 
                     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
                         <button onMouseMove={(e) => mouseMove(e)} onClick={() => submitReserve()} id="gradientBtn">
