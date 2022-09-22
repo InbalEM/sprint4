@@ -40,7 +40,7 @@ export const Calender = ({ stay }) => {
   }
 
   return (
-    <section>
+    <section className="date-picker">
       <form onSubmit={(ev) => setDate(ev)}>
 
         <label htmlFor="start">Start date:</label>

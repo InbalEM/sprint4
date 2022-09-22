@@ -7,7 +7,6 @@ import { HeaderExpandedFilter } from '../cmps/header-expanded-filter'
 
 import logo from '../assets/img/logo48.png'
 
-
 export function AppHeader({ layoutClass }) {
 
     const [isFilterOpen, setIsFilterOpen] = useState(false)
@@ -37,6 +36,7 @@ export function AppHeader({ layoutClass }) {
                 <HeaderProfile />
             </div>
         </section>
+
     </header>
 
 }

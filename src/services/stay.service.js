@@ -10,10 +10,11 @@ const STORAGE_KEY = 'stay'
 var gStays = require('../data/stay.json')
 
 export const stayService = {
-  query,
-  getById,
-  save,
-  remove
+    query,
+    getById,
+    save,
+    remove,
+    avgRate
 }
 window.cs = stayService
 
@@ -121,6 +122,13 @@ function _getEmptyStay() {
     "likedByUsers": ['mini-user'] // for user-wishlist : use $in
   }
 
+}
+
+function avgRate(stay){
+  let rates = stay.reviews.map(review => review.rate)
+  rates = rates.reduce((a, b) => a + b, 0)
+  console.log('rates:', rates)
+  return (rates / stay.reviews.length).toFixed(2)
 }
 
 

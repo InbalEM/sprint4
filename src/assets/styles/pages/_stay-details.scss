@@ -92,8 +92,10 @@
 }
 
 .img-details {
+    aspect-ratio: 2 / 1;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4,1fr);
     grid-template-areas:
         'first first second third'
         'first first second third'
@@ -103,37 +105,30 @@
     gap: 7px;
     padding-top: 1.6em;
 
-    .main-img {
+    .img-0 {
         grid-area: first;
-
-        &>img {
-            border-top-left-radius: 5%;
-            border-bottom-left-radius: 5%;
-        }
+        border-top-left-radius: 5%;
+        border-bottom-left-radius: 5%;
+        
     }
 
-    .middle-top {
+    .img-1{
         grid-area: second;
     }
 
-    .middle-bottom {
+    .img-2{
         grid-area: fourth;
     }
 
-    .top-right {
+    .img-3 {
         grid-area: third;
-
-        &>img {
-            border-top-right-radius: 5%;
-        }
+        border-top-right-radius: 5%;
+        
     }
 
-    .bottom-right {
+    .img-4 {
         grid-area: fifth;
-
-        &>img {
-            border-bottom-right-radius: 5%;
-        }
+        border-bottom-right-radius: 5%;
     }
 
 }
@@ -168,6 +163,7 @@
 
             padding-top: 32px;
             padding-bottom: 32px;
+            border-top: 1px solid #DDDDDD;
 
             .guest-impression {
                 display: flex;
@@ -202,6 +198,7 @@
             padding-top: 3em;
             padding-bottom: 1.6em;
             line-height: 20px;
+            border-top: 1px solid #DDDDDD;
 
             .air-cover-img {
                 color: inherit;
@@ -238,6 +235,7 @@
         .more-description {
             padding-top: 3em;
             padding-bottom: 1.6em;
+            border-top: 1px solid #DDDDDD;
 
             .summary {
 
@@ -269,6 +267,7 @@
 
         .amenities-section {
             padding: 3em 0;
+            border-top: 1px solid #DDDDDD;
 
             .amenities-header {
                 padding-bottom: 1.6em;
@@ -280,7 +279,7 @@
                 justify-items: baseline;
                 gap: 1em;
 
-                .amenitie {
+                .amenity {
                     -webkit-box-pack: start;
                     -webkit-box-align: stretch;
                     display: flex;
@@ -301,6 +300,7 @@
         .date-picker {
             padding-top: 3em;
             padding-bottom: 3em;
+            border-top: 1px solid #DDDDDD;
         }
     }
 
