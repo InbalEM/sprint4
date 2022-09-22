@@ -7,7 +7,7 @@ import { StayFilter } from '../cmps/stay-filter'
 // import { stayService } from '../services/stay.service'
 // import {eventBusService } from '../services/event-bus.service'
 
-export const BnbApp = () => {
+export const StayApp = () => {
     const { stays, isFilterOpen } = useSelector(state => state.stayModule)
     const dispatch = useDispatch()
 
@@ -23,7 +23,7 @@ export const BnbApp = () => {
     const onClickFilter = (ev) => {
         ev.preventDefault()
         dispatch({
-            type: 'SET_ISOPENFILTER',
+            type: 'SET_IS_FILTER_OPEN',
             isFilterOpen: !isFilterOpen
         })
         if (!isFilterOpen) dispatch(loadStays())
@@ -31,7 +31,7 @@ export const BnbApp = () => {
     
     if (!stays) return <div>Loading...</div>
     return (
-        <section className={isFilterOpen ? 'filter-open bnb-app full main-container ' : 'bnb-app full main-container '}>
+        <section className={isFilterOpen ? 'filter-open bnb-app full main-layout ' : 'bnb-app full main-layout '}>
             <div onClick={onClickFilter} className='main-screen' ></div>
             <StayFilter isFilterOpen={isFilterOpen} onChangeFilter={onChangeFilter} onClickFilter={onClickFilter} />
             <StayList stays={stays} />

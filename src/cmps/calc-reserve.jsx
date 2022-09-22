@@ -3,13 +3,13 @@ import { useSelector } from "react-redux";
 
 
 export const CalcReserve = ({stay}) => {
-
-    let { order } = useSelector(state => state.orderModule)
+// to change all distructuring
+    const { order } = useSelector(state => state.orderModule)
    
 
     const parseDate = (str) => {
         if(!str) return
-        var mdy = str.split('/');
+        const mdy = str.split('/');
         return new Date(mdy[2], mdy[0] - 1, mdy[1]);
     }
 

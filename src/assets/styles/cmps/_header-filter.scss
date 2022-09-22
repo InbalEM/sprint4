@@ -1,33 +1,24 @@
 .header-filter {
     position: absolute;
-    margin-left: -12rem;
+    margin-left: -10rem;
     left: 50%;
-
-
 
     >div {
         border-radius: 50px;
         border: 1px solid #DDDDDD;
         cursor: pointer;
         box-shadow: 0px 3px 4px -3px rgba(0, 0, 0, 0.65);
-        box-shadow: 0px 3px 4px -3px rgba(0, 0, 0, 0.65);
-        max-width: 348px;
-        min-width: 80px;
-        max-height: 48px;
-        margin: 0 24px;
+        // max-width: 348px;
+        // min-width: 80px;
+        // max-height: 48px;
         flex: 0 1 auto;
-
         text-align: center;
-
         color: #B0B0B0;
         display: flex;
         align-items: center;
         justify-items: center;
         padding-inline-start: 8px;
-        justify-content: space-between;
-        align-items: center;
-
-
+        // justify-content: space-between;
 
         >span {
             flex: 0 0 1px;
@@ -41,6 +32,10 @@
             border-radius: 50%;
             height: 32px;
             width: 32px;
+            display: flex;
+            align-items: center;
+
+
 
             >* {
                 height: 12px;
@@ -66,8 +61,23 @@
         .search-last-btn {
             color: #B0B0B0;
         }
-
-
-
     }
+}
+
+.filter-contaner {
+    border-radius: 50px;
+    border: 1px solid #DDDDDD;
+    cursor: pointer;
+    box-shadow: 0px 3px 4px -3px rgba(0, 0, 0, 0.65);
+    // max-width: 348px;
+    // min-width: 80px;
+    // max-height: 48px;
+    flex: 0 1 auto;
+    text-align: center;
+    color: #B0B0B0;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    padding-inline-start: 8px;
+    // justify-content: space-between;
 }

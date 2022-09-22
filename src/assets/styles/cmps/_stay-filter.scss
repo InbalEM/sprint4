@@ -2,24 +2,13 @@
   padding-top: 20px;
   background-color: white;
   top: var(--navigation-bar-offset, 80px);
-
   color: rgb(34, 34, 34);
-  //   box-shadow: rgb(0 0 0 / 16%) 0 0 6px;
-  //   position: sticky;
-  // background-color: aqua;
   position: static;
-
-  
 }
 
 .fixed {
-<<<<<<< HEAD
-  background-color: white;
-=======
   background-color: #fff;
->>>>>>> 73d652a7e117328c7430a5e498e73dfbd4b90229
   position: fixed;
-  // min-height: 100px;
   box-shadow: inset 0 -2px 0 #1e1e1e0d;
   top: 70px;
   width: 100%;
@@ -55,7 +44,6 @@
   justify-items: center;
   align-content: center;
 
-
   >div {
     display: block;
     height: 14px;
@@ -78,7 +66,6 @@
 .labels-container {
   display: grid;
   grid-template-columns: repeat(16, 1fr);
-  // grid-template-rows: 1fr;
   gap: 16px;
 
   >div {
@@ -87,5 +74,4 @@
     width: 24px;
     fill: currentColor;
   }
-
 }

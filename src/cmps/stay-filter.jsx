@@ -5,9 +5,9 @@ import React, { useEffect, useRef } from 'react'
 export const StayFilter = (props) => {
     const filter = useRef(null)
     const filterContainer = useRef(null)
-    
+
     useEffect(() => {
-        if (!filterContainer.current || !filter.current)return
+        if (!filterContainer.current || !filter.current) return
         const filterObserver = new IntersectionObserver(onFilterObserved, {
             rootMargin: "-100px 0px 0px",
         });
@@ -15,9 +15,9 @@ export const StayFilter = (props) => {
         filterObserver.observe(filter.current)
 
         function onFilterObserved(entries) {
-            if (!filterContainer.current || !filter.current)return
+            if (!filterContainer.current || !filter.current) return
             entries.forEach((entry) => {
-                filterContainer.current.className = entry.isIntersecting ? 'full main-container' : 'fixed full main-container';
+                filterContainer.current.className = entry.isIntersecting ? 'full main-layout ' : 'fixed full main-layout';
             })
         }
     }, [])
@@ -26,16 +26,16 @@ export const StayFilter = (props) => {
     return (
         <section className='stay-filter full main-container' >
             <div ref={filter}></div>
-            <div  ref={filterContainer}> 
-            <div className={isFilterOpen ? 'filter-open filter-container ' : 'filter-container '}>
-                <div className='labels-container'>
+            <div ref={filterContainer}>
+                <div className={isFilterOpen ? 'filter-open filter-container  ' : 'filter-container '}>
+                    <div className='labels-container'>
+                    </div>
+                    <button className='stay-filter-btn' onClick={onClickFilter}>
+                        <div><img src={filterImg} alt= ""/></div>
+                        Filters
+                    </button>
+                    <ExpandedFilter onChangeFilter={onChangeFilter} onClickFilter={onClickFilter} />
                 </div>
-                <button className='stay-filter-btn' onClick={onClickFilter}>
-                    <div><img src={filterImg} /></div>
-                    Filters
-                </button>
-                <ExpandedFilter onChangeFilter={onChangeFilter} onClickFilter={onClickFilter} />
-            </div>
             </div>
         </section>
     )

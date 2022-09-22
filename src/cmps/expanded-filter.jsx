@@ -2,7 +2,8 @@ import { useFormRegister } from '../hooks/useFormRegister'
 
 export const ExpandedFilter = (props) => {
 
-    const [register, setFilter, filterBy] = useFormRegister({
+    // const [register, setFilter, filterBy] = useFormRegister({
+    const [register] = useFormRegister({
         name: '',
         maxPrice: 1610,
         minPrice: 50,
