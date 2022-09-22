@@ -13,34 +13,27 @@
     }
 
     @include for-mobile-layout {
-        grid-template-columns: 
-            minmax(10px, 1fr)
-            minmax(auto, $mobile-breakpoint)
-            minmax(10px, 1fr);
+        @include layoutGTC($mobile-breakpoint);
     }
+
     @include for-narrow-layout {
-        grid-template-columns: 
-            minmax(10px, 1fr)
-            minmax(auto, $narrow-breakpoint)
-            minmax(10px, 1fr);
+        @include layoutGTC($narrow-breakpoint);
     }
-    @include for-normal-layout{
-        grid-template-columns: 
-            minmax(20px, 1fr)
-            minmax(auto, $middle-breakpoint)
-            minmax(20px, 1fr);
+    
+    @include for-normal-layout {
+        @include layoutGTC($normal-breakpoint);
     }
+    
     @include for-wide-layout {
-        grid-template-columns: 
-            minmax(10px, 1fr)
-            minmax(auto, $normal-breakpoint)
-            minmax(10px, 1fr);
+        @include layoutGTC($wide-breakpoint);
     }
 }
 
 .card-grid {
+   
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    // @include layoutGTC(224px);
+    grid-template-columns: repeat(auto-fill, minmax(254px, 1fr));
     grid-gap: 20px;
 }
 

@@ -5,7 +5,7 @@ export function AppHeader({layoutClass, isOpen}) {
 
 
     console.log(isOpen);
-    return <header className={`${layoutClass ? 'main-container-details details-header flex full' : 'main-container app-header flex full'} `}>
+    return <header className={`${layoutClass ? 'main-layout-details details-header flex full' : 'main-layout app-header flex full'} `}>
         
         {/* {isOpen ?   <DetailsHeader/> : <MainHeader/>} */}
         <MainHeader/>

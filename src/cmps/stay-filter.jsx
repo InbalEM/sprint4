@@ -22,7 +22,7 @@ export const StayFilter = (props) => {
             if (!filterContainer.current || !filter.current)return
             entries.forEach((entry) => {
                 console.log(entry.isIntersecting)
-                filterContainer.current.className = entry.isIntersecting ? 'full main-container' : 'fixed full main-container';
+                filterContainer.current.className = entry.isIntersecting ? 'full main-layout' : 'fixed full main-layout';
             })
         }
     }, [])
@@ -30,14 +30,14 @@ export const StayFilter = (props) => {
     const { onClickFilter, onChangeFilter, isFilterOpen } = props
 
     return (
-        <section className='stay-filter full main-container' ref={filter}>
+        <section className='stay-filter full main-layout' ref={filter}>
             <div  ref={filterContainer}> 
             <div className={isFilterOpen ? 'filter-open filter-container ' : 'filter-container '}>
                 <div className='labels-container'>
-                    <div><img src={amazingPools} /></div>
-                    <div><img src={amazingViews} /></div>
-                    <div><img src={sharedHomes} /></div>
-                    <div><img src={surfing} /></div>
+                    <div><img src={amazingPools} alt=""/></div>
+                    <div><img src={amazingViews} alt=""/></div>
+                    <div><img src={sharedHomes} alt=""/></div>
+                    <div><img src={surfing} alt=""/></div>
 
                 </div>
                 <button className='stay-filter-btn' onClick={onClickFilter}>

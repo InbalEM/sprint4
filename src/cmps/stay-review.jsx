@@ -36,7 +36,7 @@ export const Review = ({ stay, avgRate }) => {
             <div className='review-header'>
                 <div className=''>
                     <div><Star /></div>
-                    <div>{avgRate()}</div>&middot;
+                    <div>{avgRate}</div>&middot;
                 </div>
                 <div>{stay.reviews.length} reviews</div>
             </div>

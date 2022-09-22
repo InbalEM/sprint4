@@ -32,7 +32,7 @@ export const BnbApp = () => {
     
     if (!stays) return <div>Loading...</div>
     return (
-        <section className={isFilterOpen ? 'filter-open bnb-app full main-container ' : 'bnb-app full main-container '}>
+        <section className={isFilterOpen ? 'filter-open bnb-app full main-layout ' : 'bnb-app full main-layout '}>
             <div onClick={onClickFilter} className='main-screen' ></div>
             <StayFilter isFilterOpen={isFilterOpen} onChangeFilter={onChangeFilter} onClickFilter={onClickFilter} />
             <StayList stays={stays} />

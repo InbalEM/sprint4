@@ -13,7 +13,8 @@ export const stayService = {
     query,
     getById,
     save,
-    remove
+    remove,
+    avgRate
 }
 window.cs = stayService
 
@@ -112,6 +113,13 @@ function _getEmptyStay(){
         "likedByUsers" : ['mini-user'] // for user-wishlist : use $in
       }
 
+}
+
+function avgRate(stay){
+  let rates = stay.reviews.map(review => review.rate)
+  rates = rates.reduce((a, b) => a + b, 0)
+  console.log('rates:', rates)
+  return (rates / stay.reviews.length).toFixed(2)
 }
 
 
