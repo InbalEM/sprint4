@@ -2,7 +2,6 @@
 import { useLocation } from "react-router-dom";
 import { CalcReserve } from "../cmps/calc-reserve";
 
-
 export const ReserveSummary = () => {
 
     const params = useLocation()

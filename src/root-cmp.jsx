@@ -8,18 +8,13 @@ import { StayFilter } from "./cmps/stay-filter";
 
 
 export function RootCmp () {
-  
   const location = useLocation()
-
     const [layoutClass, setLayoutClass] = useState(false)
 
-    console.log('location:', location)
     useEffect(() => {
       location.pathname.includes('details')? setLayoutClass(true):  setLayoutClass(false)
-
     }, [location.pathname])
 
-  
     return (
       <div className= "full main-layout">
         <AppHeader layoutClass={layoutClass} />
@@ -32,5 +27,4 @@ export function RootCmp () {
         <AppFooter layoutClass={layoutClass} />
       </div>
     )
-    
 }

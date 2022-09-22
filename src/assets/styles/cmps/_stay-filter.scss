@@ -8,15 +8,23 @@
   //   position: sticky;
   // background-color: aqua;
   position: static;
+
+  
 }
 
 .fixed {
+<<<<<<< HEAD
+  background-color: white;
+=======
   background-color: #fff;
+>>>>>>> 73d652a7e117328c7430a5e498e73dfbd4b90229
   position: fixed;
-  min-height: 100px;
+  // min-height: 100px;
   box-shadow: inset 0 -2px 0 #1e1e1e0d;
   top: 70px;
   width: 100%;
+  padding-top: 20px;
+  padding-bottom: 15px;
 }
 
 .filter-container {
