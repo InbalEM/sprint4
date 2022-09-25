@@ -1,10 +1,13 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { saveOrder } from "../store/order.actions"
 import { ReactComponent as Star } from '../assets/icons/star.svg';
 import { CalcReserve } from "./calc-reserve"
+import { ReactComponent as Plus } from '../assets/img/vector/plus.svg';
+import { ReactComponent as Minus } from '../assets/img/vector/minus.svg';
+
 
 export const Reserve = ({ stay, avgRate }) => {
 
@@ -66,8 +69,8 @@ export const Reserve = ({ stay, avgRate }) => {
                                 <div><span className="price">${stay.price}</span><span> night</span></div>
                             </div>
                             <div className="reserve-rate">
-                                <div><span><Star /></span><span> {avgRate}</span></div>&middot;
-                                <button>{stay.reviews.length} reviews</button>
+                                <div className="reserve-star"><span className="star"><Star /></span><span className="avg-rate"> {avgRate} &middot;</span></div>
+                                <button className="reserve-reviews"><div>{stay.reviews.length} reviews</div></button>
                             </div>
                         </div>
 
@@ -113,10 +116,12 @@ export const Reserve = ({ stay, avgRate }) => {
                                                         <h3>Adults</h3>
                                                         <h5>Age 13+</h5>
                                                     </div>
-                                                    <div>
-                                                        <span onClick={() => onClick('adults', '+')}>+</span>
-                                                        <span>{guestsCount.adults}</span>
-                                                        <span onClick={() => onClick('adults', '-')}>-</span>
+                                                    <div className="choose-amount">
+                                                        <div>
+                                                        <button onClick={() => onClick('adults', '-')}><Minus/></button>
+                                                            <span>{guestsCount.adults}</span>
+                                                            <button onClick={() => onClick('adults', '+')}><Plus/></button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div className="pick-guest-account">
@@ -124,10 +129,12 @@ export const Reserve = ({ stay, avgRate }) => {
                                                         <h3>Children</h3>
                                                         <h5>Ages 2-12</h5>
                                                     </div>
-                                                    <div>
-                                                        <span onClick={() => onClick('children', '+')}>+</span>
-                                                        <span>{guestsCount.children}</span>
-                                                        <span onClick={() => onClick('children', '-')}>-</span>
+                                                    <div className="choose-amount">
+                                                        <div>
+                                                            <button onClick={() => onClick('children', '-')}><Minus/></button>
+                                                            <span>{guestsCount.children}</span>
+                                                            <button onClick={() => onClick('children', '+')}><Plus/></button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div className="pick-guest-account">
@@ -135,20 +142,24 @@ export const Reserve = ({ stay, avgRate }) => {
                                                         <h3>Infants</h3>
                                                         <h5>Under 2</h5>
                                                     </div>
-                                                    <div>
-                                                        <span onClick={() => onClick('infants', '+')}>+</span>
-                                                        <span>{guestsCount.infants}</span>
-                                                        <span onClick={() => onClick('infants', '-')}>-</span>
+                                                    <div className="choose-amount">
+                                                        <div>
+                                                            <button onClick={() => onClick('infants', '-')}><Minus/></button>
+                                                            <span>{guestsCount.infants}</span>
+                                                            <button onClick={() => onClick('infants', '+')}><Plus/></button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div className="pick-guest-account">
                                                     <div>
                                                         <h3>Pets</h3>
                                                     </div>
-                                                    <div>
-                                                        <span onClick={() => onClick('pets', '+')}>+</span>
-                                                        <span>{guestsCount.pets}</span>
-                                                        <span onClick={() => onClick('pets', '-')}>-</span>
+                                                    <div className="choose-amount">
+                                                        <div>
+                                                            <button onClick={() => onClick('pets', '-')}><Minus/></button>
+                                                            <span>{guestsCount.pets}</span>
+                                                            <button onClick={() => onClick('pets', '+')}><Plus/></button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <button onClick={() => toggleMenu()}>close</button>
@@ -167,7 +178,7 @@ export const Reserve = ({ stay, avgRate }) => {
                             <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100" onClick={() => submitReserve()}>
                                 <button onMouseMove={(e) => mouseMove(e)} id="gradientBtn">
                                     <span className="absolute inset-0 gradient opacity-0 transition-opacity duration-300"></span>
-                                    <span className="relative z-1 pointer-events-none">Let's Go</span>
+                                    <span className="relative z-1 pointer-events-none">Reserve</span>
                                 </button>
                             </div>
 

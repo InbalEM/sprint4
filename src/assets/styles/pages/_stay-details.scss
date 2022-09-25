@@ -12,13 +12,9 @@
         }
     }
 
-    @include for-mobile-layout {
-       
-    }
+    @include for-mobile-layout {}
 
-    @include for-narrow-layout {
-        
-    }
+    @include for-narrow-layout {}
 
     @include for-normal-layout {
         grid-template-columns:
@@ -44,58 +40,94 @@
         font-size: 1.6em;
         margin-bottom: 4px
     }
-}
 
-.mini-details {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    .mini-info {
-
+    .mini-details {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        flex-wrap: wrap;
 
-        .country-code,
-        .review-amount {
-            background: none;
-            color: #222;
-            text-decoration: underline;
-            margin: 0;
-            padding: 0;
-            font-weight: bold;
+        .mini-info {
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+
+            .country-code,
+            .review-amount {
+                background: none;
+                color: #222;
+                text-decoration: underline;
+                margin: 0;
+                padding: 0;
+                font-family: cereal_MD;
+                padding-left: 4px;
+                margin-top: 4px;
+            }
+
+            .rate-star {
+                margin-top: 0.25rem;
+                display: flex;
+                align-items: center;
+                font-family: cereal_MD;
+
+                svg {
+                    margin-right: 4px;
+                }
+            }
+
+            .separate-dot {
+                margin: 8px 8px 0px;
+            }
         }
     }
+
+
 
     .details-actions {
         display: flex;
         align-items: center;
 
-        .share-details>*,
-        .save-details>* {
+        >* {
 
-            display: flex;
-            justify-content: space-between;
-            background: none;
-            color: #222;
-            text-decoration: underline;
+            margin: 0;
+            padding: 0;
+            margin-right: 20px;
 
-            &>* {
-                width: 25px;
+            &>button {
+                padding: 8px;
+                margin: 0px -8px;
                 display: flex;
-                justify-content: space-between;
+                align-items: center;
+                background: none;
+                color: #222;
+                text-decoration: underline;
+
+                >span {
+                    margin: 0;
+                    padding: 0;
+                    display: flex;
+                    align-items: center;
+
+
+                    >svg {
+                        margin-right: 8px;
+                    }
+                }
             }
+        }
+
+        >.save-details {
+            margin-right: 0px
         }
     }
 }
 
 .img-details {
-    aspect-ratio: 2 / 1;
+    // aspect-ratio: 2 / 1;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4,1fr);
+    grid-template-rows: repeat(4, 1fr);
     grid-template-areas:
         'first first second third'
         'first first second third'
@@ -109,21 +141,21 @@
         grid-area: first;
         border-top-left-radius: 5%;
         border-bottom-left-radius: 5%;
-        
+
     }
 
-    .img-1{
+    .img-1 {
         grid-area: second;
     }
 
-    .img-2{
+    .img-2 {
         grid-area: fourth;
     }
 
     .img-3 {
         grid-area: third;
         border-top-right-radius: 5%;
-        
+
     }
 
     .img-4 {
@@ -145,17 +177,26 @@
         .mini-details {
             display: flex;
             justify-content: space-between;
-
+            align-items: center;
+            padding-top: 3rem;
+            padding-bottom: 1.6rem;
 
             .stay-details {
-                padding-top: 3em;
-                padding-bottom: 1.6em;
 
-                &>span {
+
+                &>ol {
+                    padding: 0;
                     font-size: 1em;
                     line-height: 20px;
-
+                    list-style: none;
+                    display: flex;
+                    justify-content: flex-start;
                 }
+            }
+
+            .user-photo > svg{
+                width: 56px;
+                height: 56px;
             }
         }
 

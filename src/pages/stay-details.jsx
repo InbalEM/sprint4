@@ -1,20 +1,19 @@
-import { useEffect, useLayoutEffect } from "react"
+import { useEffect, useLayoutEffect, useRef } from "react"
 import { useState } from "react"
 import { useParams } from "react-router-dom"
 import { Calender } from "../cmps/calender"
 import { Reserve } from "../cmps/reserve"
 import { stayService } from "../services/stay.service"
-import { ReactComponent as Star } from '../assets/icons/star.svg';
-import { ReactComponent as Heart } from '../assets/icons/heart.svg';
-import { ReactComponent as Share } from '../assets/icons/share.svg';
-import { ReactComponent as User } from '../assets/icons/user.svg';
-
 import { Review } from "../cmps/stay-review"
-import { useRef } from "react"
 import { DetailsHeader } from "../cmps/details-header"
 import { StayKeys } from "../cmps/stayDetails/stay-keys"
 import { AirCover } from "../cmps/stayDetails/stay-air-cover"
 import { Amenities } from "../cmps/stayDetails/stay-amenities"
+
+import { ReactComponent as Star } from '../assets/icons/star.svg';
+import { ReactComponent as Heart } from '../assets/icons/heart.svg';
+import { ReactComponent as Share } from '../assets/icons/share.svg';
+import { ReactComponent as User } from '../assets/icons/user.svg';
 
 export const StayDetails = () => {
 
@@ -75,9 +74,11 @@ export const StayDetails = () => {
             <h1>{stay.name}</h1>
             <div className="mini-details">
                 <div className="mini-info">
-                    <span><Star /> {rate}</span>&middot;
-                    <button className="review-amount">{stay.reviews.length} reviews</button>&middot;
-                    <span className="country-code">{stay.loc.countryCode},{stay.loc.country}</span>
+                    <span className="rate-star"><Star /> {rate} &middot;</span>
+
+                    <button className="review-amount">{stay.reviews.length} reviews</button>
+                    <span className="separate-dot">&middot;</span>
+                    <span className="country-code">{stay.loc.city},{stay.loc.countryCode},{stay.loc.country}</span>
                 </div>
                 <div className="details-actions">
                     <div className="share-details"><button href="#"><span><Share /></span>Share</button></div>
@@ -88,7 +89,7 @@ export const StayDetails = () => {
 
 
         <div className="img-details" ref={imgSection} id="img-details">
-            {stay.imgUrls.map((imgUrl, index) => <img className={`img-${index}`} src={`${stay.imgUrls[index]}`} alt="" srcSet="" />)}
+            {stay.imgUrls.map((imgUrl, index) => <img className={`img-${index}`} src={`${stay.imgUrls[index]}`} alt="" srcSet="" key={index} />)}
         </div>
 
         <div className="main-details">
@@ -96,11 +97,22 @@ export const StayDetails = () => {
                 <div className="mini-details">
                     <div className="stay-details">
                         <h2>{stay.roomType} hosted by {stay.host.fullname}</h2>
-                        <span>{stay.capacity} guests</span>&middot;
-                        <span>{stay.bathrooms} bathrooms</span>&middot;
-                        <span>{stay.bedrooms} bedrooms</span>
+                        <ol>
+                            <li>
+                                <span>{stay.capacity} guests</span>
+                                <span> &middot;</span>
+                            </li>
+                            <li>
+                                <span>{stay.bathrooms} bathrooms</span>
+                                <span> &middot;</span>
+                            </li>
+                            <li>
+                                <span>{stay.bedrooms} bedrooms</span>
+                            </li>
+
+                        </ol>
                     </div>
-                    <div><User /></div>
+                    <div className="user-photo"><User /></div>
                 </div>
 
                 <StayKeys />
