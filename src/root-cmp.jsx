@@ -1,11 +1,8 @@
 import React ,{useState,useEffect}from "react";
 import { Routes, Route, useLocation } from 'react-router'
-// import { AppHeader } from "./cmps/app-header";
 import routes from './routes'
 import { AppHeader } from './cmps/app-header'
 import { AppFooter } from './cmps/app-footer'
-import { StayFilter } from "./cmps/stay-filter";
-
 
 export function RootCmp () {
   const location = useLocation()

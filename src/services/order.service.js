@@ -1,7 +1,7 @@
 
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
-import { userService } from './user.service.js'
+// import { userService } from './user.service.js'
 
 // This file demonstrates how to use a BroadcastChannel to notify other browser tabs 
 
@@ -26,7 +26,9 @@ function query(filterBy) {
 }
 
 function createOrder(hostId, startDate, endDate){
+    console.log('hostId, startDate, endDate:', hostId, startDate, endDate)
      const order = _getNewOrder(hostId, startDate, endDate)
+     console.log('createOrder:', order.endDate)
      save(order)
      return order
 }

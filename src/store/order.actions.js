@@ -5,9 +5,9 @@ export function saveDates(hostId, startDate, endDate) {
     return async dispatch => {
         try {
             // dispatch({ type: 'LOADING_START' })
-            console.log(startDate);
             const order = await orderService.createOrder(hostId, startDate, endDate)
             dispatch({ type: 'SET_ORDER', order })
+            console.log('order:', order)
         } catch (err) {
             console.log('UserActions: err in loadUsers', err)
         }

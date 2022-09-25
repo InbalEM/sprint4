@@ -1,12 +1,17 @@
-import { BnbApp } from './pages/bnb-app'
+import { StayApp } from './pages/stay-app'
 import { StayDetails } from './pages/stay-details'
 import { StayEdit } from './pages/add-edit-stay'
-import { ReserveSummary } from './pages/reserve-summary'
+// import { ReserveSummary } from './pages/reserve-summary'
 
 const routes = [
     {
         path: '/',
-        component: <BnbApp />,
+        component: <StayApp />,
+        label: 'bnbs'
+    },
+    {
+        path: '/:checkIn/:checkOut',
+        component: <StayApp />,
         label: 'bnbs'
     },
     {
@@ -19,11 +24,11 @@ const routes = [
         component: <StayEdit />,
         label: 'Edit'
     },
-    {
-        path: 'summary',
-        component: <ReserveSummary />,
-        label: 'Summary'
-    }
+    // {
+    //     path: 'summary',
+    //     component: <ReserveSummary />,
+    //     label: 'Summary'
+    // }
 ]
 
 export default routes

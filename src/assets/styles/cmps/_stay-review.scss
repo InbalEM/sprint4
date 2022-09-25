@@ -8,12 +8,8 @@
         font-size: 1.375em;
         font-family: cereal_MD;
         letter-spacing: 0.03em;
+        align-items: center;
 
-        &>:first-child {
-            display: flex;
-            align-items: center;
-
-        }
     }
 
     .reviews-section {

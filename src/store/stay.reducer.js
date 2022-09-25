@@ -4,7 +4,6 @@ const initialState = {
     isFilterOpen: false
 }
 export function stayReducer(state = initialState, action) {
-    var newState = state
     var stays
     var stay
     var isFilterOpen
@@ -31,17 +30,17 @@ export function stayReducer(state = initialState, action) {
             stay = state.stay.filter(stay => stay._id !== action.stayId)
             return { ...state, stay }
 
-        case 'SET_ISOPENFILTER':
+        case 'SET_IS_FILTER_OPEN':
             isFilterOpen = action.isFilterOpen
             return { ...state, isFilterOpen}
 
         // case 'CLEAR_CART':
         //     return  { ...state, stay: []}
         //     
-        case 'StayUNDO_REMOVE_CART':
-            if (state.lastRemovedStay) {
-                return { ...state, stays: [...state.stays, state.lastRemovedStay], lastRemovedStay: null }
-            }
+        // case 'StayUNDO_REMOVE_CART':
+        //     if (state.lastRemovedStay) {
+        //         return { ...state, stays: [...state.stays, state.lastRemovedStay], lastRemovedStay: null }
+        //     }
 
         case 'SET_FILTER_BY':
             return { ...state, filterBy: { ...action.filterBy } }

@@ -39,14 +39,14 @@ export const StayEdit = () => {
         ev.preventDefault()
         if (stay._id) {
             try {
-                const res = dispatch(updateStay(stay))
+                dispatch(updateStay(stay))
                 navigate('/')
             } catch (err) {
                 console.error('ERROR!', err)
             }
         } else {
             try {
-                const res = dispatch(addStay(stay))
+                dispatch(addStay(stay))
                 navigate('/')
             } catch (err) {
                 console.error('ERROR!', err)
