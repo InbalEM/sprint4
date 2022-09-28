@@ -65,7 +65,7 @@ import { ReactComponent as Microwave } from '../../assets/img/vector/Microwave.s
 import { ReactComponent as OutdoorDiningArea } from '../../assets/img/vector/Outdoor dining area.svg';
 import { ReactComponent as OutdoorFurniture } from '../../assets/img/vector/Outdoor furniture.svg';
 import { ReactComponent as Oven } from '../../assets/img/vector/Oven.svg';
-import { ReactComponent as PacknPlay} from "../../assets/img/vector/Pack and play:Travel crib.svg";
+import { ReactComponent as PacknPlay} from '../../assets/img/vector/Pack and play.svg';
 import { ReactComponent as ParkView } from '../../assets/img/vector/Park view.svg';
 import { ReactComponent as PrivateEntrance } from '../../assets/img/vector/Private entrance.svg';
 import { ReactComponent as PrivatePatioOrBalcony } from '../../assets/img/vector/Private patio or balcony.svg';
@@ -103,7 +103,7 @@ export const Amenities = ({ stay }) => {
     {'Stove': <Stove/>}, {'Smoke alarm': <SmokeAlarm/>}, {'Single level home': <SinglLevelHome/>}, {'Shower gel': <ShowerGel/>},
     {'shared-homes': "<SharedHomes/>"}, {'Shampoo': <Shampoo/>},{'Self check-in': <SelfCheckIn/>}, {'Sea view': <SeaView/>}, 
     {'Room-darkening shades': <RoomDarkeningShades/>}, {'Refrigerator': <Refrigerator/>}, {'Private patio or balcony': <PrivatePatioOrBalcony/>},
-{'Private entrance': <PrivateEntrance/>}, {'Park view': <ParkView/>}, {"Pack ’n play:Travel crib": <PacknPlay/>} , {'Oven': <Oven/>}, {'Outdoor furniture': <OutdoorFurniture/>},
+{'Private entrance': <PrivateEntrance/>}, {'Park view': <ParkView/>}, {"Pack ’n Play/travel crib": <PacknPlay/>} , {'Oven': <Oven/>}, {'Outdoor furniture': <OutdoorFurniture/>},
  {'Outdoor dining area': <OutdoorDiningArea/>} , {'Microwave': <Microwave/>} , {'Luggage dropoff allowed': <LuggageDropoffAllowed/>}, {'Long term stays allowed': <LongTermStaysAllowed/>},
 {'lakefront': "<Lakefront/>"}, {'Keypad': <Keypad/>}, {'Kayak': <Kayak/>}, {'Iron': <Iron/>}, {'Image': <Image/>}, {'Ilands': "<Ilands/>"}, {'Hot water': <HotWater/>}, 
     {'Hot water kettle': <HotWaterKettle/>}, {'High chair': <HighChair/>}, {'Heating':<Heating/>}, {'Hangers': <Hangers/>} , {'Freezer': <Freezer/>}, {'Washer': <FreeWasherInUnit/>},

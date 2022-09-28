@@ -12,7 +12,7 @@ import Box from '@mui/material/Box';
 
 export function Calender() {
   const [value, setValue] = useState([null, null]);
-  console.log('value:', new Date(value.map(val => val.$d)))
+  // console.log('value:', new Date(value.map(val => val.$d)))
 
  
   return (
