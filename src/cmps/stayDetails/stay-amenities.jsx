@@ -65,7 +65,7 @@ import { ReactComponent as Microwave } from '../../assets/img/vector/Microwave.s
 import { ReactComponent as OutdoorDiningArea } from '../../assets/img/vector/Outdoor dining area.svg';
 import { ReactComponent as OutdoorFurniture } from '../../assets/img/vector/Outdoor furniture.svg';
 import { ReactComponent as Oven } from '../../assets/img/vector/Oven.svg';
-import { ReactComponent as PacknPlay} from '../../assets/img/vector/Pack ’n play:Travel crib.svg';
+import { ReactComponent as PacknPlay} from "../../assets/img/vector/Pack and play:Travel crib.svg";
 import { ReactComponent as ParkView } from '../../assets/img/vector/Park view.svg';
 import { ReactComponent as PrivateEntrance } from '../../assets/img/vector/Private entrance.svg';
 import { ReactComponent as PrivatePatioOrBalcony } from '../../assets/img/vector/Private patio or balcony.svg';
@@ -131,8 +131,6 @@ export const Amenities = ({ stay }) => {
        
         const varAmenity = amenities.filter(currAmenity =>  {
             const newAmenity = Object.keys(currAmenity).toString()
-            console.log('newAmenity:', newAmenity)
-            console.log('amenity:', amenity)
             return newAmenity  === amenity
         })
         

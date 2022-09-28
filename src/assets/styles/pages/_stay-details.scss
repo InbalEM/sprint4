@@ -23,7 +23,7 @@
 
     @include for-wide-layout {
         grid-template-columns:
-            minmax(80px, 1fr) minmax(auto, 1220px) minmax(80px, 1fr);
+            minmax(80px, 1fr) minmax(auto, 1120px) minmax(80px, 1fr);
     }
 }
 
