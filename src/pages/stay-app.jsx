@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react'
 // import { connect } from 'react-redux'
 import { useDispatch, useSelector } from 'react-redux'
+
 import { loadStays, setFilterBy } from '../store/stay.actions'
 import { StayList } from '../cmps/stay-list'
-import { StayFilter } from '../cmps/stay-filter'
-// import { stayService } from '../services/stay.service'
-// import {eventBusService } from '../services/event-bus.service'
+import { StayFilter } from '../cmps/filter/stay-filter'
 
 export const StayApp = () => {
     const { stays, isFilterOpen } = useSelector(state => state.stayModule)
@@ -32,7 +31,7 @@ export const StayApp = () => {
     if (!stays) return <div>Loading...</div>
     return (
         <section className={isFilterOpen ? 'filter-open bnb-app full main-layout ' : 'bnb-app full main-layout '}>
-            <div onClick={onClickFilter} className='main-screen' ></div>
+            {/* <div onClick={onClickFilter} className='main-screen' ></div> */}
             <StayFilter isFilterOpen={isFilterOpen} onChangeFilter={onChangeFilter} onClickFilter={onClickFilter} />
             <StayList stays={stays} />
         </section>

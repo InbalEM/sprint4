@@ -11,7 +11,7 @@ import { ReactComponent as User } from '../assets/icons/user.svg';
 
 import { Review } from "../cmps/stay-review"
 import { useRef } from "react"
-import { DetailsHeader } from "../cmps/details-header"
+import { DetailsHeader } from "../cmps/header-cmps/details-header"
 import { StayKeys } from "../cmps/stayDetails/stay-keys"
 import { AirCover } from "../cmps/stayDetails/stay-air-cover"
 import { Amenities } from "../cmps/stayDetails/stay-amenities"

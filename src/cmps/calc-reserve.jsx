@@ -1,7 +1,5 @@
 import { useSelector } from "react-redux";
 
-
-
 export const CalcReserve = ({stay}) => {
 // to change all distructuring
     const { order } = useSelector(state => state.orderModule)

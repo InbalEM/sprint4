@@ -22,6 +22,8 @@ export function getActionUpdateStay(stay) {
     }
 }
 
+
+
 export function loadStays() {
     return async (dispatch, getState) => {
         try {

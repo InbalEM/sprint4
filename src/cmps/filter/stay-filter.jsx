@@ -1,6 +1,7 @@
-import { ExpandedFilter } from './expanded-filter'
-import filterImg from '../assets/img/filter-btn-img.png'
 import React, { useEffect, useRef } from 'react'
+
+import { ExpandedFilter } from './expanded-filter'
+import filterImg from '../../assets/img/filter-btn-img.png'
 
 export const StayFilter = (props) => {
     const filter = useRef(null)

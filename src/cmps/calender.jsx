@@ -1,11 +1,10 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-// import { useSelector } from "react-redux";
-import { useFormRegister } from "../hooks/useFormRegister";
-// import { orderService } from "../services/order.service";
-import { saveDates } from "../store/order.actions";
 import { compareAsc, format } from 'date-fns'
+
+import { useFormRegister } from "../hooks/useFormRegister";
+import { saveDates } from "../store/order.actions";
 
 
 export const Calender = ({ stay }) => {
@@ -13,7 +12,6 @@ export const Calender = ({ stay }) => {
     startDate: '',
     endDate: ''
   });
-
 
   const dispatch = useDispatch()
 

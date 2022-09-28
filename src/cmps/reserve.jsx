@@ -1,10 +1,12 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+
 import { saveOrder } from "../store/order.actions"
-import { ReactComponent as Star } from '../assets/icons/star.svg';
 import { CalcReserve } from "./calc-reserve"
+
+import { ReactComponent as Star } from '../assets/icons/star.svg';
 
 export const Reserve = ({ stay, avgRate }) => {
 

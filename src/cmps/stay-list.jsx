@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+
 import { StayPreview } from '../cmps/stay-preview'
 
 export function StayList({ stays }) {
