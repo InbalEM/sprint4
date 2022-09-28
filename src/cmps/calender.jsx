@@ -1,55 +1,37 @@
-import React from "react";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { compareAsc, format } from 'date-fns'
+import * as React from 'react';
+import { useState } from "react"
 
-import { useFormRegister } from "../hooks/useFormRegister";
-import { saveDates } from "../store/order.actions";
+import TextField from '@mui/material/TextField';
+import { LocalizationProvider } from '@mui/x-date-pickers-pro';
+import { AdapterDayjs } from '@mui/x-date-pickers-pro/AdapterDayjs';
+import { StaticDateRangePicker } from '@mui/x-date-pickers-pro/StaticDateRangePicker';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 
-export const Calender = ({ stay }) => {
-  const [register, setStartDate, date] = useFormRegister({
-    startDate: '',
-    endDate: ''
-  });
+import Box from '@mui/material/Box';
 
-  const dispatch = useDispatch()
-
-  format(new Date(2014, 1, 11), 'yyyy-MM-dd')
-  //=> '2014-02-11'
-
-  const dates = [
-    new Date(1995, 6, 2),
-    new Date(1987, 1, 11),
-    new Date(1989, 6, 10),
-  ]
-  dates.sort(compareAsc)
-
-  useEffect(() => {
-
-  }, [])
-
-  const setDate = (ev) => {
-    ev.preventDefault()
-    const startDate = new Date(date.startDate).toLocaleDateString()
-    const endDate = new Date(date.endDate).toLocaleDateString()
-    dispatch(saveDates(stay._id, startDate, endDate))
-
-  }
+export function Calender() {
+  const [value, setValue] = useState([null, null]);
+  // console.log('value:', new Date(value.map(val => val.$d)))
 
   return (
-    <section className="date-picker">
-      <form onSubmit={(ev) => setDate(ev)}>
-
-        <label htmlFor="start">Start date:</label>
-        <input {...register('startDate', 'date')} />
-
-        <label htmlFor="end">End date:</label>
-        <input {...register('endDate', 'date')} />
-
-        <button>set</button>
-      </form>
-    </section>
-  )
-};
-
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+     
+        <StaticDateRangePicker
+          displayStaticWrapperAs="desktop"
+          value={value}
+          onChange={(newValue) => {
+            setValue(newValue);
+          }}
+          renderInput={(startProps, endProps) => (
+            <React.Fragment>
+              <TextField {...startProps} />
+              <Box sx={{ mx: 2 }}> to </Box>
+              <TextField {...endProps} />
+            </React.Fragment>
+          )}
+        />
+      
+    </LocalizationProvider>
+  );
+}
