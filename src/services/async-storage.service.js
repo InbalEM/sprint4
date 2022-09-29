@@ -1,3 +1,4 @@
+var gUsers = require('../data/user.json')
 
 export const storageService = {
     query,
@@ -9,11 +10,12 @@ export const storageService = {
 }
 
 function query(entityType, delay = 600) {
-    var entities = JSON.parse(localStorage.getItem(entityType)) || []
+    var entities = JSON.parse(localStorage.getItem(entityType)) || gUsers
 
     return new Promise((resolve, reject)=>{
         setTimeout(()=>{
             // reject('OOOOPs')
+            _save(entityType, entities)
             resolve(entities)
         }, delay)   
     })

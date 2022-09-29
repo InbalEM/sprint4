@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { useState } from "react"
+import React, { useState, useEffect } from "react";
 
 import TextField from '@mui/material/TextField';
 import { LocalizationProvider } from '@mui/x-date-pickers-pro';
@@ -9,30 +8,56 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 
 import Box from '@mui/material/Box';
+import { saveDates, saveOrder } from "../store/order.actions";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { orderService } from "../services/order.service";
 
-export function Calender() {
-  const [value, setValue] = useState([null, null]);
-  // console.log('value:', new Date(value.map(val => val.$d)))
 
- 
-  return (
+export function Calender({ stay }) {
+  let { order } = useSelector(state => state.orderModule)
+  const [value, setValue] = useState([order.startDate, order.endDate]);
+  const dispatch = useDispatch()
+
+
+  useEffect(() => {
+    if (!value[0] || !value[1]) return
+    const startDate = new Date(value[0].$d).toLocaleDateString()
+    const endDate = new Date(value[1].$d).toLocaleDateString()
+    order = { ...order, startDate, endDate }
+    dispatch(saveOrder(stay, order))
+
+  }, [value])
+
+
+  const nightsStay = orderService.getDiffDates(order.startDate, order.endDate)
+
+  const getMonthName = (d) => {
+
+    return new Date(d).toLocaleDateString('en-us', { month:"short", day:"numeric", year:"numeric"})
+  }
+
+  return (<section className="calender">
+
+    <h2>{nightsStay ? nightsStay : ''} nights in {stay.loc.city}</h2>
+    <span>{getMonthName(order.startDate)} - {getMonthName(order.endDate)}</span>
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-     
-        <StaticDateRangePicker
-          displayStaticWrapperAs="desktop"
-          value={value}
-          onChange={(newValue) => {
-            setValue(newValue);
-          }}
-          renderInput={(startProps, endProps) => (
-            <React.Fragment>
-              <TextField {...startProps} />
-              <Box sx={{ mx: 2 }}> to </Box>
-              <TextField {...endProps} />
-            </React.Fragment>
-          )}
-        />
-      
+
+      <StaticDateRangePicker
+        displayStaticWrapperAs="desktop"
+        value={value}
+        onChange={(newValue) => {
+          setValue(newValue);
+        }}
+        renderInput={(startProps, endProps) => (
+          <React.Fragment>
+            <TextField {...startProps} />
+            <Box sx={{ mx: 2 }}> to </Box>
+            <TextField {...endProps} />
+          </React.Fragment>
+        )}
+      />
+
     </LocalizationProvider>
-  );
+  </section>);
 }

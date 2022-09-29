@@ -38,7 +38,7 @@ export const Reserve = ({ stay, avgRate }) => {
     const submitReserve = () => {
         const guests = guestsCount
         const currOrder = { ...order, guests }
-        dispatch(saveOrder(currOrder))
+        dispatch(saveOrder(stay, currOrder))
         navigate("/summary", {
             state: {
                 stay,
@@ -58,7 +58,7 @@ export const Reserve = ({ stay, avgRate }) => {
     }
 
 
-
+    if(!order) return <h1>Loading..</h1>
     return (
         <div className="reserve-section" >
             <div className="reserve-form">
@@ -81,11 +81,11 @@ export const Reserve = ({ stay, avgRate }) => {
                                         <button className="reserve-dates">
                                             <div className="check-in">
                                                 <div className="txt-reserve">Check-in</div>
-                                                <div className="date-reserve">{order.startDate}</div>
+                                                <div className="date-reserve">{order.startDate ? order.startDate : ''}</div>
                                             </div>
                                             <div className="check-out">
                                                 <div className="txt-reserve">Check-out</div>
-                                                <div className="date-reserve">{order.endDate}</div>
+                                                <div className="date-reserve">{order.endDate ? order.endDate : ''}</div>
                                             </div>
                                         </button>
                                     </div>

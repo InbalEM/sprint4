@@ -4,6 +4,7 @@ import { getActionSetWatchedUser } from '../store/review.actions'
 // import { socketService, SOCKET_EVENT_USER_UPDATED, SOCKET_EMIT_USER_WATCH } from './socket.service'
 import { showSuccessMsg } from '../services/event-bus.service'
 
+
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 
 export const userService = {
@@ -64,11 +65,11 @@ async function login(userCred) {
     }
 }
 async function signup(userCred) {
-    userCred.score = 10000;
+    // userCred.score = 10000;
     const user = await storageService.post('user', userCred)
     // const user = await httpService.post('auth/signup', userCred)
     // socketService.login(user._id)
-    return saveLocalUser(user)
+    // return saveLocalUser(user)
 }
 async function logout() {
     sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)

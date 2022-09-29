@@ -1,0 +1,24 @@
+.login-section{
+    position: relative;
+    left: -50%;
+    top: 6rem;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-true{
+    position: absolute;
+    left: 50%;
+    display: block;
+    z-index: 999;
+    width: 30%;
+}
+
+.login-false{
+    display:none;
+}
