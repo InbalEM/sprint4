@@ -1,24 +1,30 @@
-.header-filter {
+.header-filter-position {
     position: absolute;
     margin-left: -10rem;
     left: 50%;
+}
 
+.header-filter {
+    
     >div {
+        min-height: 40px;
         border-radius: 50px;
         border: 1px solid #DDDDDD;
         cursor: pointer;
         box-shadow: 0px 3px 4px -3px rgba(0, 0, 0, 0.65);
-        // max-width: 348px;
-        // min-width: 80px;
-        // max-height: 48px;
         flex: 0 1 auto;
         text-align: center;
         color: #B0B0B0;
         display: flex;
         align-items: center;
         justify-items: center;
-        padding-inline-start: 8px;
-        // justify-content: space-between;
+        // padding-inline-start: 8px;
+        justify-content: space-between;
+
+        >button.first-header-btn {
+            margin-left: 10px;
+            // background-color: #484848;
+        }
 
         >span {
             flex: 0 0 1px;
@@ -32,10 +38,8 @@
             border-radius: 50%;
             height: 32px;
             width: 32px;
-            display: flex;
+            // display: flex;
             align-items: center;
-
-
 
             >* {
                 height: 12px;
@@ -44,18 +48,12 @@
         }
 
         .header-btn {
-            font-family: cereal_MD;
+            font-family: Roboto-Medium;
+            // font-family: cereal_MD;
             background-color: white;
             color: #484848;
-            text-align: left;
-
-            >* {
-                font-size: 14px;
-                font-weight: 600;
-                line-height: 18px;
-                text-overflow: ellipsis;
-                flex: 1 1 auto;
-            }
+            // text-align: left;
+            // margin-right: 8px;
         }
 
         .search-last-btn {
@@ -65,19 +63,19 @@
 }
 
 .filter-contaner {
-    border-radius: 50px;
-    border: 1px solid #DDDDDD;
-    cursor: pointer;
-    box-shadow: 0px 3px 4px -3px rgba(0, 0, 0, 0.65);
-    // max-width: 348px;
-    // min-width: 80px;
-    // max-height: 48px;
-    flex: 0 1 auto;
-    text-align: center;
-    color: #B0B0B0;
-    display: flex;
-    align-items: center;
-    justify-items: center;
-    padding-inline-start: 8px;
-    // justify-content: space-between;
+    padding-left: 10px;
+
+    >p {
+        margin: 0;
+        
+    }
+
+    :nth-child(3) {
+        min-width: 100px;
+    }
+}
+
+
+.search-btn {
+    margin: 5px 10px 5px 10px;
 }

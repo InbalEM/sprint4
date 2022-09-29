@@ -27,7 +27,10 @@
 .filter-container.filter-open .expanded-filter {
   transform: translateY(0);
 }
-.bnb-app.filter-open .main-screen {
+// .bnb-app.filter-open .main-screen {
+//   display: block;
+// }
+main.filter-open .main-screen {
   display: block;
 }
 

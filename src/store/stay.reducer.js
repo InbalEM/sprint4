@@ -1,12 +1,14 @@
 const initialState = {
     stays: [],
     filterBy: null,
-    isFilterOpen: false
+    isFilterOpen: false,
+    isHeaderFilterOpen: false
 }
 export function stayReducer(state = initialState, action) {
     var stays
     var stay
     var isFilterOpen
+    var isHeaderFilterOpen
     switch (action.type) {
         case 'SET_STAYS':
             return { ...state, stays: action.stays }
@@ -33,6 +35,9 @@ export function stayReducer(state = initialState, action) {
         case 'SET_IS_FILTER_OPEN':
             isFilterOpen = action.isFilterOpen
             return { ...state, isFilterOpen}
+        case 'SET_IS_HEADER_FILTER_OPEN':
+            isHeaderFilterOpen = action.isHeaderFilterOpen
+            return { ...state, isHeaderFilterOpen}
 
         // case 'CLEAR_CART':
         //     return  { ...state, stay: []}
