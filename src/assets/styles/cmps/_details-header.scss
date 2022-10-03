@@ -24,9 +24,12 @@
                 color: rgb(34, 34, 34);
                 font-family: cereal_MD;
                 font-size: 0.9em;
-                margin-right:1.5rem ;
                 cursor: pointer;
                 padding: 30px 0;
+            }
+
+            > *:not(:last-child){
+                margin-right:1.5rem ;
             }
 
             >*:hover {

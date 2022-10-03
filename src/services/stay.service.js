@@ -7,6 +7,7 @@ const fs = require('fs')
 
 const STORAGE_KEY = 'stay'
 
+var gUsers = require('../data/user.json')
 var gStays = require('../data/stay.json')
 
 export const stayService = {
@@ -22,7 +23,13 @@ function query(filterBy) {
   console.log('filterBy:', filterBy)
   return storageService.query(STORAGE_KEY).then(stays => {
     if (!stays[0]) {
-      gStays.forEach(stay => stay.reviews.map(review => review.rate = utilService.getRandomIntInclusive(3, 5)))
+      gStays.forEach(stay => stay.reviews.map(review => {
+        review.rate = utilService.getRandomIntInclusive(3, 5)
+       
+        // review.by.imgUrl = gUsers.map(user => user._id === review.by._id ? user.imgUrl : review.by.imgUrl)
+        // console.log('review.by.imgUrl:',review.by.imgUrl )
+        return review
+      }))
       gStays.forEach(stay => stay.beds = Math.round(stay.capacity / utilService.getRandomIntInclusive(1, 2)))
       stays = storageService.postMany(STORAGE_KEY, gStays).then(x => console.log(x))
     }

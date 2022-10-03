@@ -4,15 +4,20 @@ import { ReactComponent as Star } from '../assets/icons/star.svg';
 import { ReactComponent as User } from '../assets/icons/user.svg';
 
 export const Review = ({ stay, avgRate }) => {   
+    const [isOpen, setIsOpen] = useState(false)
+
     const getREviews = (minSize = 0, size = 6) => {
         return stay.reviews.map((review, idx) =>
             <div key= {idx} className='review'>
-                <div className='review-header'>
-                    <User />
+                <div className='reviewer-header-details'>
+                    <div className='reviewer-img'><img src="https://xsgames.co/randomusers/avatar.php?g=male" alt="" srcset="" /></div>
                    
                     <div className='reviewer-details'>
                         <h3 className='reviewer-name'>{review.by.fullname}</h3>
-                        <div>{review.at}</div>
+                        <div className='review-date'>{
+                        new Date(review.at).toLocaleDateString('en-us', { month:"long", year:"numeric"})
+                        
+                        }</div>
                     </div>
                 </div>
     
@@ -21,14 +26,17 @@ export const Review = ({ stay, avgRate }) => {
                 </div>
             </div>).slice(minSize, size)
     }
-    const [isOpen, setIsOpen] = useState(false)
+
     const toggleIsOpen = () => {
         setIsOpen(!isOpen)
     }
+
+
+
     return (
         <section className="reviews">
             <div className='review-header'>
-                <div className=''>
+                <div className='reviews-rate'>
                     <div><Star /></div>
                     <div>{avgRate}</div>&middot;
                 </div>

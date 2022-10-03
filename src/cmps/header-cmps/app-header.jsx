@@ -22,7 +22,7 @@ export function AppHeader({ layoutClass, onClickHeaderFilter, isHeaderFilterOpen
 
     const guestsCount = guests.adultsGuests + guests.childrenGuests + guests.infantsGuests + guests.petsGuests
 
-    return <header className={`${layoutClass ? 'main-layout-details app-header flex full' : 'main-layout app-header flex full'} `}>
+    return <header className={`${layoutClass ? 'main-layout-details details-header flex full' : 'main-layout app-header flex full'} `}>
         <section className='container flex'>
             <NavLink to='/'>
                 <div className='logo-container flex'>

@@ -1,6 +1,8 @@
 
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
+import { stayService } from './stay.service.js'
+import { userService } from './user.service.js'
 // import { userService } from './user.service.js'
 
 // This file demonstrates how to use a BroadcastChannel to notify other browser tabs 
@@ -10,27 +12,28 @@ const STORAGE_KEY = 'order'
 export const orderService = {
     query,
     getById,
-    save,
+    // save,
     remove,
-    createOrder
+    // createOrder,
+    getDiffDates,
+    getOrder,
+    getNewOrder
 }
 window.cs = orderService
 
-function query(filterBy) {
-    return storageService.query(STORAGE_KEY).then(orders => {
-        
-        // if(!orders) return _getEmptyOrder()
-        return orders
-    }
-    )
-}
+async function query(stay) {
+    // try{
+    //     let order = storageService.query(STORAGE_KEY) 
+    //     if(order) {
+    //         order = _getNewOrder(stay)
+    //         // save(order)
+    //     }
 
-function createOrder(hostId, startDate, endDate){
-    console.log('hostId, startDate, endDate:', hostId, startDate, endDate)
-     const order = _getNewOrder(hostId, startDate, endDate)
-     console.log('createOrder:', order.endDate)
-     save(order)
-     return order
+    //     return order
+    // } 
+    // catch{
+    //     console.log('cant find order');
+    // }
 }
 
 function getById(orderId) {
@@ -41,46 +44,78 @@ async function remove(orderId) {
     await storageService.remove(STORAGE_KEY, orderId)
 }
 
-async function save(order) {
-    var savedOrder
-    if (order._id) {
-        savedOrder = await storageService.put(STORAGE_KEY, order)
+ function getOrder(order) {
+    
+    // var savedOrder
+    // // if (order._id) {
+    // //     savedOrder = await storageService.put(STORAGE_KEY, order)
 
-    } else {
-        // Later, owner is set by the backend
-        let newOrder = _getNewOrder()
-        newOrder.name = order.name
-        newOrder.price = order.price
-        console.log('newOrder:', newOrder)
-        savedOrder = await storageService.post(STORAGE_KEY, newOrder)
-    }
-    return savedOrder
+    // // } else {
+    //     // Later, owner is set by the backend
+    //     let newOrder = _getNewOrder()
+    //     newOrder.name = order.name
+    //     newOrder.price = order.price
+    //     console.log('newOrder:', newOrder)
+    //     // savedOrder = await storageService.post(STORAGE_KEY, newOrder)
+    // // }
+    // return savedOrder
 }
 
-function _getNewOrder(hostId='', startDate='', endDate='') {
-    return {
+function getDiffDates(startDate, endDate){
+    const parseDate = (str) => {
+        if(!str) return
+        const mdy = str.split('/');
+        return new Date(mdy[2], mdy[0] - 1, mdy[1]);
+    }
+
+    const dateDiff = (first, second) => {
+        if(!first || !second) return
+        // Take the difference between the dates and divide by milliseconds per day.
+        // Round to nearest whole number to deal with DST.
+        return Math.round((second - first) / (1000 * 60 * 60 * 24));
+    }
+
+    const diff =  dateDiff(parseDate(startDate), parseDate(endDate))
+    if(!query().totalPrice)
+    return diff
+}
+
+
+
+function getNewOrder(stay,  startDate ='', endDate='') {
+
+    let date = new Date();
+    date.setDate(date.getDate() + 1);
+
+    const {_id, fullname} = userService.getLoggedinUser()
+    const newOrder =  {
         "_id": utilService.makeId(),
-        hostId,
+        "hostId": stay.host._id,
         "createdAt": Date.now(),
         "buyer": {
-            "_id": "u101",
-            "fullname": "User 1"
+            _id,
+            fullname
         },
-        "totalPrice": 160,
-        startDate,
-        endDate,
+        "startDate": new Date().toLocaleDateString(),
+        "endDate": date.toLocaleDateString(),
+        // "totalPrice": getDiffDates(this.startDate, this.endDate ),
         "guests": {
-            "adults": 2,
-            "kids": 1
+            "adults": 0,
+            "kids": 0,
+            "infants": 0,
+            "pets": 0
         },
         "stay": {
-            "_id": "h102",
-            "name": "House Of Uncle My",
-            "price": 80.00
+            "_id": stay._id,
+            "name": stay.name,
+            "price": stay.price
         },
         "status": "pending"
     }
 
+    storageService.post(newOrder)
+
+    return newOrder
 }
 
 

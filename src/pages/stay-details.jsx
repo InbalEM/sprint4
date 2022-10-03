@@ -14,13 +14,19 @@ import { ReactComponent as Star } from '../assets/icons/star.svg';
 import { ReactComponent as Heart } from '../assets/icons/heart.svg';
 import { ReactComponent as Share } from '../assets/icons/share.svg';
 import { ReactComponent as User } from '../assets/icons/user.svg';
+import { useSelector } from "react-redux"
+import { orderService } from "../services/order.service"
+import { useDispatch } from "react-redux"
+import { saveDates, saveOrder } from "../store/order.actions"
 
 export const StayDetails = () => {
 
     const [stay, setStay] = useState(null)
     const [isOpen, setIsOpen] = useState(false)
-
+    let { order } = useSelector(state => state.orderModule)
     const params = useParams()
+    const dispatch = useDispatch()
+
 
     const imgSection = useRef(null)
     const amenitiesSection = useRef(null)
@@ -30,15 +36,25 @@ export const StayDetails = () => {
     const loadStay = () => {
         const stayId = params.id
         stayService.getById(stayId).then((stay) => {
-            console.log('stay:', stay)
             setStay(stay)
+            console.log('stay:', stay)
+            loadOrder(stay)
             // setReviews(reviews)
         })
     }
 
+    const loadOrder = (stay) => {
+        console.log('stay46:', stay)
+        console.log('order47:', order)
+        if(!order.length) {
+            dispatch(saveOrder(stay))
+        }
+
+    }
 
     useEffect(() => {
         loadStay()
+        // loadOrder()
     }, [])
 
     useLayoutEffect(() => {
@@ -127,11 +143,11 @@ export const StayDetails = () => {
                 <div ref={amenitiesSection}></div>
                 <Amenities stay={stay} />
 
-                <Calender stay={stay} />
+                <Calender stay={stay} order={order} />
 
             </div>
 
-            <Reserve stay={stay} avgRate={rate} />
+            <Reserve stay={stay} avgRate={rate}  />
         </div>
 
         <div ref={reviewsSection}></div>

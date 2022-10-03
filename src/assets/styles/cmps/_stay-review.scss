@@ -1,15 +1,18 @@
 .reviews {
-    border-top: 1px solid #222;
+    border-top: 1px solid #DDDDDD;
     padding: 3em 0;
 
     .review-header {
         display: flex;
-        margin-bottom: 1rem;
+        margin-bottom: 2rem;
         font-size: 1.375em;
         font-family: cereal_MD;
         letter-spacing: 0.03em;
         align-items: center;
 
+        .reviews-rate {
+            display: flex;
+        }
     }
 
     .reviews-section {
@@ -24,32 +27,53 @@
             margin-bottom: 40px;
             padding: 5px;
 
-            .reviewer-details {
-                margin-left: 12px;
-                font-size: 1em;
-                line-height: 20px;
-                font-family: Circular, -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            .reviewer-header-details {
+                height: 40px;
                 display: flex;
-                flex-direction: column;
+                justify-content: left;
+                margin-bottom: 1rem;
 
-                .reviewer-name {
-                    font-family: cereal_BD;
-                    font-size: 1rem;
+                .reviewer-img>img {
+                    border-radius: 50%;
                 }
 
-                &> :nth-child(2) {
-                    font-size: 0.87rem;
+                .review-date{
+                    color: #717171;
                 }
 
-                .review-body {
-                    line-height: 24px;
-                    font-size: 1rem;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    display: -webkit-box;
-                    -webkit-line-clamp: 3;
-                    -webkit-box-orient: vertical;
+
+                .reviewer-details {
+                    margin-left: 12px;
+                    font-size: 1em;
+                    line-height: 20px;
+                    font-family: Circular, -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    display: flex;
+                    flex-direction: column;
+
+                    .reviewer-name {
+                        font-family: 'Circular',-apple-system,'BlinkMacSystemFont','Roboto','Helvetica Neue',sans-serif;;
+                        font-size: 1rem;
+                        color: #222 ;
+                        font-weight: 600 ;
+                        line-height: inherit ;
+                        margin: 0px ;
+                        padding: 0px;
+                    }
+
+                    &> :nth-child(2) {
+                        font-size: 0.87rem;
+                    }
                 }
+            }
+
+            .review-body {
+                line-height: 24px;
+                font-size: 1rem;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
             }
         }
     }

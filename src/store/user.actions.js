@@ -8,6 +8,7 @@ export function loadUsers() {
             dispatch({ type: 'LOADING_START' })
             const users = await userService.getUsers()
             dispatch({ type: 'SET_USERS', users })
+            return users
         } catch (err) {
             console.log('UserActions: err in loadUsers', err)
         } finally {
@@ -30,7 +31,9 @@ export function removeUser(userId) {
 export function onLogin(credentials) {
     return async (dispatch) => {
         try {
+            console.log('credentials:', credentials)
             const user = await userService.login(credentials)
+            console.log('user:', user)
             dispatch({
                 type: 'SET_USER',
                 user

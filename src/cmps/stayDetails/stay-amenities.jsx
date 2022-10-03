@@ -120,7 +120,7 @@ export const Amenities = ({ stay }) => {
 
 
     const getAmenities = (minSize = 0, size = 6) => {
-        return stay.amenities.map(amenity => <div className="amenity">
+        return stay.amenities.map((amenity, index) => <div key={index} className="amenity">
             <div>{amenity}</div>
             <div className={`${amenity}-icon`}>{getSvg(amenity)}</div>
         </div>).slice(minSize, size)

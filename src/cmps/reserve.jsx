@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { saveOrder } from "../store/order.actions"
 import { CalcReserve } from "./calc-reserve"
 
+
 import { ReactComponent as Star } from '../assets/icons/star.svg';
 import { ReactComponent as Plus } from '../assets/img/vector/plus.svg';
 import { ReactComponent as Minus } from '../assets/img/vector/minus.svg';
@@ -18,7 +19,7 @@ export const Reserve = ({ stay, avgRate }) => {
     const navigate = useNavigate()
 
     const [guestsCount, setGuestsCount] = useState({
-        adults: 0,
+        adults: 1,
         children: 0,
         infants: 0,
         pets: 0,
@@ -39,7 +40,7 @@ export const Reserve = ({ stay, avgRate }) => {
     const submitReserve = () => {
         const guests = guestsCount
         const currOrder = { ...order, guests }
-        dispatch(saveOrder(currOrder))
+        dispatch(saveOrder(stay, currOrder))
         navigate("/summary", {
             state: {
                 stay,
@@ -59,7 +60,7 @@ export const Reserve = ({ stay, avgRate }) => {
     }
 
 
-
+    if(!order) return <h1>Loading..</h1>
     return (
         <div className="reserve-section" >
             <div className="reserve-form">
@@ -82,11 +83,11 @@ export const Reserve = ({ stay, avgRate }) => {
                                         <button className="reserve-dates">
                                             <div className="check-in">
                                                 <div className="txt-reserve">Check-in</div>
-                                                <div className="date-reserve">{order.startDate}</div>
+                                                <div className="date-reserve">{order.startDate ? order.startDate : ''}</div>
                                             </div>
                                             <div className="check-out">
                                                 <div className="txt-reserve">Check-out</div>
-                                                <div className="date-reserve">{order.endDate}</div>
+                                                <div className="date-reserve">{order.endDate ? order.endDate : ''}</div>
                                             </div>
                                         </button>
                                     </div>
@@ -163,7 +164,7 @@ export const Reserve = ({ stay, avgRate }) => {
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <button onClick={() => toggleMenu()}>close</button>
+                                                <button className="close-btn-reserve" onClick={() => toggleMenu()}>close</button>
                                             </div>
                                         }
                                     </div>

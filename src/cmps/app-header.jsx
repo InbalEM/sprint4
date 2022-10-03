@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 
 import { HeaderFilter } from './header-filter'
-import { HeaderProfile } from './header-profile'
+import { HeaderProfile } from './header-cmps/header-profile'
 import { HeaderExpandedFilter } from '../cmps/header-expanded-filter'
 
 import logo from '../assets/img/logo48.png'
