@@ -1,20 +1,25 @@
 import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { format } from 'date-fns'
 import { useState } from 'react'
 
 import { loadStays, setFilterBy } from '../../store/stay.actions'
 import { useFormRegister } from '../../hooks/useFormRegister'
 import search from '../../assets/img/search-icon.png'
-import {GustSelection} from './guests-selection'
+import { GustSelection } from './guests-selection'
+import CustomDateRangePickerDay, { CalenderPicker } from '../calender-date-picker'
 
 
-export function HeaderExpandedFilter({ onClickHeaderFilter }) {
+export function HeaderExpandedFilter({ onClickHeaderFilter, checkIn, checkOut, guests }) {
+
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
     const [isGustSelectionOpen, setIsGustSelectionOpen] = useState(false)
 
+    const onOpenGuestsFilter = () => {
+        setIsGustSelectionOpen(!isGustSelectionOpen)
+    }
 
     const onChangeFilter = (filterBy) => {
         dispatch(setFilterBy(filterBy))
@@ -23,59 +28,59 @@ export function HeaderExpandedFilter({ onClickHeaderFilter }) {
 
     const [register, setFilter, filterBy] = useFormRegister({
         where: '',
-        checkIn: '',
-        checkOut: '',
-        who: ''
+        checkInDate: checkIn,
+        checkOutDate: checkOut,
+        guestsCount: {
+            adults: guests.adultsGuests,
+            children: guests.childrenGuests,
+            infants: guests.infantsGuests,
+            pets: guests.petsGuests,
+        }
     }, onChangeFilter)
 
+    const changeDates = (checkInDate, checkOutDate) => {
+        setFilter(filterBy => ({ ...filterBy, checkInDate: checkInDate }))
+        setFilter(filterBy => ({ ...filterBy, checkOutDate: checkOutDate }))
+    }
+
+    const changeWho = (category, action) => {
+        const { guestsCount } = filterBy
+        if (guestsCount[category] + action < 0) return
+        guestsCount[category] += action
+        setFilter(filterBy => ({ ...filterBy }))
+    }
+
     const onFilterClicked = () => {
-        // if (filterBy.checkIn && filterBy.checkOut) {
-        //     dispatch(saveDates('', filterBy.checkIn, filterBy.checkOut))
-        // }
         onClickHeaderFilter()
-        const checkIn = format(new Date(filterBy.checkIn), 'yyyy-MM-dd')
-        const checkOut = format(new Date(filterBy.checkOut), 'yyyy-MM-dd')
-        // console.log('checkIn:', checkIn)
-        // navigate('/')
-        navigate(`/${checkIn}/${checkOut}`)
+        const checkInDate = filterBy.checkInDate ? format(new Date(filterBy.checkInDate), 'yyyy-MM-dd') : null
+        const checkOutDate = filterBy.checkOutDate ? format(new Date(filterBy.checkOutDate), 'yyyy-MM-dd') : null
+        navigate(`/${checkInDate}/${checkOutDate}/${guestsCount.adults}/${guestsCount.children}/${guestsCount.infants}/${guestsCount.pets}`)
     }
 
-    const onOpenGuestsFilter = ()=>{
-        setIsGustSelectionOpen(!isGustSelectionOpen)
-    }
-
-    console.log('isGustSelectionOpen:', isGustSelectionOpen)
-
-    console.log('filterBy:', filterBy)
+    const { guestsCount } = filterBy
+    const { adults, children, infants, pets } = guestsCount
+    const whoCount = adults + children + infants + pets
     return (
         <section className="header-filter header-filter-expanded">
             <div className='header-expanded-filter'>
+
                 <div className="where-filter">
                     <label htmlFor="">where</label>
-                    {/* <p>where</p> */}
-                    {/* <span>Search destination</span> */}
                     <input className='filter-input' placeholder='Search destination' {...register('where', 'text')} />
                 </div>
+
                 <span></span>
-                {/* <div className="when-filter"> */}
-                <div className="check-in">
-                    <p>check in</p>
-                    {/* <span>Add dates</span> */}
-                    <input className='filter-input' {...register('checkIn', 'date')} />
+
+                <div className="when-filter">
+                    <CustomDateRangePickerDay onOpenGuestsFilter={onOpenGuestsFilter} changeDates={changeDates} checkInDate={checkIn} checkOutDate={checkOut} />
                 </div>
+
                 <span></span>
-                <div className="check-out">
-                    <p> check out</p>
-                    {/* <span>Add dates</span> */}
-                    {/* <input className='filter-input' type="date" placeholder='Add dates' /> */}
-                    <input className='filter-input' {...register('checkOut', 'date')} />
-                </div>
-                {/* </div> */}
-                <span></span>
+
                 <div className="who-filter-container">
-                    <div className="who-filter" onClick= {onOpenGuestsFilter}>
+                    <div className="who-filter" onClick={onOpenGuestsFilter}>
                         <p>who</p>
-                        <span>Add guests</span>
+                        <span>{whoCount ? whoCount + ' guests' : 'Add guests'}</span>
                     </div>
                 </div>
                 <button className="expanded-search-btn" onClick={onFilterClicked}>
@@ -85,8 +90,7 @@ export function HeaderExpandedFilter({ onClickHeaderFilter }) {
                     </div>
                 </button>
             </div>
-                    {isGustSelectionOpen && <GustSelection/>}
+            {isGustSelectionOpen && <GustSelection changeWho={changeWho} guestsCount={guestsCount} />}
         </section>
-
     )
 }

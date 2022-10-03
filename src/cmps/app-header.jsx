@@ -15,7 +15,6 @@ export function AppHeader({ layoutClass }) {
         if (ev) ev.preventDefault()
         setIsFilterOpen(!isFilterOpen)
     }
-    // console.log('isFilterOpen:', isFilterOpen)
 
     return <header className={`${layoutClass ? 'main-layout-details details-header flex full' : 'main-layout app-header flex full'} `}>
         <section className='container flex'>

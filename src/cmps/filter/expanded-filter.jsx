@@ -7,7 +7,6 @@ export const ExpandedFilter = (props) => {
         name: '',
         maxPrice: 1610,
         minPrice: 50,
-        labels: '',
     }, props.onChangeFilter)
 
     const { onClickFilter } = props

@@ -1,5 +1,4 @@
-// import { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation, useParams } from 'react-router-dom'
 
 import { HeaderFilter } from './header-filter'
 import { HeaderProfile } from './header-profile'
@@ -7,16 +6,21 @@ import { HeaderExpandedFilter } from './header-expanded-filter'
 
 import logo from '../../assets/img/logo48.png'
 
-export function AppHeader({ layoutClass, onClickHeaderFilter , isHeaderFilterOpen}) {
-console.log('isHeaderFilterOpen:', isHeaderFilterOpen)
-console.log('onClickHeaderFilter:', onClickHeaderFilter)
-    // const [isHeaderFilterOpen, setIsFilterOpen] = useState(false)
+export function AppHeader({ layoutClass, onClickHeaderFilter, isHeaderFilterOpen }) {
 
-    // const onClickHeaderFilter = (ev) => {
-    //     if (ev) ev.preventDefault()
-    //     setIsFilterOpen(!isHeaderFilterOpen)
-    // }
-    console.log('layoutClass:', layoutClass)
+    const pathname = useLocation().pathname
+    const filterBy = pathname.split('/')
+
+    const checkIn = filterBy[1] === 'null' ? JSON.parse(filterBy[1]) : filterBy[1]
+    const checkOut = filterBy[2] === 'null' ? JSON.parse(filterBy[2]) : filterBy[2]
+    const guests = {
+        adultsGuests: filterBy[3] ? +filterBy[3] : 0,
+        childrenGuests: filterBy[4] ? +filterBy[4] : 0,
+        infantsGuests: filterBy[5] ? +filterBy[5] : 0,
+        petsGuests: filterBy[6] ? +filterBy[6] : 0
+    }
+
+    const guestsCount = guests.adultsGuests + guests.childrenGuests + guests.infantsGuests + guests.petsGuests
 
     return <header className={`${layoutClass ? 'main-layout-details app-header flex full' : 'main-layout app-header flex full'} `}>
         <section className='container flex'>
@@ -26,12 +30,19 @@ console.log('onClickHeaderFilter:', onClickHeaderFilter)
                     <span>idebnb</span>
                 </div>
             </NavLink>
-            {/*to fix here */}
-
             {layoutClass ? <input type="text" /> :
                 isHeaderFilterOpen ?
-                    (!layoutClass && <div ><div className='expanded-filter-stay'><p >Stays</p> </div> <HeaderExpandedFilter onClickHeaderFilter={onClickHeaderFilter} /></div>)
-                    : (<HeaderFilter onClickHeaderFilter={onClickHeaderFilter} isHeaderFilterOpen={isHeaderFilterOpen} />)}
+                    !layoutClass && <div className='filters-container' >
+                        <div className='expanded-filter-stay'>
+                            <p >Stays</p>
+                        </div>
+                        <HeaderExpandedFilter onClickHeaderFilter={onClickHeaderFilter} checkIn={checkIn}
+                            checkOut={checkOut} guests={guests} />
+                    </div> :
+
+                    <HeaderFilter onClickHeaderFilter={onClickHeaderFilter} isHeaderFilterOpen={isHeaderFilterOpen}
+                        checkIn={checkIn} checkOut={checkOut} guestsCount={guestsCount} />
+            }
             <div className='flex'>
                 <NavLink to='edit'>
                     <span className='become-host-link'>Become a host</span>
@@ -39,7 +50,5 @@ console.log('onClickHeaderFilter:', onClickHeaderFilter)
                 <HeaderProfile />
             </div>
         </section>
-
     </header>
-
 }

@@ -15,6 +15,7 @@ export const StayApp = () => {
     }, [])
 
     const onChangeFilter = (filterBy) => {
+        console.log('filterBy:', filterBy)
         dispatch(setFilterBy(filterBy))
         dispatch(loadStays())
     }

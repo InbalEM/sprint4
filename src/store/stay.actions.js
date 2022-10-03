@@ -22,8 +22,6 @@ export function getActionUpdateStay(stay) {
     }
 }
 
-
-
 export function loadStays() {
     return async (dispatch, getState) => {
         try {
@@ -86,6 +84,7 @@ export function updateStay(stay) {
 }
 
 export function setFilterBy(filterBy){
+    console.log('filterBy:', filterBy)
     return (dispatch) => {
         dispatch({ type: 'SET_FILTER_BY', filterBy })
     }

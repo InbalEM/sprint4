@@ -1,6 +1,12 @@
 const initialState = {
     stays: [],
-    filterBy: null,
+    // filterBy: null,
+    filterBy: {
+        name: '',
+        maxPrice: 1610,
+        minPrice: 50,
+        labels: '',
+    },
     isFilterOpen: false,
     isHeaderFilterOpen: false
 }
@@ -34,10 +40,10 @@ export function stayReducer(state = initialState, action) {
 
         case 'SET_IS_FILTER_OPEN':
             isFilterOpen = action.isFilterOpen
-            return { ...state, isFilterOpen}
+            return { ...state, isFilterOpen }
         case 'SET_IS_HEADER_FILTER_OPEN':
             isHeaderFilterOpen = action.isHeaderFilterOpen
-            return { ...state, isHeaderFilterOpen}
+            return { ...state, isHeaderFilterOpen }
 
         // case 'CLEAR_CART':
         //     return  { ...state, stay: []}

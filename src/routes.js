@@ -10,7 +10,7 @@ const routes = [
         label: 'bnbs'
     },
     {
-        path: '/:checkIn/:checkOut',
+        path: '/:checkInDate/:checkOutDate/:adultsGuests/:childrenGuests/:infantsGuests/:petsGuests',
         component: <StayApp />,
         label: 'bnbs'
     },

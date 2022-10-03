@@ -4,9 +4,6 @@ import { useSelector } from "react-redux"
 import { Link, useNavigate } from "react-router-dom"
 import { saveOrder } from "../store/order.actions"
 import { CalcReserve } from "./calc-reserve"
-import { ReactComponent as Plus } from '../assets/img/vector/plus.svg';
-import { ReactComponent as Minus } from '../assets/img/vector/minus.svg';
-
 
 import { ReactComponent as Star } from '../assets/icons/star.svg';
 import { ReactComponent as Plus } from '../assets/img/vector/plus.svg';

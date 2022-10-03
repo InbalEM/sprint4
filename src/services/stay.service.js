@@ -19,17 +19,23 @@ export const stayService = {
 window.cs = stayService
 
 function query(filterBy) {
+  console.log('filterBy:', filterBy)
   return storageService.query(STORAGE_KEY).then(stays => {
     if (!stays[0]) {
       gStays.forEach(stay => stay.reviews.map(review => review.rate = utilService.getRandomIntInclusive(3, 5)))
       gStays.forEach(stay => stay.beds = Math.round(stay.capacity / utilService.getRandomIntInclusive(1, 2)))
       stays = storageService.postMany(STORAGE_KEY, gStays).then(x => console.log(x))
     }
+
     if (filterBy) {
-      let { maxPrice, minPrice } = filterBy
+      let { maxPrice, minPrice, label } = filterBy
       if (!maxPrice) maxPrice = Infinity
       if (!minPrice) minPrice = 0
-      stays = stays.filter(stay => stay.price <= maxPrice && stay.price >= minPrice)
+      if (!label) label = ''
+      stays = stays.filter(stay => stay.price <= maxPrice && stay.price >= minPrice &&
+        stay.type.toLowerCase().includes(label.toLowerCase()) 
+        )
+
 
       if (filterBy.where) {
         stays = stays.filter(stay => stay.loc.country.toLowerCase().includes(filterBy.where.toLowerCase()) ||
@@ -62,7 +68,6 @@ async function save(stay) {
     let newStay = _getEmptyStay()
     newStay.name = stay.name
     newStay.price = stay.price
-    console.log('newStay:', newStay)
     gStays.push(newStay)
     savedStay = await storageService.post(STORAGE_KEY, newStay)
   }
@@ -127,7 +132,7 @@ function _getEmptyStay() {
 function avgRate(stay){
   let rates = stay.reviews.map(review => review.rate)
   rates = rates.reduce((a, b) => a + b, 0)
-  console.log('rates:', rates)
+  // console.log('rates:', rates)
   return (rates / stay.reviews.length).toFixed(2)
 }
 

@@ -1,35 +1,46 @@
+import { Star } from "@mui/icons-material";
 import React from "react";
 import { useParams } from "react-router-dom";
+import { stayService } from "../services/stay.service";
 
 export function StayPreview({ stay }) {
     const params = useParams()
-    const { checkIn, checkOut } = params
+    const { checkInDate, checkOutDate } = params
 
-    // const checkIndDate = new Date(checkIn)
-    // const checkOutDate = new Date(checkOut)
+    // const checkInDatedDate = new Date(checkInDate)
+    // const checkOutDateDate = new Date(checkOutDate)
 
-    // const checkInMonth = checkIndDate.toLocaleString('en-US', { month: 'short' })
-    // const checkOutInMonth = checkOutDate.toLocaleString('en-US', { month: 'short' })
+    // const checkInDateMonth = checkInDatedDate.toLocaleString('en-US', { month: 'short' })
+    // const checkOutDateInMonth = checkOutDateDate.toLocaleString('en-US', { month: 'short' })
 
     // let isSameMonth = false
 
-    // if (checkIn && checkOut && checkInMonth === checkOutInMonth) isSameMonth = true
+    // if (checkInDate && checkOutDate && checkInDateMonth === checkOutDateInMonth) isSameMonth = true
 
-    // console.log('checkIn:', checkIn)
-    // console.log('checkOut:', checkOut)
-    // console.log('checkInMonth:', checkInMonth)
-    // console.log('checkOutInMonth:', checkOutInMonth)
+    // console.log('checkInDate:', checkInDate)
+    // console.log('checkOutDate:', checkOutDate)
+    // console.log('checkInDateMonth:', checkInDateMonth)
+    // console.log('checkOutDateInMonth:', checkOutDateInMonth)
     // console.log('isSameMonth:', isSameMonth)
+
+    const avgRate = () => {
+        return stayService.avgRate(stay)
+    }
+    const rate = avgRate()
 
     return (
         <div key={stay._id} className='stay-preview'>
             <img src={stay.imgUrls[0]} />
             <div>
-                <p><span>{stay.loc.city}, {stay.loc.country}</span></p>
-                {!checkIn && !checkOut && <p>{stay.loc.address}, {stay.loc.city}</p>}
-                {checkIn && checkOut && <p>{stay.summary.slice(0,30)}...</p>}
-                {checkIn && checkOut && <p>{stay.beds} beds</p>}
-                {/* {isSameMonth  && <p > {checkInMonth} {checkIndDate.getDate()} - {checkOutDate.getDate()} </p>} */}
+                <div className="preview-title">
+                    <p><span>{stay.loc.city}, {stay.loc.country}</span></p>
+                    <span className="rate-star"><Star /> {rate}</span>
+                </div>
+                {/* {stay.type} */}
+                {!checkInDate && !checkOutDate && <p>{stay.loc.address}, {stay.loc.city}</p>}
+                {checkInDate && checkOutDate && <p>{stay.summary.slice(0, 30)}...</p>}
+                {checkInDate && checkOutDate && <p>{stay.beds} beds</p>}
+                {/* {isSameMonth  && <p > {checkInDateMonth} {checkInDatedDate.getDate()} - {checkOutDateDate.getDate()} </p>} */}
                 <p className="price"><span>${stay.price}</span> night</p>
             </div>
         </div>
