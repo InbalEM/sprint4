@@ -1,10 +1,13 @@
 .header-expanded-filter {
     background-color: #EBEBEB;
+    max-height: 70px;
+    max-width: 850px;
     // display: flex;
     // align-items: flex-start;
+    font-size: 12px;
 
-    & > :first-child,
-    & > :nth-child(7)  {
+    &> :first-child,
+    &> :nth-child(7) {
         padding-left: 18px;
         align-items: flex-start;
     }
@@ -13,9 +16,9 @@
     //     padding: 14px 24px;
     // }
 
-    
+
     >div {
-        margin: 5px 20px;
+        margin: 10px 20px;
         display: flex;
         align-items: center;
         flex-direction: column;
@@ -24,7 +27,7 @@
     }
 
     >div>p,
-    >div>label {
+    >div>label{
         color: #222222;
     }
 }
@@ -33,7 +36,7 @@
     border-bottom: solid 1px #222222;
     margin-bottom: 10px;
     // >div{
-        width: fit-content;
+    width: fit-content;
     // }
 }
 
@@ -41,6 +44,12 @@
     border-radius: 24px;
     background-image: radial-gradient(circle at top left, #FF385C 0%, #E61E4D 27.5%, #E31C5F 40%, #D70466 57.5%, #BD1E59 75%, #BD1E59 100%);
     margin-right: 10px;
+    max-height: 3em;
+    max-width: 7em;
+    font-family: cereal_BD;
+    display: grid;
+    justify-content: center;
+    align-content: center;
 
     >div {
         display: flex;
@@ -64,7 +73,7 @@
 }
 
 // ::placeholder {
-    // text-align: center;
+// text-align: center;
 // }
 
 /* or, for legacy browsers */
@@ -86,6 +95,41 @@
 //      }
 
 
-.header-filter-expanded{
-top: 5em;
+.header-filter-expanded {
+    top: 5em;
+}
+
+.MuiDateRangePickerInput-root.css-1cb285q-MuiDateRangePickerInput-root {
+    align-items: center;
+}
+
+.header-dates,
+.who-filter {
+    display: grid;
+    justify-items: start;
+    font-family: cereal_BK;
+    font-size: 12px;
+    >* {
+        font-family: cereal_BK;
+        font-size: 12px;
+        margin: 0px;
+    }
+
+    >:first-child {
+        color: #222222;
+    }
+}
+
+// .who-filter{
+//     display: grid;
+
+//     >*{
+//         margin: 0px;
+//     }
+
+// }
+
+
+.header-dates>.date{
+    color: #222222;
 }

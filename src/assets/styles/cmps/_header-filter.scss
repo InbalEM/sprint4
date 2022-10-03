@@ -5,7 +5,9 @@
 }
 
 .header-filter {
-    
+    display: grid;
+    justify-items: right;
+
     >div {
         min-height: 40px;
         border-radius: 50px;
@@ -67,7 +69,7 @@
 
     >p {
         margin: 0;
-        
+
     }
 
     :nth-child(3) {
@@ -78,4 +80,12 @@
 
 .search-btn {
     margin: 5px 10px 5px 10px;
+}
+
+.date-class {
+    display: grid;
+}
+
+.guests-count {
+    color: black;
 }

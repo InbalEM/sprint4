@@ -1,22 +1,7 @@
 import { useState } from "react"
 import { useSelector } from "react-redux"
 
-export const GustSelection= ()=>{
-
-    const [guestsCount, setGuestsCount] = useState({
-        adults: 0,
-        children: 0,
-        infants: 0,
-        pets: 0,
-    })
-
-    const onClick = (category, action) => {
-        action = action === '+' ? 1 : -1
-        if (guestsCount[category] + action < 0 ) return
-        guestsCount[category] += action
-        setGuestsCount(prevGuestsCount => ({ ...prevGuestsCount }))
-        console.log(guestsCount)
-    }
+export const GustSelection= ({changeWho, guestsCount})=>{
 
     return(
         <div className="select-guests guests-selection">
@@ -26,9 +11,9 @@ export const GustSelection= ()=>{
                 <h5>Age 13+</h5>
             </div>
             <div>
-                <span onClick={() => onClick('adults', '+')}>+</span>
+                <span onClick={() => changeWho('adults', 1)}>+</span>
                 <span>{guestsCount.adults}</span>
-                <span onClick={() => onClick('adults', '-')}>-</span>
+                <span onClick={() => changeWho('adults', -1)}>-</span>
             </div>
         </div>
         <div className="pick-guest-account">
@@ -37,9 +22,9 @@ export const GustSelection= ()=>{
                 <h5>Ages 2-12</h5>
             </div>
             <div>
-                <span onClick={() => onClick('children', '+')}>+</span>
+                <span onClick={() => changeWho('children', 1)}>+</span>
                 <span>{guestsCount.children}</span>
-                <span onClick={() => onClick('children', '-')}>-</span>
+                <span onClick={() => changeWho('children', -1)}>-</span>
             </div>
         </div>
         <div className="pick-guest-account">
@@ -48,9 +33,9 @@ export const GustSelection= ()=>{
                 <h5>Under 2</h5>
             </div>
             <div>
-                <span onClick={() => onClick('infants', '+')}>+</span>
+                <span onClick={() => changeWho('infants', 1)}>+</span>
                 <span>{guestsCount.infants}</span>
-                <span onClick={() => onClick('infants', '-')}>-</span>
+                <span onClick={() => changeWho('infants', -1)}>-</span>
             </div>
         </div>
         <div className="pick-guest-account">
@@ -58,9 +43,9 @@ export const GustSelection= ()=>{
                 <h3>Pets</h3>
             </div>
             <div>
-                <span onClick={() => onClick('pets', '+')}>+</span>
+                <span onClick={() => changeWho('pets', 1)}>+</span>
                 <span>{guestsCount.pets}</span>
-                <span onClick={() => onClick('pets', '-')}>-</span>
+                <span onClick={() => changeWho('pets', -1)}>-</span>
             </div>
         </div>
     </div>

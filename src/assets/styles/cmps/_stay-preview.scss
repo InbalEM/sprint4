@@ -1,4 +1,14 @@
 .stay-preview {
+    // >div{
+    //     display: grid;
+    //     grid-template-columns: 4fr 1fr;
+    //     grid-template-rows: minmax(0 1fr);
+    // }
+    >div>.preview-title{
+        display: grid;
+        grid-template-columns: 4fr 1fr;
+        // background-color: black;
+    }
 
     >img {
         grid-area: img;
@@ -27,4 +37,10 @@
     >div>.price {
         margin-top: 8px;
     }
+}
+
+.rate-star{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
 }

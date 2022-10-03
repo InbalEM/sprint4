@@ -21,6 +21,7 @@
   grid-auto-flow: column;
   grid-template-columns: 1fr 100px;
   gap: 16px;
+  margin: 12px 0 0;
 
   // >* {
   //   padding-top: 10px;
@@ -64,14 +65,14 @@
 }
 
 .labels-container {
-  display: grid;
-  grid-template-columns: repeat(16, 1fr);
-  gap: 16px;
+  // display: grid;
+  // grid-template-columns: repeat(16, 1fr);
+  // gap: 16px;
 
   >div {
     display: block;
     height: 24px;
     width: 24px;
-    fill: currentColor;
+    // fill: currentColor;
   }
 }

@@ -43,7 +43,6 @@ export function RootCmp () {
     isHeaderFilterOpen: false
 })
   }
-console.log('isFilterOpen:', isFilterOpen)
     return (
       <div className= "full main-layout">
         <AppHeader layoutClass={layoutClass} onClickHeaderFilter = {onClickHeaderFilter} isHeaderFilterOpen = {isHeaderFilterOpen}/>

@@ -2,10 +2,15 @@ import React, { useEffect, useRef } from 'react'
 
 import { ExpandedFilter } from './expanded-filter'
 import filterImg from '../../assets/img/filter-btn-img.png'
+import { LabelsFilter } from './filter-by-lables'
+import { useSelector } from 'react-redux'
 
 export const StayFilter = (props) => {
     const filter = useRef(null)
     const filterContainer = useRef(null)
+
+    const { filterBy } = useSelector(state => state.stayModule)
+    // console.log('filterBy:', filterBy)
 
     useEffect(() => {
         if (!filterContainer.current || !filter.current) return
@@ -30,9 +35,10 @@ export const StayFilter = (props) => {
             <div ref={filterContainer}>
                 <div className={isFilterOpen ? 'filter-open filter-container  ' : 'filter-container '}>
                     <div className='labels-container'>
+                        <LabelsFilter onChangeFilter = {onChangeFilter} filterBy= {filterBy}/>
                     </div>
                     <button className='stay-filter-btn' onClick={onClickFilter}>
-                        <div><img src={filterImg} alt= ""/></div>
+                        <div><img src={filterImg} alt="" /></div>
                         Filters
                     </button>
                     <ExpandedFilter onChangeFilter={onChangeFilter} onClickFilter={onClickFilter} />
