@@ -2,6 +2,7 @@
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { stayService } from './stay.service.js'
+import { userService } from './user.service.js'
 // import { userService } from './user.service.js'
 
 // This file demonstrates how to use a BroadcastChannel to notify other browser tabs 
@@ -82,16 +83,18 @@ function getDiffDates(startDate, endDate){
 
 
 function getNewOrder(stay,  startDate ='', endDate='') {
-    console.log('stay:', stay)
+
     let date = new Date();
     date.setDate(date.getDate() + 1);
-    return {
+
+    const {_id, fullname} = userService.getLoggedinUser()
+    const newOrder =  {
         "_id": utilService.makeId(),
         "hostId": stay.host._id,
         "createdAt": Date.now(),
         "buyer": {
-            "_id": "u101",
-            "fullname": "User 1"
+            _id,
+            fullname
         },
         "startDate": new Date().toLocaleDateString(),
         "endDate": date.toLocaleDateString(),
@@ -110,6 +113,9 @@ function getNewOrder(stay,  startDate ='', endDate='') {
         "status": "pending"
     }
 
+    storageService.post(newOrder)
+
+    return newOrder
 }
 
 

@@ -51,8 +51,9 @@ export const ReserveSummary = () => {
             </div>
         </div>
 
-        <div>
-            <button onClick={() => navigate('/')}>Back to home gage</button>
+        <div className="btns-summary">
+            <button className="back-home-btn" onClick={() => navigate('/')}>Back to home page</button>
+            <button className="your-orders-btn" onClick={() => navigate('/my-orders')}>Your orders</button>
         </div>
     </section>
 

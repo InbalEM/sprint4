@@ -1,24 +1,24 @@
-import { useState } from "react"
-import { useRef } from "react"
-import { Link, Route, Routes } from "react-router-dom"
-import { LoginSignup } from "./login-signup"
-import { onLogin } from "../store/user.actions"
+// import { useState } from "react"
+// import { useRef } from "react"
+// import { Link, Route, Routes } from "react-router-dom"
+// import { LoginSignup } from "./login-signup"
+// import { onLogin } from "../store/user.actions"
 
-export function HeaderProfile() {
+// export function HeaderProfile() {
 
-    const [isOpen, setIsOpen] = useState(false) 
+//     // const [isOpen, setIsOpen] = useState(false) 
      
        
-    const toggleOpen = () => {
-        setIsOpen(true)
-    }
+//     // const toggleOpen = () => {
+//     //     setIsOpen(true)
+//     // }
 
 
-    return <section>
-        <div className="header-profile" onClick={() => toggleOpen()}>
-            <div className={`login-${isOpen}`}><LoginSignup onLogin={onLogin} /></div>
-        </div>
+//     // return <section>
+//     //     <div className="header-profile" onClick={() => toggleOpen()}>
+//     //         <div className={`login-${isOpen}`}><LoginSignup onLogin={onLogin} /></div>
+//     //     </div>
 
-    </section>
+//     // </section>
 
-}
+// }

@@ -18,7 +18,7 @@ console.log('onClickHeaderFilter:', onClickHeaderFilter)
     // }
     console.log('layoutClass:', layoutClass)
 
-    return <header className={`${layoutClass ? 'main-layout-details app-header flex full' : 'main-layout app-header flex full'} `}>
+    return <header className={`${layoutClass ? 'main-layout-details details-header flex full' : 'main-layout app-header flex full'} `}>
         <section className='container flex'>
             <NavLink to='/'>
                 <div className='logo-container flex'>

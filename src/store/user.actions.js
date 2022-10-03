@@ -33,6 +33,7 @@ export function onLogin(credentials) {
         try {
             console.log('credentials:', credentials)
             const user = await userService.login(credentials)
+            console.log('user:', user)
             dispatch({
                 type: 'SET_USER',
                 user

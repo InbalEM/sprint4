@@ -26,7 +26,7 @@ export const CalcReserve = ({stay}) => {
             <div className="total">
                 <div className="total-amount flex">
                     <div>Total</div>
-                    <div>${stay.price * nightsStay + 10 + 51}</div>
+                    <div>${stay.price * nightsStay + 10 + 11 + nightsStay * 10}</div>
                 </div>
             </div>
         </section>

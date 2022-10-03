@@ -4,8 +4,11 @@ import { getActionSetWatchedUser } from '../store/review.actions'
 // import { socketService, SOCKET_EVENT_USER_UPDATED, SOCKET_EMIT_USER_WATCH } from './socket.service'
 import { showSuccessMsg } from '../services/event-bus.service'
 
+const fs = require('fs')
+var gUsers = require('../data/user.json')
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
+const STORAGE_KEY = 'user'
 
 export const userService = {
     login,
@@ -24,7 +27,23 @@ window.userService = userService
 
 
 function getUsers() {
-    return storageService.query('user')
+    let users
+    return storageService.query(STORAGE_KEY).then(user => {
+        if(!user[0]){
+        fetch("https://randomuser.me/api/?results=5000")
+            .then(res => res.json())
+            .then(res => {
+                users = gUsers.map((user, index) => {
+                    if(index >= 5000 ) return  ''
+                    user.imgUrl = res.results[index].picture
+                    return user
+                })
+                storageService.postMany(STORAGE_KEY, users)
+            //     _saveCarsToFile()
+            })
+        }
+        return users
+    })
     // return httpService.get(`user`)
 }
 
@@ -42,6 +61,7 @@ async function getById(userId) {
 
     return user
 }
+
 function remove(userId) {
     return storageService.remove('user', userId)
     // return httpService.delete(`user/${userId}`)
@@ -57,13 +77,16 @@ async function update(user) {
 
 async function login(userCred) {
     const users = await storageService.query('user')
-    const user = users.find(user => user.username === userCred.username)
+    console.log('users:', users)
+    const user = users.find(user => user.username === userCred.username && user.password === userCred.password )
+    
     // const user = await httpService.post('auth/login', userCred)
     if (user) {
         // socketService.login(user._id)
         return saveLocalUser(user)
     }
 }
+
 async function signup(userCred) {
     // userCred.score = 10000;
     const user = await storageService.post('user', userCred)
@@ -71,6 +94,7 @@ async function signup(userCred) {
     // socketService.login(user._id)
     // return saveLocalUser(user)
 }
+
 async function logout() {
     sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
     // socketService.logout()
@@ -93,6 +117,17 @@ function saveLocalUser(user) {
 
 function getLoggedinUser() {
     return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
+}
+
+function _saveCarsToFile() {
+    // console.log('gUsers:', gUsers)
+    return new Promise((resolve, reject) => {
+        const data = JSON.stringify(gUsers, null, 2)
+        fs.writeFile('data/user.json', data, (err) => {
+            if (err) return reject('Cannot save to file')
+            resolve()
+        })
+    })
 }
 
 
