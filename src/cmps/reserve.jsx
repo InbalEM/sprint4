@@ -40,7 +40,7 @@ export const Reserve = ({ stay, avgRate }) => {
     const submitReserve = () => {
         const guests = guestsCount
         const currOrder = { ...order, guests }
-        dispatch(saveOrder(stay, currOrder))
+        dispatch(saveOrder(currOrder))
         navigate("/summary", {
             state: {
                 stay,

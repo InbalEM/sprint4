@@ -8,7 +8,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 
 import Box from '@mui/material/Box';
-import { saveDates, saveOrder } from "../store/order.actions";
+import { getOrder, saveDates, saveOrder } from "../store/order.actions";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { orderService } from "../services/order.service";
@@ -25,7 +25,7 @@ export function Calender({ stay }) {
     const startDate = new Date(value[0].$d).toLocaleDateString()
     const endDate = new Date(value[1].$d).toLocaleDateString()
     order = { ...order, startDate, endDate }
-    dispatch(saveOrder(stay, order))
+    dispatch(getOrder(stay, order))
 
   }, [value])
 
