@@ -16,9 +16,17 @@
     //     padding: 14px 24px;
     // }
 
+    >*:not(:first-child, span){
+        padding: 14px 24px 14px 24px;
+    }
+
+    // >:nth-child(3)>* {
+    //     padding: 14px 24px 14px 24px;
+    // }
+
 
     >div {
-        margin: 10px 20px;
+        // margin: 10px 20px;
         display: flex;
         align-items: center;
         flex-direction: column;
@@ -132,4 +140,10 @@
 
 .header-dates>.date{
     color: #222222;
+}
+
+.header-dates{
+    // >* :not(.css-1at62qq){
+        padding: 14px 24px 14px 24px;
+    // }
 }
