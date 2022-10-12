@@ -10,6 +10,8 @@ export function orderReducer(state = initialState, action = {}) {
   switch (action.type) {
     case 'SET_ORDER':
       return { ...state, order: action.order }
+    case 'SAVE_ORDER':
+      return { ...state, order: action.order }
     case 'SET_DATES':
       return { ...state, dates: action.dates }
     default:

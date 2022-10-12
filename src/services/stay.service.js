@@ -11,7 +11,7 @@ const fs = require('fs')
 
 const STORAGE_KEY = 'stay'
 
-// var gUsers = require('../data/user.json')
+var gUsers = require('../data/user.json')
 var gStays = require('../data/stay.json')
 
 export const stayService = {

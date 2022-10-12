@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux"
 import { Link, useNavigate } from "react-router-dom"
-import { saveOrder } from "../store/order.actions"
+import { getOrder, saveOrder } from "../store/order.actions"
 import { CalcReserve } from "./calc-reserve"
 
 
@@ -40,14 +40,21 @@ export const Reserve = ({ stay, avgRate }) => {
     const submitReserve = () => {
         const guests = guestsCount
         const currOrder = { ...order, guests }
-        dispatch(saveOrder(stay, currOrder))
+        console.log('currOrder:', currOrder)
+        dispatch(saveOrder(currOrder)).then(
         navigate("/summary", {
             state: {
                 stay,
                 order
             },
-        });
+        }));
     }
+
+    // const calcTotal = async (total) => {
+    //     console.log('total:', total)
+    //     const newOrder = await dispatch(getOrder(stay, { ...order, total }))
+    //     console.log('newOrder:', newOrder)
+    // }
 
     const mouseMove = (e) => {
         const rect = e.target.getBoundingClientRect();
@@ -192,7 +199,7 @@ export const Reserve = ({ stay, avgRate }) => {
                                 <div className="msg-txt">
                                     <div>You won't be charged yet</div>
                                 </div>
-                                <CalcReserve stay={stay} />
+                                <CalcReserve stay={stay}/>
                             </section>
                         }
 

@@ -6,7 +6,6 @@ import { CalcReserve } from "../cmps/calc-reserve";
 export const ReserveSummary = () => {
 
     const params = useLocation()
-    console.log('location:', params)
     const { guests: { adults, children, infants, pets }, startDate, endDate } = useSelector(state => state.orderModule.order)
 
     const { name, type, imgUrls } = params.state.stay

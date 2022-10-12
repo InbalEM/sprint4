@@ -14,21 +14,39 @@ export function saveDates(dates) {
     }
 }
 
-export function saveOrder(stay, order = null) {
+export function getOrder(stay, order = null) {
     return async dispatch => {
         try {
             if (!order) {
                 order = orderService.getNewOrder(stay)
-                console.log('order:', order)
             }
-            // await orderService.save(order)
             dispatch({ type: 'SET_ORDER', order })
         } catch (err) {
-            console.log('UserActions: err in loadUsers', err)
+            console.log('UserActions: err in load order', err)
         }
         // finally {
         //     dispatch({ type: 'LOADING_DONE' })
         // }
     }
 }
+
+export function saveOrder(order) {
+    return async dispatch => {
+        try {
+            if (order) {
+                order = await orderService.save(order)
+            }
+            // await orderService.save(order)
+            dispatch({ type: 'SAVE_ORDER', order })
+        } catch (err) {
+            console.log('UserActions: err in load order', err)
+        }
+        // finally {
+        //     dispatch({ type: 'LOADING_DONE' })
+        // }
+    }
+}
+
+
+
 

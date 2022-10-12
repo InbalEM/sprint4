@@ -12,7 +12,7 @@ const STORAGE_KEY = 'order'
 export const orderService = {
     query,
     getById,
-    // save,
+    save,
     remove,
     // createOrder,
     getDiffDates,
@@ -21,31 +21,29 @@ export const orderService = {
 }
 window.cs = orderService
 
-async function query(stay) {
-    // try{
-    //     let order = storageService.query(STORAGE_KEY) 
-    //     if(order) {
-    //         order = _getNewOrder(stay)
-    //         // save(order)
-    //     }
-
-    //     return order
-    // } 
-    // catch{
-    //     console.log('cant find order');
-    // }
+async function query() {
+    try {
+        let orders = await storageService.query(STORAGE_KEY)
+        // const currUserId = userService.getLoggedinUser()._id
+        // orders = orders.filter(order => order.buyer._id === currUserId)
+        return orders
+    }
+    catch {
+        console.log('cant find orders');
+    }
 }
 
 function getById(orderId) {
     return storageService.get(STORAGE_KEY, orderId)
     // return axios.get(`/api/order/${orderId}`)
 }
+
 async function remove(orderId) {
     await storageService.remove(STORAGE_KEY, orderId)
 }
 
- function getOrder(order) {
-    
+function getOrder(order) {
+
     // var savedOrder
     // // if (order._id) {
     // //     savedOrder = await storageService.put(STORAGE_KEY, order)
@@ -61,35 +59,32 @@ async function remove(orderId) {
     // return savedOrder
 }
 
-function getDiffDates(startDate, endDate){
+function getDiffDates(startDate, endDate) {
     const parseDate = (str) => {
-        if(!str) return
+        if (!str) return
         const mdy = str.split('/');
         return new Date(mdy[2], mdy[0] - 1, mdy[1]);
     }
 
     const dateDiff = (first, second) => {
-        if(!first || !second) return
+        if (!first || !second) return
         // Take the difference between the dates and divide by milliseconds per day.
         // Round to nearest whole number to deal with DST.
         return Math.round((second - first) / (1000 * 60 * 60 * 24));
     }
 
-    const diff =  dateDiff(parseDate(startDate), parseDate(endDate))
-    if(!query().totalPrice)
-    return diff
+    const diff = dateDiff(parseDate(startDate), parseDate(endDate))
+    if (!query().totalPrice)
+        return diff
 }
 
-
-
-function getNewOrder(stay,  startDate ='', endDate='') {
+function getNewOrder(stay, startDate = '', endDate = '') {
 
     let date = new Date();
     date.setDate(date.getDate() + 1);
 
-    const {_id, fullname} = userService.getLoggedinUser()
-    const newOrder =  {
-        "_id": utilService.makeId(),
+    const { _id, fullname } = userService.getLoggedinUser()
+    const newOrder = {
         "hostId": stay.host._id,
         "createdAt": Date.now(),
         "buyer": {
@@ -113,9 +108,13 @@ function getNewOrder(stay,  startDate ='', endDate='') {
         "status": "pending"
     }
 
-    storageService.post(newOrder)
-
+    // storageService.post(STORAGE_KEY, newOrder)
     return newOrder
+}
+
+async function save(order) {
+    const savedOrder = await storageService.post(STORAGE_KEY, order)
+    return savedOrder
 }
 
 

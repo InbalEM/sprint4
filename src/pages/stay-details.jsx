@@ -17,16 +17,16 @@ import { ReactComponent as User } from '../assets/icons/user.svg';
 import { useSelector } from "react-redux"
 import { orderService } from "../services/order.service"
 import { useDispatch } from "react-redux"
-import { saveDates, saveOrder } from "../store/order.actions"
+import {  getOrder } from "../store/order.actions"
 
 export const StayDetails = () => {
 
     const [stay, setStay] = useState(null)
     const [isOpen, setIsOpen] = useState(false)
     let { order } = useSelector(state => state.orderModule)
+
     const params = useParams()
     const dispatch = useDispatch()
-
 
     const imgSection = useRef(null)
     const amenitiesSection = useRef(null)
@@ -37,17 +37,15 @@ export const StayDetails = () => {
         const stayId = params.id
         stayService.getById(stayId).then((stay) => {
             setStay(stay)
-            console.log('stay:', stay)
             loadOrder(stay)
             // setReviews(reviews)
         })
     }
 
     const loadOrder = (stay) => {
-        console.log('stay46:', stay)
-        console.log('order47:', order)
         if(!order.length) {
-            dispatch(saveOrder(stay))
+            console.log('order47:', order)
+            dispatch(getOrder(stay))
         }
 
     }
@@ -58,7 +56,6 @@ export const StayDetails = () => {
     }, [])
 
     useLayoutEffect(() => {
-        console.log(imgSection.current, 'asdasdas')
         if (!imgSection.current) return
         const imgObserver = new IntersectionObserver(onImgObserver, {
             rootMargin: "2px 0px 0px",
