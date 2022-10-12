@@ -17,7 +17,7 @@ export function HeaderFilter({ onClickHeaderFilter, checkIn, checkOut, guestsCou
                     {checkIn && checkOut ? < > {checkInMonth} {checkIndDate.getDate()} - {checkOutInMonth} {checkOutDate.getDate()} </> : <> Any week</>}
                 </button>
                 <span></span>
-                <button className={`'header-btn search-last-btn' ${guestsCount ? 'guests-count' : ''}`} onClick={onClickHeaderFilter}>{guestsCount ? guestsCount + ' guests' : 'Add guests'}</button>
+                <button className={`header-btn search-last-btn ${guestsCount ? 'guests-count' : ''}`} onClick={onClickHeaderFilter}>{guestsCount ? guestsCount + ' guests' : 'Add guests'}</button>
                 <button className='search-btn ' onClick={onClickHeaderFilter}><img src={search} /></button>
             </div>
         </section>

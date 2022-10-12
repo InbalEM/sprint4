@@ -19,7 +19,7 @@ export const stayService = {
 window.cs = stayService
 
 function query(filterBy) {
-  console.log('filterBy:', filterBy)
+  console.log('query filterBy:', filterBy)
   return storageService.query(STORAGE_KEY).then(stays => {
     if (!stays[0]) {
       gStays.forEach(stay => stay.reviews.map(review => {
@@ -42,6 +42,17 @@ function query(filterBy) {
         stay.type.toLowerCase().includes(label.toLowerCase()) 
         )
 
+        const { Wifi, Washer, Kitchen, Dryer, Heating , EntirePlace, PrivateRoom, SharedHome} = filterBy
+        stays = stays.filter(stay => !Wifi || stay.amenities.includes('Wifi') && 
+        !Washer || stay.amenities.includes('Washer') &&
+        !Kitchen || stay.amenities.includes('Kitchen') &&
+        !Dryer || stay.amenities.includes('Dryer') &&
+        !Heating || stay.amenities.includes('Heating') &&
+        
+        !EntirePlace || stay.amenities.includes('Entire home/apt') &&
+        !PrivateRoom || stay.amenities.includes('Private room') &&
+        !SharedHome || stay.amenities.includes('Shared homes') 
+          )
 
       if (filterBy.where) {
         stays = stays.filter(stay => stay.loc.country.toLowerCase().includes(filterBy.where.toLowerCase()) ||
