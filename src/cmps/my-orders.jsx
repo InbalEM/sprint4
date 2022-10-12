@@ -10,6 +10,7 @@ import TableRow from '@mui/material/TableRow';
 import { useState } from "react"
 import { useEffect } from "react"
 import { orderService } from "../services/order.service"
+import { userService } from '../services/user.service';
 
 
 
@@ -23,12 +24,13 @@ const columns = [
     minWidth: 170,
     align: 'right',
     format: (value) => value.toLocaleString('en-US'),
-  }
+  },
+  { id: 'status', label: 'status', minWidth: 170 },
 ];
 
-function createData(stayName, startDate, endDate, total) {
+function createData(stayName, startDate, endDate, total, status) {
   
-  return { stayName, startDate, endDate, total };
+  return { stayName, startDate, endDate, total, status };
 }
 
   
@@ -40,14 +42,18 @@ export  function MyOrders() {
 
   const [orders, setOrders] = useState([])
 
-  const rows = orders.map(order => createData(order.stay.name, order.startDate, order.endDate, order.total))
+  const rows = orders.map(order => createData(order.stay.name, order.startDate, order.endDate, order.total ,order.status))
 
   useEffect(() => {
       loadOrders()
   }, [])
 
   const loadOrders = async () => {
-    const orders = await orderService.query()
+    let orders = await orderService.query()
+    //should go to back
+    const currUserId = userService.getLoggedinUser()._id
+    orders = orders.filter(order => order.buyer._id === currUserId)
+
     console.log('orders:', orders)
       setOrders(orders)
   }

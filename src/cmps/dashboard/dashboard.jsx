@@ -33,9 +33,9 @@ const columns = [
 
 ];
 
-function createData(stayName, startDate, endDate, total, status) {
+function createData(stayName, startDate, endDate, total, status, id) {
 
-    return { stayName, startDate, endDate, total, status };
+    return { stayName, startDate, endDate, total, status, id };
 }
 
 
@@ -46,10 +46,11 @@ export function Dashboard() {
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
     const [orders, setOrders] = useState([])
+    const [status, setStatus] = useState()
+
     const logInUser = userService.getLoggedinUser()
-    console.log('logInUser:', logInUser)
     let rows = orders.filter(order => order.hostId === logInUser._id)
-        .map(order => createData(order.stay.name, order.startDate, order.endDate, order.total, order.status))
+        .map(order => createData(order.stay.name, order.startDate, order.endDate, order.total, order.status, order._id))
 
 
     useEffect(() => {
@@ -91,6 +92,16 @@ export function Dashboard() {
         return color
     }
 
+    const handleChange = async (ev, index) => {
+        const value = ev.target.value;
+        console.log(rows[index])
+        const order = await orderService.getById(rows[index].id)
+        console.log('order', order)
+        order.status = value
+        orderService.save(order)
+        // setStatus(value);
+    }
+
     if (!rows) return <h1>Loading ..</h1>
     return (
         <Paper sx={{ width: '100%', overflow: 'hidden' }}>
@@ -112,19 +123,34 @@ export function Dashboard() {
                     <TableBody>
                         {rows
                             .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                            .map((row) => {
+                            .map((row, index) => {
                                 return (
                                     <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
                                         {columns.map((column) => {
                                             const value = row[column.id];
-                                            return (
-                                                <TableCell key={column.id} align={column.align} style={column.id === 'status' ? {color: checkStatus(value)} : { color: 'black' }}>
-                                                    {column.format && typeof value === 'number'
-                                                        ? column.format(value)
-                                                        : value}
-                                                </TableCell>
-                                            );
-                                           
+                                            return <React.Fragment>
+                                                {column.id === 'status' ?
+                                                    <TableCell key={column.id} align={column.align} style={{ color: checkStatus(value) }}>
+                                                       
+                                                        <select name="status" id="status" onChange={(event) => handleChange(event, index)}>
+                                                            <option value="pending">pending</option>
+                                                            <option value="confirmed">confirmed</option>
+                                                            <option value="rejected">rejected</option>
+                                                            
+                                                        </select>
+
+                                                    </TableCell>
+                                                    :
+
+                                                    <TableCell key={column.id} align={column.align}>
+                                                        {column.format && typeof value === 'number'
+                                                            ? column.format(value)
+                                                            : value}
+                                                    </TableCell>
+                                                }
+
+                                            </React.Fragment>
+
                                         })}
                                     </TableRow>
                                 );
