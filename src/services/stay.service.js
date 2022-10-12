@@ -1,13 +1,17 @@
 
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
+
+import { httpService } from './http.service'
+const BASE_URL = `stay/`
+
 // import { userService } from './user.service.js'
 const fs = require('fs')
 // This file demonstrates how to use a BroadcastChannel to notify other browser tabs 
 
 const STORAGE_KEY = 'stay'
 
-var gUsers = require('../data/user.json')
+// var gUsers = require('../data/user.json')
 var gStays = require('../data/stay.json')
 
 export const stayService = {
@@ -19,62 +23,68 @@ export const stayService = {
 }
 window.cs = stayService
 
-function query(filterBy) {
-  console.log('query filterBy:', filterBy)
-  return storageService.query(STORAGE_KEY).then(stays => {
-    if (!stays[0]) {
-      gStays.forEach(stay => stay.reviews.map(review => {
-        review.rate = utilService.getRandomIntInclusive(3, 5)
-       
-        // review.by.imgUrl = gUsers.map(user => user._id === review.by._id ? user.imgUrl : review.by.imgUrl)
-        // console.log('review.by.imgUrl:',review.by.imgUrl )
-        return review
-      }))
-      gStays.forEach(stay => stay.beds = Math.round(stay.capacity / utilService.getRandomIntInclusive(1, 2)))
-      stays = storageService.postMany(STORAGE_KEY, gStays).then(x => console.log(x))
-    }
-
-    if (filterBy) {
-      let { maxPrice, minPrice, label } = filterBy
-      if (!maxPrice) maxPrice = Infinity
-      if (!minPrice) minPrice = 0
-      if (!label) label = ''
-      stays = stays.filter(stay => stay.price <= maxPrice && stay.price >= minPrice &&
-        stay.type.toLowerCase().includes(label.toLowerCase()) 
-        )
-
-        const { Wifi, Washer, Kitchen, Dryer, Heating , EntirePlace, PrivateRoom, SharedHome} = filterBy
-        stays = stays.filter(stay => !Wifi || stay.amenities.includes('Wifi') && 
-        !Washer || stay.amenities.includes('Washer') &&
-        !Kitchen || stay.amenities.includes('Kitchen') &&
-        !Dryer || stay.amenities.includes('Dryer') &&
-        !Heating || stay.amenities.includes('Heating') &&
-        
-        !EntirePlace || stay.amenities.includes('Entire home/apt') &&
-        !PrivateRoom || stay.amenities.includes('Private room') &&
-        !SharedHome || stay.amenities.includes('Shared homes') 
-          )
-
-      if (filterBy.where) {
-        stays = stays.filter(stay => stay.loc.country.toLowerCase().includes(filterBy.where.toLowerCase()) ||
-          stay.loc.city.toLowerCase().includes(filterBy.where.toLowerCase()) ||
-          stay.loc.address.toLowerCase().includes(filterBy.where.toLowerCase())
-          // stay.name.toLowerCase().includes(filterBy.where.toLowerCase())
-        )
-      }
-      return stays
-    }
-    return stays
-  }
-  )
+function query(filterBy ) {
+  return httpService.get(BASE_URL,  filterBy ).then((res) => res)
 }
+
+// function query(filterBy) {
+//   console.log('query filterBy:', filterBy)
+//   return storageService.query(STORAGE_KEY).then(stays => {
+//     if (!stays[0]) {
+//       gStays.forEach(stay => stay.reviews.map(review => {
+//         review.rate = utilService.getRandomIntInclusive(3, 5)
+       
+//         // review.by.imgUrl = gUsers.map(user => user._id === review.by._id ? user.imgUrl : review.by.imgUrl)
+//         // console.log('review.by.imgUrl:',review.by.imgUrl )
+//         return review
+//       }))
+//       gStays.forEach(stay => stay.beds = Math.round(stay.capacity / utilService.getRandomIntInclusive(1, 2)))
+//       stays = storageService.postMany(STORAGE_KEY, gStays).then(x => console.log(x))
+//     }
+
+//     if (filterBy) {
+//       let { maxPrice, minPrice, label } = filterBy
+//       if (!maxPrice) maxPrice = Infinity
+//       if (!minPrice) minPrice = 0
+//       if (!label) label = ''
+//       stays = stays.filter(stay => stay.price <= maxPrice && stay.price >= minPrice &&
+//         stay.type.toLowerCase().includes(label.toLowerCase()) 
+//         )
+
+//         const { Wifi, Washer, Kitchen, Dryer, Heating , EntirePlace, PrivateRoom, SharedHome} = filterBy
+//         stays = stays.filter(stay => !Wifi || stay.amenities.includes('Wifi') && 
+//         !Washer || stay.amenities.includes('Washer') &&
+//         !Kitchen || stay.amenities.includes('Kitchen') &&
+//         !Dryer || stay.amenities.includes('Dryer') &&
+//         !Heating || stay.amenities.includes('Heating') &&
+        
+//         !EntirePlace || stay.amenities.includes('Entire home/apt') &&
+//         !PrivateRoom || stay.amenities.includes('Private room') &&
+//         !SharedHome || stay.amenities.includes('Shared homes') 
+//           )
+
+//       if (filterBy.where) {
+//         stays = stays.filter(stay => stay.loc.country.toLowerCase().includes(filterBy.where.toLowerCase()) 
+//         // ||
+//         //   stay.loc.city.toLowerCase().includes(filterBy.where.toLowerCase()) ||
+//         //   stay.loc.address.toLowerCase().includes(filterBy.where.toLowerCase())
+//           // stay.name.toLowerCase().includes(filterBy.where.toLowerCase())
+//         )
+//       }
+//       return stays
+//     }
+//     return stays
+//   }
+//   )
+// }
 
 function getById(stayId) {
-  return storageService.get(STORAGE_KEY, stayId)
-  // return axios.get(`/api/stay/${stayId}`)
+  // return storageService.get(STORAGE_KEY, stayId)
+  return httpService.get(BASE_URL + stayId).then((res) => res)
 }
 async function remove(stayId) {
-  await storageService.remove(STORAGE_KEY, stayId)
+  // await storageService.remove(STORAGE_KEY, stayId)
+  return httpService.delete(BASE_URL + stayId).then((res) => res)
 }
 async function save(stay) {
   var savedStay
@@ -148,7 +158,9 @@ function _getEmptyStay() {
 }
 
 function avgRate(stay){
+  console.log('stay:', stay)
   let rates = stay.reviews.map(review => review.rate)
+  console.log('rates:', rates)
   rates = rates.reduce((a, b) => a + b, 0)
   // console.log('rates:', rates)
   return (rates / stay.reviews.length).toFixed(2)

@@ -4,9 +4,10 @@ import { useParams } from "react-router-dom";
 import { stayService } from "../services/stay.service";
 
 export function StayPreview({ stay }) {
+    
     const params = useParams()
     const { checkInDate, checkOutDate } = params
-
+    if (!stay)return
     // const checkInDatedDate = new Date(checkInDate)
     // const checkOutDateDate = new Date(checkOutDate)
 
@@ -27,6 +28,7 @@ export function StayPreview({ stay }) {
         return stayService.avgRate(stay)
     }
     const rate = avgRate()
+    console.log('rate:', rate)
 
     return (
         <div key={stay._id} className='stay-preview'>
@@ -34,7 +36,7 @@ export function StayPreview({ stay }) {
             <div>
                 <div className="preview-title">
                     <p><span>{stay.loc.city}, {stay.loc.country}</span></p>
-                    <span className="rate-star"><Star /> {rate}</span>
+                    <span className="rate-star"><Star /> {+rate}</span>
                 </div>
                 {/* {stay.type} */}
                 {/* roomType {stay.roomType} */}

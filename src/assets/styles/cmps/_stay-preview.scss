@@ -43,4 +43,12 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
+    font-size: 15px;
+    line-height: 19px;
+    justify-items: center;
+    
+    >.css-i4bv87-MuiSvgIcon-root{
+        font-size: 18px;
+        line-height: 19px;
+    }
 }

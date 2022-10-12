@@ -67,6 +67,8 @@
   display: grid;
   grid-template-rows: repeat(4 1fr);
   width: 100%;
+  position: relative;
+  margin-right: 24px;
 }
 
 .filter-container.filter-open .expanded-filter {
@@ -173,7 +175,7 @@ div.number-price-filter {
 }
 
 section.range-slider {
-  @include range-slider(730px, 50px, 100px, #F1EFEF, #413F41, left);
+  @include range-slider(690px, 50px, 100px, #F1EFEF, #413F41, left);
 }
 
 .price-range {
