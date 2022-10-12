@@ -37,6 +37,7 @@ export function StayPreview({ stay }) {
                     <span className="rate-star"><Star /> {rate}</span>
                 </div>
                 {/* {stay.type} */}
+                {/* roomType {stay.roomType} */}
                 {!checkInDate && !checkOutDate && <p>{stay.loc.address}, {stay.loc.city}</p>}
                 {checkInDate && checkOutDate && <p>{stay.summary.slice(0, 30)}...</p>}
                 {checkInDate && checkOutDate && <p>{stay.beds} beds</p>}

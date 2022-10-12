@@ -44,11 +44,12 @@ export function RootCmp () {
 })
   }
     return (
-      <div className= "full main-layout">
-        <AppHeader layoutClass={layoutClass} onClickHeaderFilter = {onClickHeaderFilter} isHeaderFilterOpen = {isHeaderFilterOpen}/>
-        {/* <main className={`${layoutClass? 'main-layout-details':'full main-layout'} `} > */}
-        <main className={`${(isFilterOpen || isHeaderFilterOpen) && 'filter-open'} ${layoutClass? 'main-layout-details':'full main-layout'} `} >
+      // <div className= "full main-layout">
+      <div className= {`full main-layout ${(isFilterOpen || isHeaderFilterOpen) && 'filter-open'}`}>
         <div onClick={onClickBack} className='main-screen' ></div>
+        <AppHeader layoutClass={layoutClass} onClickHeaderFilter = {onClickHeaderFilter} isHeaderFilterOpen = {isHeaderFilterOpen}/>
+        <main className={`${layoutClass? 'main-layout-details':'full main-layout'} `} >
+        {/* <main className={`${(isFilterOpen || isHeaderFilterOpen) && 'filter-open'} ${layoutClass? 'main-layout-details':'full main-layout'} `} > */}
           <Routes>
             {routes.map(route => <Route key={route.path} exact={true} element={route.component} path={route.path} />)}
             {/* <Route path="user/:id" element={<UserDetails />} /> */}
