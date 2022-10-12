@@ -45,7 +45,7 @@ export function RootCmp () {
   }
     return (
       // <div className= "full main-layout">
-      <div className= {`full main-layout ${(isFilterOpen || isHeaderFilterOpen) && 'filter-open'}`}>
+      <div className= {`full main-layout ${(isFilterOpen || isHeaderFilterOpen) && 'filter-open'} ${( isHeaderFilterOpen) && 'ex-filter-open'}`}>
         <div onClick={onClickBack} className='main-screen' ></div>
         <AppHeader layoutClass={layoutClass} onClickHeaderFilter = {onClickHeaderFilter} isHeaderFilterOpen = {isHeaderFilterOpen}/>
         <main className={`${layoutClass? 'main-layout-details':'full main-layout'} `} >

@@ -1,4 +1,5 @@
 .expanded-filter {
+  z-index: 10000000;
   height: 90%;
   // height: 100%;
   position: fixed;
@@ -74,7 +75,13 @@
 
 div.filter-open .main-screen {
   display: block;
+  z-index: 10000;
 }
+div.ex-filter-open .main-screen {
+  display: block;
+  z-index:5
+}
+
 
 @mixin range-slider($width, $height, $input-top, $input-bg-color, $input-thumb-color, $float: none, $input-height: 20px, $input-border-radius: 14px) {
   // position: relative;
