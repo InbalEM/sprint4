@@ -21,7 +21,6 @@ export function Calender({ stay }) {
 
 
   useEffect(() => {
-    console.log('order:', order)
     if (!value[0] || !value[1]) return
     const startDate = new Date(value[0].$d).toLocaleDateString()
     const endDate = new Date(value[1].$d).toLocaleDateString()

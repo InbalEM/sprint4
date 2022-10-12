@@ -38,7 +38,6 @@ export function LoginSignup() {
       password: data.get('password'),
     }
     dispatch(onLogin(credentials));
-    console.log('credentials:', credentials)
     setIsOpen(false)
   }
 

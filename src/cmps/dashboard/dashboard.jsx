@@ -47,7 +47,6 @@ export function Dashboard() {
 
     const [orders, setOrders] = useState([])
     const logInUser = userService.getLoggedinUser()
-    console.log('logInUser:', logInUser)
     let rows = orders.filter(order => order.hostId === logInUser._id)
         .map(order => createData(order.stay.name, order.startDate, order.endDate, order.total, order.status))
 
@@ -58,7 +57,6 @@ export function Dashboard() {
 
     const loadOrders = async () => {
         const orders = await orderService.query()
-        console.log('orders:', orders)
         setOrders(orders)
     }
 

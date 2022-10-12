@@ -23,10 +23,10 @@ export const orderService = {
 }
 window.cs = orderService
 
-async function query(filterBy) {
+async function query() {
     try {
         // let orders = await storageService.query(STORAGE_KEY)
-        let orders = await httpService.get(BASE_URL,  filterBy ).then((res) => res)
+        let orders = await httpService.get(BASE_URL ).then((res) => res)
         // const currUserId = userService.getLoggedinUser()._id
         // orders = orders.filter(order => order.buyer._id === currUserId)
         console.log('query orders:', orders)
@@ -97,8 +97,10 @@ function getNewOrder(stay, startDate = '', endDate = '') {
             _id,
             fullname
         },
-        "startDate": new Date().toLocaleDateString(),
-        "endDate": date.toLocaleDateString(),
+        "startDate": '10/12/2022',
+        "endDate": '10/13/2022',
+        // "startDate": new Date().toLocaleDateString(),
+        // "endDate": date.toLocaleDateString(),
         // "totalPrice": getDiffDates(this.startDate, this.endDate ),
         "guests": {
             "adults": 0,
@@ -119,8 +121,10 @@ function getNewOrder(stay, startDate = '', endDate = '') {
 }
 
 async function save(order) {
+    console.log('save:', order)
     // const savedOrder = await storageService.post(STORAGE_KEY, order)
-    const savedOrder =await storageService.post(STORAGE_KEY, order)
+    const savedOrder =await httpService.post(BASE_URL, order)
+    console.log('savedOrder:', savedOrder)
     return savedOrder
 }
 

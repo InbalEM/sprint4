@@ -28,7 +28,6 @@ export function StayPreview({ stay }) {
         return stayService.avgRate(stay)
     }
     const rate = avgRate()
-    console.log('rate:', rate)
 
     return (
         <div key={stay._id} className='stay-preview'>

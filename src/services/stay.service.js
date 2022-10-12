@@ -24,7 +24,15 @@ export const stayService = {
 window.cs = stayService
 
 function query(filterBy ) {
-  return httpService.get(BASE_URL,  filterBy ).then((res) => res)
+  return httpService.get(BASE_URL,  filterBy ).then((res) => {
+    res.forEach(stay => stay.reviews.map(review => {
+        review.rate = utilService.getRandomIntInclusive(3, 4)
+        return review
+      }))
+      res.forEach(stay => stay.beds = Math.round(stay.capacity / utilService.getRandomIntInclusive(1, 2)))
+      return res
+    
+  })
 }
 
 // function query(filterBy) {

@@ -19,6 +19,7 @@ export function getOrder(stay, order = null) {
         try {
             if (!order) {
                 order = orderService.getNewOrder(stay)
+                console.log('getOrder:', order)
             }
             dispatch({ type: 'SET_ORDER', order })
         } catch (err) {

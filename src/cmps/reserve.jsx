@@ -34,13 +34,11 @@ export const Reserve = ({ stay, avgRate }) => {
         if (guestsCount[category] + action < 0 || action > stay.capacity) return
         guestsCount[category] += action
         setGuestsCount(prevGuestsCount => ({ ...prevGuestsCount }))
-        console.log(guestsCount)
     }
 
     const submitReserve = () => {
         const guests = guestsCount
         const currOrder = { ...order, guests }
-        console.log('currOrder:', currOrder)
         dispatch(saveOrder(currOrder)).then(
         navigate("/summary", {
             state: {

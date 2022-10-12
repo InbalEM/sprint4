@@ -44,7 +44,6 @@ export const StayDetails = () => {
 
     const loadOrder = (stay) => {
         if(!order.length) {
-            console.log('order47:', order)
             dispatch(getOrder(stay))
         }
 
@@ -63,10 +62,8 @@ export const StayDetails = () => {
         imgObserver.observe(imgSection.current)
 
         function onImgObserver(entries) {
-            console.log(entries, isOpen, imgSection)
             if (!imgSection.current) return
             entries.forEach((entry) => {
-                console.log(entry)
                 setIsOpen(!entry.isIntersecting)
             })
         }

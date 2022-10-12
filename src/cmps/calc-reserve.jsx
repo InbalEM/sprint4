@@ -11,9 +11,12 @@ export const CalcReserve = ({ stay}) => {
     const { order } = useSelector(state => state.orderModule)
     const dispatch = useDispatch()
 
+    console.log('stay:', stay)
+    console.log('order:', order)
+
     const nightsStay = orderService.getDiffDates(order.startDate, order.endDate)
     const total = (stay.price * nightsStay) + 10 + 11 + (nightsStay * 10)
-
+console.log('nightsStay:', nightsStay)
     useEffect(() => {
         dispatch(getOrder(stay, { ...order, total }))
     }, [nightsStay])
