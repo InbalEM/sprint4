@@ -3,6 +3,8 @@ import { storageService } from './async-storage.service'
 import { getActionSetWatchedUser } from '../store/review.actions'
 // import { socketService, SOCKET_EVENT_USER_UPDATED, SOCKET_EMIT_USER_WATCH } from './socket.service'
 import { showSuccessMsg } from '../services/event-bus.service'
+import { httpService } from './http.service'
+
 
 const fs = require('fs')
 var gUsers = require('../data/user.json')
@@ -28,7 +30,7 @@ window.userService = userService
 
 function getUsers() {
     let users
-    return storageService.query(STORAGE_KEY).then(user => {
+    return httpService.get(`user`).then(user => {
         if(!user[0]){
         fetch("https://randomuser.me/api/?results=5000")
             .then(res => res.json())
@@ -52,8 +54,8 @@ function onUserUpdate(user) {
 }
 
 async function getById(userId) {
-    const user = await storageService.get('user', userId)
-    // const user = await httpService.get(`user/${userId}`)
+    // const user = await storageService.get('user', userId)
+    const user = await httpService.get(`user/${userId}`)
 
     // socketService.emit(SOCKET_EMIT_USER_WATCH, userId)
     // socketService.off(SOCKET_EVENT_USER_UPDATED, onUserUpdate)
@@ -63,23 +65,24 @@ async function getById(userId) {
 }
 
 function remove(userId) {
-    return storageService.remove('user', userId)
-    // return httpService.delete(`user/${userId}`)
+    // return storageService.remove('user', userId)
+    return httpService.delete(`user/${userId}`)
 }
 
 async function update(user) {
-    await storageService.put('user', user)
-    // user = await httpService.put(`user/${user._id}`, user)
+    // await storageService.put('user', user)
+    user = await httpService.put(`user/${user._id}`, user)
     // Handle case in which admin updates other user's details
     if (getLoggedinUser()._id === user._id) saveLocalUser(user)
     return user;
 }
 
 async function login(userCred) {
-    const users = await storageService.query('user')
-    console.log('users:', users)
-    const user = users.find(user => user.username === userCred.username && user.password === userCred.password )
-    
+    // const users = await storageService.query('user')
+    // console.log('users:', users)
+    // const user = users.find(user => user.username === userCred.username && user.password === userCred.password )
+    const user = await httpService.post('auth/login', userCred)
+
     // const user = await httpService.post('auth/login', userCred)
     if (user) {
         // socketService.login(user._id)
@@ -89,8 +92,8 @@ async function login(userCred) {
 
 async function signup(userCred) {
     // userCred.score = 10000;
-    const user = await storageService.post('user', userCred)
-    // const user = await httpService.post('auth/signup', userCred)
+    // const user = await storageService.post('user', userCred)
+    const user = await httpService.post('auth/signup', userCred)
     // socketService.login(user._id)
     // return saveLocalUser(user)
 }

@@ -6,8 +6,10 @@ import { userService } from './user.service.js'
 // import { userService } from './user.service.js'
 
 // This file demonstrates how to use a BroadcastChannel to notify other browser tabs 
+import { httpService } from './http.service'
 
 const STORAGE_KEY = 'order'
+const BASE_URL = `order/`
 
 export const orderService = {
     query,
@@ -21,11 +23,13 @@ export const orderService = {
 }
 window.cs = orderService
 
-async function query() {
+async function query(filterBy) {
     try {
-        let orders = await storageService.query(STORAGE_KEY)
+        // let orders = await storageService.query(STORAGE_KEY)
+        let orders = await httpService.get(BASE_URL,  filterBy ).then((res) => res)
         // const currUserId = userService.getLoggedinUser()._id
         // orders = orders.filter(order => order.buyer._id === currUserId)
+        console.log('query orders:', orders)
         return orders
     }
     catch {
@@ -34,12 +38,14 @@ async function query() {
 }
 
 function getById(orderId) {
-    return storageService.get(STORAGE_KEY, orderId)
+    // return storageService.get(STORAGE_KEY, orderId)
     // return axios.get(`/api/order/${orderId}`)
+    return httpService.get(BASE_URL + orderId).then((res) => res)
 }
 
 async function remove(orderId) {
-    await storageService.remove(STORAGE_KEY, orderId)
+    // await storageService.remove(STORAGE_KEY, orderId)
+    return httpService.delete(BASE_URL + orderId).then((res) => res)
 }
 
 function getOrder(order) {
@@ -113,7 +119,8 @@ function getNewOrder(stay, startDate = '', endDate = '') {
 }
 
 async function save(order) {
-    const savedOrder = await storageService.post(STORAGE_KEY, order)
+    // const savedOrder = await storageService.post(STORAGE_KEY, order)
+    const savedOrder =await storageService.post(STORAGE_KEY, order)
     return savedOrder
 }
 

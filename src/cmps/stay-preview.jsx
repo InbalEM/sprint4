@@ -40,7 +40,7 @@ export function StayPreview({ stay }) {
                 </div>
                 {/* {stay.type} */}
                 {/* roomType {stay.roomType} */}
-                {!checkInDate && !checkOutDate && <p>{stay.loc.address}, {stay.loc.city}</p>}
+                {!checkInDate && !checkOutDate && <p>{stay.loc.address}</p>}
                 {checkInDate && checkOutDate && <p>{stay.summary.slice(0, 30)}...</p>}
                 {checkInDate && checkOutDate && <p>{stay.beds} beds</p>}
                 {/* {isSameMonth  && <p > {checkInDateMonth} {checkInDatedDate.getDate()} - {checkOutDateDate.getDate()} </p>} */}

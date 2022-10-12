@@ -48,7 +48,7 @@ export  function MyOrders() {
 
   const loadOrders = async () => {
     const orders = await orderService.query()
-    console.log('orders:', orders)
+    console.log('loadOrders:', orders)
       setOrders(orders)
   }
 
