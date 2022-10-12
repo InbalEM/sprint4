@@ -8,6 +8,8 @@ export const storageService = {
     postMany
 }
 
+const BASE_URL = `stay/`
+
 function query(entityType, delay = 600) {
     var entities = JSON.parse(localStorage.getItem(entityType)) || []
 
