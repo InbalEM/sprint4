@@ -37,7 +37,7 @@ export function saveOrder(order) {
                 order = await orderService.save(order)
             }
             // await orderService.save(order)
-            dispatch({ type: 'SET_ORDER', order })
+            dispatch({ type: 'SAVE_ORDER', order })
         } catch (err) {
             console.log('UserActions: err in load order', err)
         }

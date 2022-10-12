@@ -24,8 +24,8 @@ window.cs = orderService
 async function query() {
     try {
         let orders = await storageService.query(STORAGE_KEY)
-        const currUserId = userService.getLoggedinUser()._id
-        orders = orders.filter(order => order.buyer._id === currUserId)
+        // const currUserId = userService.getLoggedinUser()._id
+        // orders = orders.filter(order => order.buyer._id === currUserId)
         return orders
     }
     catch {
@@ -84,7 +84,6 @@ function getNewOrder(stay, startDate = '', endDate = '') {
     date.setDate(date.getDate() + 1);
 
     const { _id, fullname } = userService.getLoggedinUser()
-    console.log('_id:', _id)
     const newOrder = {
         "hostId": stay.host._id,
         "createdAt": Date.now(),
@@ -110,7 +109,6 @@ function getNewOrder(stay, startDate = '', endDate = '') {
     }
 
     // storageService.post(STORAGE_KEY, newOrder)
-    console.log('newOrder:', newOrder)
     return newOrder
 }
 

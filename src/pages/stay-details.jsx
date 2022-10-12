@@ -37,15 +37,14 @@ export const StayDetails = () => {
         const stayId = params.id
         stayService.getById(stayId).then((stay) => {
             setStay(stay)
-            console.log('stay:', stay)
             loadOrder(stay)
             // setReviews(reviews)
         })
     }
 
     const loadOrder = (stay) => {
-        console.log("order:" ,order)
         if(!order.length) {
+            console.log('order47:', order)
             dispatch(getOrder(stay))
         }
 
@@ -53,11 +52,10 @@ export const StayDetails = () => {
 
     useEffect(() => {
         loadStay()
-        loadOrder()
+        // loadOrder()
     }, [])
 
     useLayoutEffect(() => {
-        console.log(imgSection.current, 'asdasdas')
         if (!imgSection.current) return
         const imgObserver = new IntersectionObserver(onImgObserver, {
             rootMargin: "2px 0px 0px",

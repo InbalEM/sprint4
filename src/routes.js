@@ -4,6 +4,7 @@ import { StayEdit } from './pages/add-edit-stay'
 import { ReserveSummary } from './pages/reserve-summary'
 import { LoginSignup } from './cmps/login-signup'
 import { MyOrders } from './cmps/my-orders'
+import { Dashboard } from './cmps/dashboard/dashboard'
 // import { ReserveSummary } from './pages/reserve-summary'
 
 const routes = [
@@ -36,6 +37,12 @@ const routes = [
         path: 'my-orders',
         component: <MyOrders/>,
         label: 'MyOrders'
+
+    },
+    {
+        path:'Dashboard',
+        component: <Dashboard/>,
+        label: 'Dashboard'
 
     }
    

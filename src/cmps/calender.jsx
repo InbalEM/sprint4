@@ -15,17 +15,18 @@ import { orderService } from "../services/order.service";
 
 
 export function Calender({ stay }) {
-  let { order } = useSelector(state => state.orderModule)
+  const { order } = useSelector(state => state.orderModule)
   const [value, setValue] = useState([order.startDate, order.endDate]);
   const dispatch = useDispatch()
 
 
   useEffect(() => {
+    console.log('order:', order)
     if (!value[0] || !value[1]) return
     const startDate = new Date(value[0].$d).toLocaleDateString()
     const endDate = new Date(value[1].$d).toLocaleDateString()
-    order = { ...order, startDate, endDate }
-    dispatch(getOrder(stay, order))
+    const currOrder = { ...order, startDate, endDate }
+    dispatch(getOrder(stay, currOrder))
 
   }, [value])
 

@@ -10,7 +10,7 @@ export const Review = ({ stay, avgRate }) => {
         return stay.reviews.map((review, idx) =>
             <div key= {idx} className='review'>
                 <div className='reviewer-header-details'>
-                    <div className='reviewer-img'><img src="https://xsgames.co/randomusers/avatar.php?g=male" alt="" srcset="" /></div>
+                    <div className='reviewer-img'><img src="https://xsgames.co/randomusers/avatar.php?g=male" alt=""/></div>
                    
                     <div className='reviewer-details'>
                         <h3 className='reviewer-name'>{review.by.fullname}</h3>

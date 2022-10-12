@@ -119,16 +119,7 @@ function getLoggedinUser() {
     return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
 }
 
-function _saveCarsToFile() {
-    // console.log('gUsers:', gUsers)
-    return new Promise((resolve, reject) => {
-        const data = JSON.stringify(gUsers, null, 2)
-        fs.writeFile('data/user.json', data, (err) => {
-            if (err) return reject('Cannot save to file')
-            resolve()
-        })
-    })
-}
+
 
 
 // ;(async ()=>{
