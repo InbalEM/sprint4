@@ -31,7 +31,9 @@ export function HeaderProfile() {
                 <div onClick={() => toggleRegister()}><p>Log in</p></div>
                <div><p>Sign up</p></div>
                <div onClick={() => {setIsOpen(false)
-                navigate('Dashboard')}}>Dashboard</div>
+                navigate('Dashboard')}}><p>Dashboard</p></div>
+                <div onClick={() => {setIsOpen(false)
+                navigate('my-orders')}}><p>My Orders</p></div>
             </div>
         </div>
         <div className={`login-${register}`}><LoginSignup/></div>

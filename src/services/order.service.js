@@ -48,20 +48,20 @@ async function remove(orderId) {
     return httpService.delete(BASE_URL + orderId).then((res) => res)
 }
 
-function getOrder(order) {
+async function getOrder(order) {
 
     // var savedOrder
-    // // if (order._id) {
-    // //     savedOrder = await storageService.put(STORAGE_KEY, order)
+    // if (order._id) {
+    //     savedOrder = await storageService.put(STORAGE_KEY, order)
 
-    // // } else {
+    // } else {
     //     // Later, owner is set by the backend
     //     let newOrder = _getNewOrder()
     //     newOrder.name = order.name
     //     newOrder.price = order.price
     //     console.log('newOrder:', newOrder)
     //     // savedOrder = await storageService.post(STORAGE_KEY, newOrder)
-    // // }
+    // }
     // return savedOrder
 }
 
@@ -117,14 +117,21 @@ function getNewOrder(stay, startDate = '', endDate = '') {
     }
 
     // storageService.post(STORAGE_KEY, newOrder)
+    // console.log('newOrder:', newOrder)
     return newOrder
 }
 
 async function save(order) {
-    console.log('save:', order)
-    // const savedOrder = await storageService.post(STORAGE_KEY, order)
-    const savedOrder =await httpService.post(BASE_URL, order)
-    console.log('savedOrder:', savedOrder)
+
+    let savedOrder
+    if (order._id) {
+        console.log('order:', order)
+        savedOrder = await httpService.put(STORAGE_KEY, order)
+        console.log('savedOrder:', savedOrder)
+    } else{
+
+        savedOrder = await httpService.post(STORAGE_KEY, order)
+    }
     return savedOrder
 }
 
